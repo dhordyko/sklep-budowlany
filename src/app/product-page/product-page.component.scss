@@ -1,0 +1,30 @@
+mat-divider {
+  width: 100%;
+}
+
+mat-icon {
+  width: -1px;
+}
+input {
+  background-color: rgba(255, 139, 20, 0.3);
+  width: 100px;
+  text-align: center;
+}
+.mat-raised-button {
+  width: 140px;
+  height: 55px;
+}
+
+.product-image {
+  object-fit: contain;
+  width: 100%;
+  vertical-align: middle;
+}
+mat-card {
+  width: 550px;
+  height: 500px;
+}
+.flex-me {
+  display: inline-flex;
+  flex-flow: row wrap;
+}

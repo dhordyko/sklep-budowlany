@@ -1,0 +1,90 @@
+@import "~minireset.css/minireset";
+/* You can add global styles to this file, and also import other style files */
+/*new comment */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~animate.css/animate.min";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;0,900;1,900&display=swap");
+
+ul {
+  list-style-type: none;
+}
+html,
+body {
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  visibility: visible;
+  font-family: "Open Sans", sans-serif !important;
+  color: #333;
+  position: absolute !important;
+  overflow-y: initial !important;
+  background: #ffffff;
+}
+
+footer {
+  bottom: 0px;
+
+  width: 100%;
+}
+* {
+}
+*::-webkit-scrollbar {
+}
+*::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #e95420;
+  border-radius: 50px;
+
+  border: 3px solid #f4f4f4;
+}
+.mat-badge-content {
+  color: black;
+  background: #fdb813 !important;
+}
+
+mat-icon > #mat-badge-content-3 .mat-badge-content {
+  background: #fdb813 !important;
+}
+app-start-page {
+  background: #ffffff;
+}
+.carousel-indicators > li {
+  background-color: #fdb813 !important;
+}
+.carousel-control-prev-icon {
+  background-image: url(../src/assets/carousel/kisspng-arrow-computer-icons-circle-clip-art-left-arrow-5ac00ad08158b9.5867764615225351205298.png) !important;
+  margin-right: 117px;
+}
+.carousel-control-next-icon {
+  background-image: url(../src/assets/carousel/kisspng-arrow-computer-icons-encapsulated-postscript-left-arrow-5ac00c1a6bcff3.6165568715225354504416.png) !important;
+  margin-left: 117px;
+}
+.ui-carousel-dots-container {
+  display: none !important;
+}
+.ui-carousel-next,
+.ui-carousel-prev {
+  color: #333333;
+  background-color: #fdb813 !important;
+}
+app-start-page {
+  width: 100%;
+}
+.igx-nav-arrow {
+  color: #fdb813 !important;
+}
+p-carousel > .ui-carousel-items-container {
+  overflow: none !important;
+}
+
+@import "~igniteui-angular/lib/core/styles/themes/index";
+// Uncomment the following lines if you want to add a custom palette:
+// $primary: #731963 !default;
+// $secondary: #ce5712 !default;
+// $app-palette: igx-palette($primary, $secondary);
+
+/* autoprefixer grid: on */
+
+@include igx-theme($default-palette);

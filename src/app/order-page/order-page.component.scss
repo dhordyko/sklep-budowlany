@@ -1,0 +1,35 @@
+.mat-card {
+  text-align: -webkit-center;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+.example-form-field {
+  width: 400px;
+  margin-left: 3em;
+  font-size: 17px;
+}
+.mat-raised-button {
+  width: 250px;
+  font-size: medium;
+  font-weight: 700;
+  color: #fff;
+}
+
+textarea {
+  height: 100px;
+}
+.size {
+  font-size: 20px;
+}
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}

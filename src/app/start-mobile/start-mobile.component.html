@@ -1,0 +1,639 @@
+<section class="main-slider-carousel">
+  <div fxLayout="row wrap" fxLayoutAlign="center">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+          <img [src]="images[0]" alt="Random first slide" />
+          <div
+            class="slider-text-container slider-main-1"
+            fxLayout="column"
+            fxLayoutGap="8px"
+            fxLayoutAlign="center center"
+          >
+            <h2>The New</h2>
+            <h1>The New</h1>
+            <a [ngClass]="['addBtn']">Shopping Now</a>
+          </div>
+        </div>
+        <div class="carousel-caption"></div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+          <img [src]="images[1]" alt="Random second slide" />
+          <div
+            class="slider-text-container slider-main-2"
+            fxLayout="column"
+            fxLayoutGap="8px"
+            fxLayoutAlign="center center"
+          >
+            <h2>The New</h2>
+            <h1>The New</h1>
+            <a [ngClass]="['addBtn']">Shopping Now</a>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+          <img [src]="images[2]" alt="Random third slide" />
+          <div
+            class="slider-text-container slider-main-3"
+            fxLayout="column"
+            fxLayoutGap="8px"
+            fxLayoutAlign="center center"
+          >
+            <h2>The New</h2>
+            <h1>The New</h1>
+            <a [ngClass]="['addBtn']">Shopping Now</a>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</section>
+
+<section class="contact-icons-row">
+  <div
+    fxLayout.xs="column"
+    fxLayoutAlign.xs="space-around center"
+    fxLayoutGap.xs="30px"
+    fxLayout.gt-xs="row wrap"
+    fxLayoutGap.gt-xs="40px"
+    class="m-3"
+    fxLayoutAlign.gt-xs="space-around center"
+  >
+    <div
+      [ngClass.gt-xs]="['shipping-icon-container ']"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <div class="icon-wrapper">
+        <mat-icon class="truck-icon">local_shipping</mat-icon>
+      </div>
+      <div class="text-wrapper pt-2">
+        <p>Free Shipping on Order</p>
+      </div>
+    </div>
+    <div
+      [ngClass.gt-xs]="['shipping-icon-container ']"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <div class="icon-wrapper">
+        <mat-icon class="truck-icon">local_phone</mat-icon>
+      </div>
+      <div class="text-wrapper pt-2">
+        <p>Contact us 24 hrs a day</p>
+      </div>
+    </div>
+    <div
+      [ngClass.gt-xs]="['shipping-icon-container ']"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <div class="icon-wrapper">
+        <mat-icon class="truck-icon">send</mat-icon>
+      </div>
+      <div class="text-wrapper pt-2">
+        <p>Free Shipping on Order</p>
+      </div>
+    </div>
+    <div
+      [ngClass.gt-xs]="['shipping-icon-container ']"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <div class="icon-wrapper">
+        <mat-icon class="truck-icon">credit_card</mat-icon>
+      </div>
+      <div class="text-wrapper pt-2">
+        <p>Free Shipping on Order</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="banners-row" [ngStyle]="{ 'margin-bottom': '30px' }">
+  <div
+    class="banners-wrapper"
+    fxLayout.xs="column"
+    fxLayout.gt-xs="row wrap"
+    fxLayoutGap="20px"
+    fxLayoutAlign="center center"
+    class="m-4"
+  >
+    <div class="single-banner" [ngStyle.gt-xs]="{ width: '25vw' }">
+      <div class="banner_thumb">
+        <a><img [src]="banners[0]" /></a>
+      </div>
+    </div>
+    <div class="single-banner" [ngStyle.gt-xs]="{ width: '25vw' }">
+      <div class="banner_thumb">
+        <a><img [src]="banners[1]" /></a>
+      </div>
+    </div>
+    <div class="single-banner" [ngStyle.gt-xs]="{ width: '25vw' }">
+      <div class="banner_thumb">
+        <a><img [src]="banners[2]" /></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section
+  class="arrivals-row"
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  [ngStyle.sm]="{ 'margin-bottom': '0px' }"
+>
+  <div
+    class="arrivals-wrapper"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-around center"
+  >
+    <div class="new-arrivals-text pb-4">
+      <h4>New Arrivals</h4>
+    </div>
+    <div
+      class="product_tab_button"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+    </div>
+  </div>
+</section>
+<!-- --------------product-card(xs)--------------- -->
+<section
+  class="product-card"
+  fxShow.gt-xs="false"
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+>
+  <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
+    <app-product [product]="products[0][0]" class="single-article">
+    </app-product>
+  </div>
+</section>
+<!-- --------------category-carousel-xs--------------- -->
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="d-flex justify-content-center category-carousel"
+>
+  <p-carousel
+    [value]="categoryList"
+    orientation="vertical"
+    [style]="{ 'max-width': '400px', 'margin-top': '2em' }"
+    verticalViewPortHeight="200px"
+    fxShow.gt-xs="false"
+    [numVisible]="1"
+    [numScroll]="1"
+    [dotsContainerClass]="{ display: 'none!important' }"
+  >
+    <ng-template let-category pTemplate="item">
+      <div class="category-details">
+        <div class="">
+          <div
+            class="catagory-data"
+            fxLayout="column"
+            fxLayoutAlign="space-around center"
+          >
+            <div class="category-title">{{ category.name }}</div>
+            <div class="category-img"><img src="{{ category.image }}" /></div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<!-- --------------product-carousel-sm-md--------------- -->
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="product-mobile-carousel"
+  *ngIf="prodsAll$ | async as products"
+>
+  <p-carousel
+    [value]="products"
+    [style]="{ 'max-width': '100vw', 'margin-top': '2em' }"
+    verticalViewPortHeight="200px"
+    fxShow.sm="true"
+    [numVisible]="2"
+    [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template class="carousel-product-mobile" let-category pTemplate="item">
+      <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+        <app-product
+          [product]="category"
+          [ngStyle]="{ width: '90%' }"
+          class="single-product"
+        ></app-product>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<!-- --------------category-carousel-sm,md--------------- -->
+<section
+  class="category-carousel m-auto"
+  fxShow.sm="true"
+   fxShow.md="true"
+  fxShow="false"
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="pt-5">
+    <ngb-carousel
+      id="category-carousel"
+      [showNavigationArrows]="showArrows"
+      class="carousel slide carousel-fade"
+    >
+      <ng-template ngbSlide class="category-slide1">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="column" fxLayoutGap="20px">
+            <div
+              class="category-item-cont p-2 mr-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[2]" />
+              <a class="cat-name">Electronics</a>
+            </div>
+            <div
+              class="category-item-cont p-2 mr-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[5]" />
+              <a class="cat-name">Automobiles</a>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayoutGap="20px">
+            <div
+              class="category-item-cont p-2 ml-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[0]" />
+              <a class="cat-name">Hot Categories</a>
+            </div>
+            <div
+              class="category-item-cont p-2 ml-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[3]" />
+              <a class="cat-name">Bottoms</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-caption"></div>
+      </ng-template>
+      <ng-template ngbSlide class="category-slide1">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div fxLayout="column" fxLayoutGap="20px">
+            <div
+              class="category-item-cont p-2 mr-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[2]" />
+              <a class="cat-name">Electronics</a>
+            </div>
+            <div
+              class="category-item-cont p-2 mr-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[5]" />
+              <a class="cat-name">Automobiles</a>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayoutGap="20px">
+            <div
+              class="category-item-cont p-2 ml-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[0]" />
+              <a class="cat-name">Hot Categories</a>
+            </div>
+            <div
+              class="category-item-cont p-2 ml-2"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center"
+            >
+              <img [src]="categories[3]" />
+              <a class="cat-name">Bottoms</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-caption"></div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</section>
+<!-- ------------------------------------------------ -->
+<section
+  class="banner-row"
+  [ngStyle]="{ 'margin-bottom': '30px', 'margin-top': '30px' }"
+>
+  <div
+    class="banner-wrapper"
+    fxLayout="row wrap"
+    fxLayoutAlign="center stretch"
+  >
+    <img class="banner-image" [src]="banners[3]" />
+  </div>
+</section>
+
+<section class="arrivals-row" [ngStyle]="{ 'margin-bottom': '30px' }">
+  <div
+    class="arrivals-wrapper"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-around center"
+  >
+    <div class="new-arrivals-text pb-4">
+      <h4>New Arrivals</h4>
+    </div>
+    <div
+      class="product_tab_button"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+    </div>
+  </div>
+</section>
+<!-- --------------product-carousel-sm-md--------------- -->
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="product-mobile-carousel"
+  *ngIf="prodsAll$ | async as products"
+>
+  <p-carousel
+    [value]="products"
+    [style]="{ 'max-width': '100vw', 'margin-top': '2em' }"
+    verticalViewPortHeight="200px"
+    fxShow.sm="true"
+    [numVisible]="2"
+    [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template class="carousel-product-mobile" let-category pTemplate="item">
+      <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+        <app-product
+          [product]="category"
+          [ngStyle]="{ width: '90%' }"
+          class="single-product"
+        ></app-product>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<!-- --------------product-card(xs)--------------- -->
+<section
+  class="product-card"
+  fxShow.sm="true"
+  fxShow.md="false"
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+>
+  <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
+    <app-product [product]="products[0][1]" class="single-article">
+    </app-product>
+  </div>
+</section>
+<section
+  class="product-card"
+  fxShow.sm="true"
+  fxShow.md="false"
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+>
+  <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
+    <app-product [product]="products[0][3]" class="single-article">
+    </app-product>
+  </div>
+</section>
+
+<section class="product-cards" fxShow.xs="true" fxShow="false">
+  <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
+    <app-product [product]="products[0][0]" class="single-article">
+    </app-product>
+  </div>
+  <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
+    <app-product [product]="products[0][1]" class="single-article">
+    </app-product>
+  </div>
+  <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
+    <app-product [product]="products[0][2]" class="single-article">
+    </app-product>
+  </div>
+  <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
+    <app-product [product]="products[0][3]" class="single-article">
+    </app-product>
+  </div>
+</section>
+<section class="arrivals-row" [ngStyle]="{ 'margin-bottom': '30px' }">
+  <div
+    class="arrivals-wrapper"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-around center"
+  >
+    <div class="new-arrivals-text pb-4">
+      <h4>New Arrivals</h4>
+    </div>
+    <div
+      class="product_tab_button"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+      <a [routerLink]="" routerLinkActive="active">Automobiles</a>
+    </div>
+  </div>
+</section>
+<!-- --------------product-carousel-sm-md--------------- -->
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="product-mobile-carousel"
+  *ngIf="prodsAll$ | async as products"
+>
+  <p-carousel
+    [value]="products"
+    [style]="{ 'max-width': '100vw', 'margin-top': '2em' }"
+    verticalViewPortHeight="200px"
+    fxShow.sm="true"
+    [numVisible]="2"
+    [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template class="carousel-product-mobile" let-category pTemplate="item">
+      <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+        <app-product
+          [product]="category"
+          [ngStyle]="{ width: '90%' }"
+          class="single-product"
+        ></app-product>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<section class="footer-wrapper">
+  <footer class="footer_widgets footer_three">
+    <div class="footer_top">
+      <div class="container">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <div class="col-lg-4 col-lg-4 col-lg-4">
+            <div class="widgets_container contact_us">
+              <div class="footer_logo">
+                <a href="#"><img src="assets/carousel/logo.png" alt="" /></a>
+              </div>
+              <div class="footer_contact">
+                <p>
+                  We are a team of designers and developers that create high
+                  quality Magento, Prestashop, Opencart...
+                </p>
+                <div class="customer_support">
+                  <div
+                    class="customer_support_text"
+                    fxLayout="row wrap"
+                    fxLayoutAlign="center center"
+                  >
+                    <p
+                      class="support-icon-container"
+                      fxLayout="row wrap"
+                      fxLayoutGap="40px"
+                    >
+                      <span>
+                        <mat-icon class="support_img_icon">headset</mat-icon>
+                      </span>
+                      <span
+                        class="support-text"
+                        fxLayout="column"
+                        fxLayoutGap="10px"
+                      >
+                        <span>Customer Support</span>
+                        <a class="support-telephone" href="tel:(08)123456789"
+                          >(08) 123 456 789</a
+                        >
+                      </span>
+                      <br />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-lg-4 col-lg-4">
+            <div class="widgets_container widgets_subscribe">
+              <h4>Subscribe newsletter</h4>
+              <div class="subscribe_form">
+                <form
+                  id="mc-form"
+                  class="mc-form footer-newsletter"
+                  novalidate="true"
+                >
+                  <input
+                    id="mc-email"
+                    type="email"
+                    autocomplete="off"
+                    placeholder="Enter you email address here..."
+                    name="EMAIL"
+                  />
+                  <button id="mc-submit">Subscribe</button>
+                </form>
+                <!-- mailchimp-alerts Start -->
+                <div class="mailchimp-alerts text-centre">
+                  <div class="mailchimp-submitting"></div>
+                  <!-- mailchimp-submitting end -->
+                  <div class="mailchimp-success"></div>
+                  <!-- mailchimp-success end -->
+                  <div class="mailchimp-error"></div>
+                  <!-- mailchimp-error end -->
+                </div>
+                <!-- mailchimp-alerts end -->
+              </div>
+              <p>We’ll never share your email address with a third-party.</p>
+              <div class="footer_social">
+                <ul>
+                  <li>
+                    <a class="facebook" href="#"
+                      ><i class="ion-social-facebook"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="twitter" href="#"
+                      ><i class="ion-social-twitter"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="youtube" href="#"
+                      ><i class="ion-social-youtube"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="google" href="#"
+                      ><i class="ion-social-google"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="instagram" href="#"
+                      ><i class="ion-social-instagram"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-lg-4 col-lg-4">
+            <div>
+              <div
+                class="information-wrapper"
+                fxLayout="column"
+                fxLayoutGap="30px"
+              >
+                <h4>Information</h4>
+                <div
+                  class="information-list"
+                  fxLayout=" row wrap"
+                  fxLayoutAlign=" start center"
+                >
+                  <ul>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html"> Contact us</a></li>
+                    <li><a href="#">Stores</a></li>
+                  </ul>
+                  <ul class="ml-5">
+                    <li><a href="#">Legal Notice</a></li>
+                    <li><a href="#">Secure payment</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="my-account.html"> My account</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="copyright_area">
+              <p>
+                Copyright © 2020 <a href="#">Esther.</a> All Right Reserved.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="footer_payment text-right">
+              <a href="#"><img src="assets/carousel/payment.png" alt="" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>

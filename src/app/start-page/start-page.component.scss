@@ -1,0 +1,373 @@
+.sample-wrapper {
+  padding-left: 10px;
+}
+// ---------slider-content-------------
+.picsum-img-wrapper {
+  position: relative;
+}
+.picsum-img-wrapper > img {
+  width: 100%;
+}
+.picsum-img-wrapper > .slider-text-container.slider-main-2 {
+  top: 10px;
+  position: absolute;
+  left: 220px;
+  margin-top: 40px;
+}
+.picsum-img-wrapper > .slider-text-container.slider-main-1 {
+  top: 10px;
+  position: absolute;
+  right: 250px;
+  margin-top: 50px;
+}
+.picsum-img-wrapper > .slider-text-container.slider-main-3 {
+  top: 10px;
+  position: absolute;
+  right: 210px;
+  margin-top: 40px;
+}
+.picsum-img-wrapper > .slider-text-container > h1,
+h2,
+p {
+  margin-top: 0px;
+}
+.picsum-img-wrapper > .slider-text-container > h2 {
+  font-weight: 300;
+  text-transform: capitalize;
+  line-height: 1;
+  font-size: 59px;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.picsum-img-wrapper > .slider-text-container > h1 {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  margin-bottom: 0;
+  font-family: "Overpass", sans-serif;
+}
+.picsum-img-wrapper > .slider-text-container > p {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+  font-size: 20px;
+  font-weight: 300;
+
+  line-height: 24px;
+
+  text-transform: capitalize;
+}
+.picsum-img-wrapper > .slider-text-container > a {
+  cursor: pointer;
+  background-color: #fdb813 !important;
+  margin-top: 12px;
+  position: relative;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  line-height: 45px;
+  text-transform: capitalize;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0 30px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+.picsum-img-wrapper > .slider-text-container > a:hover {
+  background-color: #333 !important;
+  color: #fff;
+}
+
+// --------------------row with icons ------------------
+
+.icon-wrapper {
+  height: 50px;
+  width: 50px;
+  line-height: 48px;
+  border: 1px solid #ededed;
+  border-radius: 100%;
+  text-align: center;
+  transition: 0.3s;
+  margin-right: 11px;
+  text-align: center;
+  cursor: default;
+}
+.shipping-icon-container {
+  border-right: 1px solid #ededed;
+  display: flex;
+  align-items: center;
+}
+.truck-icon {
+  line-height: 48px;
+
+  transition: 0.3s;
+  color: #fdb813;
+}
+
+.icon-wrapper:hover {
+  background-color: #fdb813;
+  .truck-icon {
+    color: black;
+  }
+}
+.shipping-icon-container > p {
+  text-transform: capitalize;
+}
+
+// -----------------------row with banners---------------
+.banner-image {
+  content: url("/src/assets/banner2.jpg");
+}
+.single-banner {
+  transition: transform 0.2s; /* Animation */
+  cursor: pointer;
+}
+.single-banner:hover {
+  transform: scale(1.1) rotate(0.05deg);
+
+  img {
+    opacity: 0.7;
+  }
+}
+// --------------------row with new arrivals---------------
+
+.product_tab_button > a {
+  line-height: 28px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-transform: capitalize;
+  font-weight: 400;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  display: inline-block;
+  color: #333;
+  cursor: pointer;
+}
+
+.product_tab_button > a:hover {
+  border-color: #fdb813;
+}
+.active {
+  border-color: #fdb813;
+}
+// ----------------product-slider---------------
+:host ::ng-deep app-product button {
+  display: none !important;
+}
+// ----------------category-slider---------------
+.category-item-cont > img {
+  max-width: 100%;
+  height: auto;
+}
+.category-item-cont {
+  background: #fff !important;
+  height: 130px;
+  width: 300px;
+}
+.category-carousel {
+  background: #ededed;
+}
+
+#category-carousel {
+  height: 350px;
+}
+:host ::ng-deep #category-carousel .carousel-item {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+.cat-name:hover {
+  color: #fdb813;
+  cursor: pointer;
+}
+
+:host ::ng-deep .single-article > mat-card {
+  width: 35vw;
+}
+:host
+  ::ng-deep
+  .single-article
+  > mat-card
+  > mat-card-header
+  > a
+  > mat-card-title {
+  height: 50vh !important;
+}
+:host ::ng-deep .single-article > mat-card > mat-card-header > a.addBtn {
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 10px;
+  line-height: 36px;
+  height: 36px;
+  text-transform: capitalize;
+  background: #fdb813;
+  display: block;
+  position: sticky;
+  top: 49vh;
+}
+:host ::ng-deep .single-article > mat-card > mat-card-header > a img {
+  width: 350px;
+  height: 350px;
+
+  object-fit: scale-down;
+}
+
+.banner-row > img {
+  max-width: 100%;
+}
+
+.banner-image-wrapper {
+  img:hover {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 0.75s;
+    animation-duration: 0.75s;
+    -webkit-animation-name: tada;
+    animation-name: tada;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+// -------------------Footer Section------------------
+
+.footer_three {
+  background: #f8f8f8;
+}
+.footer_top {
+  padding: 58px 0 60px;
+}
+.footer_logo {
+  margin-bottom: 23px;
+}
+.support-icon-container {
+  margin-top: 20px;
+  width: 100%;
+}
+.support-icon-container > span > mat-icon {
+  font-size: 60px;
+  color: #fdb813;
+}
+
+.support-text > span {
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+}
+.support-telephone {
+  font-family: "Overpass", sans-serif;
+  font-size: 24px;
+  line-height: 27px;
+  font-weight: 400;
+  color: #333;
+  text-decoration: none;
+}
+.support-telephone:hover {
+  color: #fdb813;
+}
+
+.subscribe_form form input {
+  width: 100%;
+  height: 48px;
+  color: #666;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  padding: 0 120px 0 15px;
+}
+.subscribe_form form {
+  position: relative;
+  width: 100%;
+  background: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.footer_contact > p {
+  padding-right: 50px;
+}
+.subscribe_form form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: #fdb813;
+  font-weight: 700;
+  padding: 0 18px;
+  border: 0;
+  font-size: 15px;
+  text-transform: capitalize;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.widgets_container h3 {
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: capitalize;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 20px;
+}
+
+.information-wrapper > h4 {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+}
+.information-wrapper > .information-list > ul > li > a {
+  display: block;
+  font-weight: 400;
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+  text-decoration: none;
+  color: #343a40;
+  margin-bottom: 10px;
+  transition: all 0.2s ease 0s;
+}
+.information-wrapper > .information-list > ul > li > a:hover {
+  color: #fdb813;
+  padding-left: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.widgets_container.widgets_subscribe > h4 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  margin-top: -38px;
+  margin-bottom: 40px;
+}
+#mc-form {
+  margin-bottom: 25px;
+}
+.footer_bottom {
+  padding: 15px 0;
+  background: #fdb813;
+}

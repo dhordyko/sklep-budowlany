@@ -1,0 +1,106 @@
+<div class="text-center">
+  <div class="flex-center"></div>
+</div>
+<mat-card class="example-card mt-3">
+  <mat-card-header
+    class="text-center"
+    fxLayout="row wrap"
+    fxLayoutAlign="center"
+  >
+    <a
+      class="image-container"
+      [routerLink]="['/product', product.id]"
+      (click)="idPassing()"
+      (mouseover)="showButtons()"
+    >
+      <img
+        (click)="idPassing()"
+        mat-card-image
+        alt=""
+        src="{{ product.url_image }}"
+        class="img-fluid rounded mx-auto d-block"
+        [routerLink]="['/product', product.id]"
+      />
+    </a>
+    <mat-divider></mat-divider>
+    <ul fxLayout="column" fxLayoutGap="50px" *ngIf="showElement">
+      <li>
+        <div class="icon-wrapper" [routerLink]="">
+          <mat-icon class="truck-icon">favorite_border</mat-icon>
+        </div>
+      </li>
+      <li>
+        <div class="icon-wrapper" [routerLink]="">
+          <mat-icon class="truck-icon">compare_arrows</mat-icon>
+        </div>
+      </li>
+      <li>
+        <div class="icon-wrapper" [routerLink]="">
+          <mat-icon class="truck-icon">remove_red_eye</mat-icon>
+        </div>
+      </li>
+    </ul>
+    <a mat-stroked-button color="primary" *ngIf="showElement" class="addBtn"
+      >Add to Cart</a
+    >
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <!-- [src]="image" -->
+  <a [routerLink]="" class="my-2 manuf-name">{{ product.manufacturer }}</a>
+
+  <mat-card-content
+    (mouseout)="hideButtons()"
+    fxLayout="column "
+    fxLayoutGap="10px"
+  >
+    <a [routerLink]="" class="prod-name">{{ product.name }}</a>
+    <span class="current-price">{{ product.client_price }} zł</span>
+  </mat-card-content>
+
+  <mat-card-actions
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between center"
+    (mouseout)="hideButtons()"
+  >
+    <button
+      (click)="addToCart()"
+      fxShow="true"
+      fxShow.xs="false"
+      fxShow.md="true"
+      fxShow.sm="true"
+      class="mb-2 mr-2 roundBtn"
+      mat-fab
+      color="warn"
+      aria-label="Example icon button with a delete icon"
+      (click)="openSnackBar()"
+    >
+      <mat-icon
+        [ngStyle.sm]="{ 'font-size': '20px' }"
+        #icon
+        matBadge="{{ product.quantity }}"
+        matBadgePosition="before"
+        matBadgeColor="primary"
+        >add_shopping_cart</mat-icon
+      >
+    </button>
+    <button
+      (click)="addToCart()"
+      fxShow="false"
+      fxShow.xs="true"
+      fxShow.md="false"
+      fxShow.sm="false"
+      class="mb-2 mr-2"
+      mat-mini-fab
+      color="warn"
+      (click)="openSnackBar()"
+    >
+      <mat-icon
+        #icon
+        matBadge="{{ product.quantity }}"
+        matBadgePosition="before"
+        matBadgeColor="primary"
+        >add_shopping_cart</mat-icon
+      >
+    </button>
+  </mat-card-actions>
+</mat-card>

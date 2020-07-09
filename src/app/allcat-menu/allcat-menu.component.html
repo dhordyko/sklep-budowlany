@@ -1,0 +1,68 @@
+<li class="nav-item active" fxLayout="row wrap">
+  <a class="nav-link px-0" target="_blank" [matMenuTriggerFor]="animals"
+    >All Categoris</a
+  >
+  <div class="pt-3">
+    <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
+  </div>
+</li>
+
+<mat-menu #animals="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="brakeParts">Brake Parts</button>
+  <button mat-menu-item [matMenuTriggerFor]="wheelstires">
+    Wheels & Tires
+  </button>
+</mat-menu>
+<!-- --------------Brake Parts Section------------ -->
+<mat-menu #brakeParts="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="drasses">DRASSES</button>
+  <button mat-menu-item [matMenuTriggerFor]="handbags">HANDBAGS</button>
+  <button mat-menu-item [matMenuTriggerFor]="shoes">SHOES</button>
+  <button mat-menu-item [matMenuTriggerFor]="clothing">CLOTHING</button>
+</mat-menu>
+<mat-menu #drasses="matMenu">
+  <button mat-menu-item>Sweater</button>
+  <button mat-menu-item>Evening</button>
+  <button mat-menu-item>Day</button>
+  <button mat-menu-item>Sports</button>
+</mat-menu>
+<mat-menu #handbags="matMenu">
+  <button mat-menu-item>Shoulder</button>
+  <button mat-menu-item>Satchels</button>
+  <button mat-menu-item>Kids</button>
+  <button mat-menu-item>Coats</button>
+</mat-menu>
+<mat-menu #shoes="matMenu">
+  <button mat-menu-item>Ankle Boots</button>
+  <button mat-menu-item>Clog Sandals</button>
+  <button mat-menu-item>Run</button>
+  <button mat-menu-item>Books</button>
+</mat-menu>
+<mat-menu #clothing="matMenu">
+  <button mat-menu-item>Coats</button>
+  <button mat-menu-item>Raincoats</button>
+  <button mat-menu-item>Jackets</button>
+  <button mat-menu-item>BisT-shirtrds</button>
+</mat-menu>
+
+<!-- ------------------------------------- -->
+
+<!-- --------------wheels&tires Section------------ -->
+<mat-menu #wheelstires="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="chair">CHAIR</button>
+  <button mat-menu-item [matMenuTriggerFor]="lighting">LIGHTING</button>
+</mat-menu>
+
+<mat-menu #chair="matMenu">
+  <button mat-menu-item>Dining Room</button>
+  <button mat-menu-item>Bedroom</button>
+  <button mat-menu-item>Home & Office</button>
+  <button mat-menu-item>Living Room</button>
+</mat-menu>
+
+<mat-menu #lighting="matMenu">
+  <button mat-menu-item>Ceiling Lighting</button>
+  <button mat-menu-item>Wall Lighting</button>
+  <button mat-menu-item>Outdoor Lighting</button>
+  <button mat-menu-item>Smart Lighting</button>
+</mat-menu>
