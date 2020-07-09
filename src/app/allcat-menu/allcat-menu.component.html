@@ -1,10 +1,14 @@
 <li class="nav-item active" fxLayout="row wrap">
-  <a class="nav-link px-0" target="_blank" [matMenuTriggerFor]="animals"
-    >All Categoris</a
+  <a
+    class="nav-link px-0"
+    target="_blank"
+    [matMenuTriggerFor]="animals"
+    fxLayout="row wrap"
+    fxLayoutAlign="center center"
+    [ngStyle]="{ width: '12vw' }"
+    ><span>All Categoris</span>
+    <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon></a
   >
-  <div class="pt-3">
-    <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
-  </div>
 </li>
 
 <mat-menu #animals="matMenu">

@@ -21,6 +21,9 @@ body {
   -webkit-animation-play-state: running;
   animation-play-state: running;
 }
+#navbarNav > ul > li > a {
+  width: 10vw;
+}
 
 #top-navbar .navbar-nav .active > .nav-link {
   font-weight: 800;

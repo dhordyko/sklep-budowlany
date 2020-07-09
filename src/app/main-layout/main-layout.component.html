@@ -15,16 +15,20 @@
 
       <div class="menu_container" fxLayout="row" fxLayoutGap="150px">
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav" fxLayout="row" fxLayoutGap="40px">
+          <ul fxLayout="row">
             <li
               class="nav-item active"
               fxLayout="row wrap"
               (mouseover)="showCard($event, 'home')"
             >
-              <a class="nav-link px-0">Home</a>
-              <div class="pt-3">
-                <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
-              </div>
+              <a
+                class="nav-link px-0"
+                fxLayout="row wrap"
+                fxLayoutAlign="center center"
+                ><span>Home</span>
+                <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon></a
+              >
+
               <mat-card
                 (mouseover)="fixCard()"
                 class="{{ menucard_class }}"
@@ -44,10 +48,13 @@
               fxLayout="row wrap"
               (mouseover)="showCard($event, 'shop')"
             >
-              <a class="nav-link px-0" href="#">Shop</a>
-              <div class="pt-3">
+              <a
+                class="nav-link px-0"
+                fxLayout="row wrap"
+                fxLayoutAlign="center center"
+                ><span>Shop</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
-              </div>
+              </a>
               <mat-card
                 (mouseover)="fixCard()"
                 class="{{ menucard_class }}"
@@ -62,20 +69,26 @@
               </mat-card>
             </li>
             <li class="nav-item active" fxLayout="row wrap">
-              <a class="nav-link px-0" href="#">Blog</a>
-              <div class="pt-3">
+              <a
+                class="nav-link px-0"
+                fxLayout="row wrap"
+                fxLayoutAlign="center center"
+                ><span>Blog</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
-              </div>
+              </a>
             </li>
             <li
               class="nav-item active"
               fxLayout="row wrap"
               (mouseover)="showCard($event, 'page')"
             >
-              <a class="nav-link px-0" href="#">Pages</a>
-              <div class="pt-3">
-                <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
-              </div>
+              <a
+                class="nav-link px-0"
+                fxLayout="row wrap"
+                fxLayoutAlign="center center"
+                ><span>Pages</span>
+                <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon></a
+              >
               <mat-card
                 (mouseover)="fixCard()"
                 class="{{ menucard_class }}"
@@ -90,10 +103,13 @@
               </mat-card>
             </li>
             <li class="nav-item active" fxLayout="row wrap">
-              <a class="nav-link px-0" href="#">About us</a>
-              <div class="pt-3">
+              <a
+                class="nav-link px-0"
+                fxLayout="row wrap"
+                fxLayoutAlign="center center"
+                ><span>Home</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
-              </div>
+              </a>
             </li>
           </ul>
         </div>
@@ -122,11 +138,7 @@
 <section class="main-navbar-xl" fxShow.gt-md="true">
   <div class="container-fluid">
     <div class="row">
-      <div
-        class="main-nav m-auto"
-        style="width: 2200px; display: flex;"
-        fxLayout="column"
-      >
+      <div class="main-nav m-auto" fxLayout="column">
         <section class="top-section">
           <div
             fxLayout="row"
@@ -356,10 +368,15 @@
   </div>
 </section>
 <!---------------mobile view navbar sticky------------------- -->
-<section fxShow.gt-sm="false" class="transition-top-nav sticky-header sticky">
+<section
+  fxShow.sm="true"
+  fxShow.xs="true"
+  class="transition-top-nav sticky-header sticky"
+>
   <nav
     class="navbar navbar-expand-lg navbar-light"
     id="top-navbar"
+    fxShow="false"
     (mouseout)="hideCard()"
     *ngIf="showElement"
   >
@@ -414,7 +431,15 @@
   </nav>
 </section>
 <mat-drawer-container class="example-container">
-  <mat-drawer [opened]="_opened" mode="side" #drawer class="example-sidenav">
+  <mat-drawer
+    [ngStyle.gt-sm]="{ width: '25%' }"
+    [opened]="_opened"
+    mode="side"
+    #drawer
+    class="example-sidenav"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+  >
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
