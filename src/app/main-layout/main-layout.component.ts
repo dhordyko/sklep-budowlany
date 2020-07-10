@@ -90,7 +90,7 @@ export class MainLayoutComponent implements OnInit {
   // ---------show top navbar on scroll event ---------
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event) {
-    if (window.pageYOffset >= 204) {
+    if (window.pageYOffset >= 190) {
       this.showElement = true;
       this.showMainNav = false;
     }
@@ -125,12 +125,7 @@ export class MainLayoutComponent implements OnInit {
         'animate__animated animate__slideInDown home-menu-card';
     }
   }
-  hideCard() {
-    this.menucard_class = 'home-menu-card-hide';
-  }
-  fixCard() {
-    this.menucard_class = 'home-menu-card';
-  }
+
   showNav() {
     this.navbar_class = 'animate__animated animate__slideInDown';
     this.showElement = true;

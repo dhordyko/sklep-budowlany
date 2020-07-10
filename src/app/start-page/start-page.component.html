@@ -1,134 +1,126 @@
 <div fxShow.xs="false" fxShow.sm="false" fxShow.md="false">
   <section class="main-slider-carousel">
-    <mat-drawer-container class="example-container" [hasBackdrop]="'false'">
-      <mat-drawer #drawer [mode]="'side'">I'm a drawer</mat-drawer>
-      <mat-drawer-content>
-        <div fxLayout="row" fxLayoutAlign="center">
-          <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper animate__animated animate__fadeIn">
-                <a class="tag px-5">Stosuj Filtr</a>
-                <img [src]="images[0]" alt="Random first slide" />
-                <div
-                  class="slider-text-container slider-main-1"
-                  fxLayout="column"
-                  fxLayoutGap="8px"
-                  fxLayoutAlign="center center"
-                >
-                  <h2>The New</h2>
-                  <h1>The New</h1>
-                  <p>Lorem ipsum</p>
-                  <a>Shopping Now</a>
-                </div>
-              </div>
-              <div class="carousel-caption"></div>
-            </ng-template>
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper animate__animated animate__fadeIn">
-                <a class="tag px-5" (click)="drawer.toggle()">Stosuj Filtr</a>
-                <img [src]="images[1]" alt="Random second slide" />
-                <div
-                  class="slider-text-container slider-main-2"
-                  fxLayout="column"
-                  fxLayoutGap="8px"
-                  fxLayoutAlign="center center"
-                >
-                  <h2>The New</h2>
-                  <h1>The New</h1>
-                  <p>Lorem ipsum</p>
-                  <a>Shopping Now</a>
-                </div>
-              </div>
-            </ng-template>
-            <ng-template ngbSlide>
-              <div class="picsum-img-wrapper animate__animated animate__fadeIn">
-                <a class="tag px-5">Stosuj Filtr</a>
-                <img [src]="images[2]" alt="Random third slide" />
-                <div
-                  class="slider-text-container slider-main-3"
-                  fxLayout="column"
-                  fxLayoutGap="8px"
-                  fxLayoutAlign="center center"
-                >
-                  <h2>The New</h2>
-                  <h1>The New</h1>
-                  <p>Lorem ipsum</p>
-                  <a>Shopping Now</a>
-                  <a classmat-raised-button (click)="drawer.toggle()">
-                    Toggle drawer
-                  </a>
-                </div>
-              </div>
-            </ng-template>
-          </ngb-carousel>
-        </div>
-
-        <section class="contact-icons-row">
-          <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
-            <div class="shipping-icon-container col1" fxLayout="row wrap">
-              <div class="icon-wrapper ml-2">
-                <mat-icon class="truck-icon">local_shipping</mat-icon>
-              </div>
-              <div class="text-wrapper pt-2">
-                <p class="mx-auto px-3">Free Shipping on Order</p>
-              </div>
-            </div>
-            <div class="shipping-icon-container col2" fxLayout="row wrap">
-              <div class="icon-wrapper">
-                <mat-icon class="truck-icon">local_phone</mat-icon>
-              </div>
-              <div class="text-wrapper pt-2">
-                <p class="mx-auto px-3">Contact us 24 hrs a day</p>
-              </div>
-            </div>
-            <div class="shipping-icon-container col3" fxLayout="row wrap">
-              <div class="icon-wrapper">
-                <mat-icon class="truck-icon">send</mat-icon>
-              </div>
-              <div class="text-wrapper pt-2">
-                <p class="mx-auto px-3">You’ve 30 days to Return</p>
-              </div>
-            </div>
-            <div class="shipping-icon-container col4" fxLayout="row wrap">
-              <div class="icon-wrapper">
-                <mat-icon class="truck-icon">credit_card</mat-icon>
-              </div>
-              <div class="text-wrapper pt-2">
-                <p class="mx-auto px-3">Free Shipping on Order</p>
-              </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+      <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+            <img [src]="images[0]" alt="Random first slide" />
+            <div
+              class="slider-text-container slider-main-1"
+              fxLayout="column"
+              fxLayoutGap="8px"
+              fxLayoutAlign="center center"
+            >
+              <h2>The New</h2>
+              <h1>The New</h1>
+              <p>Lorem ipsum</p>
+              <a>Shopping Now</a>
             </div>
           </div>
-        </section>
-        <br />
-        <section class="banners-row">
-          <div
-            class="banners-wrapper"
-            fxLayout="row wrap"
-            fxLayoutAlign="space-evenly center"
-            class="m-4"
-          >
-            <div class="single-banner">
-              <div class="banner_thumb">
-                <a><img [src]="banners[0]" /></a>
-              </div>
-            </div>
-            <div class="single-banner">
-              <div class="banner_thumb">
-                <a><img [src]="banners[1]" /></a>
-              </div>
-            </div>
-            <div class="single-banner">
-              <div class="banner_thumb">
-                <a><img [src]="banners[2]" /></a>
-              </div>
+          <div class="carousel-caption"></div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+            <img [src]="images[1]" alt="Random second slide" />
+            <div
+              class="slider-text-container slider-main-2"
+              fxLayout="column"
+              fxLayoutGap="8px"
+              fxLayoutAlign="center center"
+            >
+              <h2>The New</h2>
+              <h1>The New</h1>
+              <p>Lorem ipsum</p>
+              <a>Shopping Now</a>
             </div>
           </div>
-        </section>
-      </mat-drawer-content>
-    </mat-drawer-container>
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+            <img [src]="images[2]" alt="Random third slide" />
+            <div
+              class="slider-text-container slider-main-3"
+              fxLayout="column"
+              fxLayoutGap="8px"
+              fxLayoutAlign="center center"
+            >
+              <h2>The New</h2>
+              <h1>The New</h1>
+              <p>Lorem ipsum</p>
+              <a>Shopping Now</a>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
   </section>
   <br />
+  <!-- ------------------------------------------ -->
 
+  <section class="contact-icons-row">
+    <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+      <div class="shipping-icon-container col1" fxLayout="row wrap">
+        <div class="icon-wrapper ml-2">
+          <mat-icon class="truck-icon">local_shipping</mat-icon>
+        </div>
+        <div class="text-wrapper pt-2">
+          <p class="mx-auto px-3">Free Shipping on Order</p>
+        </div>
+      </div>
+      <div class="shipping-icon-container col2" fxLayout="row wrap">
+        <div class="icon-wrapper">
+          <mat-icon class="truck-icon">local_phone</mat-icon>
+        </div>
+        <div class="text-wrapper pt-2">
+          <p class="mx-auto px-3">Contact us 24 hrs a day</p>
+        </div>
+      </div>
+      <div class="shipping-icon-container col3" fxLayout="row wrap">
+        <div class="icon-wrapper">
+          <mat-icon class="truck-icon">send</mat-icon>
+        </div>
+        <div class="text-wrapper pt-2">
+          <p class="mx-auto px-3">You’ve 30 days to Return</p>
+        </div>
+      </div>
+      <div class="shipping-icon-container col4" fxLayout="row wrap">
+        <div class="icon-wrapper">
+          <mat-icon class="truck-icon">credit_card</mat-icon>
+        </div>
+        <div class="text-wrapper pt-2">
+          <p class="mx-auto px-3">Free Shipping on Order</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--
+  ---------------------------------------------------- -->
+  <br />
+  <section class="banners-row">
+    <div
+      class="banners-wrapper"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-evenly center"
+      class="m-4"
+    >
+      <div class="single-banner">
+        <div class="banner_thumb">
+          <a><img [src]="banners[0]" /></a>
+        </div>
+      </div>
+      <div class="single-banner">
+        <div class="banner_thumb">
+          <a><img [src]="banners[1]" /></a>
+        </div>
+      </div>
+      <div class="single-banner">
+        <div class="banner_thumb">
+          <a><img [src]="banners[2]" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br />
   <section class="arrivals-row">
     <div
       class="arrivals-wrapper"

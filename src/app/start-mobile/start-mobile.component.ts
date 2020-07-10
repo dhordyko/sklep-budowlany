@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from '../shared/product.service';
-import { forkJoin } from 'rxjs';
-import { IgxCarouselComponent } from 'igniteui-angular';
+
 @Component({
   selector: 'app-start-mobile',
   templateUrl: './start-mobile.component.html',

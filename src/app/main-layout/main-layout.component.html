@@ -4,7 +4,6 @@
     fxLayout="row wrap"
     fxLayoutAlign="space-between center"
     id="top-navbar"
-    (mouseout)="hideCard()"
     *ngIf="showElement"
   >
     <div fxLayout="row" fxLayoutGap="180px">
@@ -16,11 +15,7 @@
       <div class="menu_container" fxLayout="row" fxLayoutGap="150px">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul fxLayout="row wrap">
-            <li
-              class="nav-item active"
-              fxLayout="row wrap"
-              (mouseover)="showCard($event, 'home')"
-            >
+            <li class="nav-item active" fxLayout="row wrap">
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
@@ -28,26 +23,25 @@
                 ><span>Home</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon></a
               >
-
-              <mat-card
-                (mouseover)="fixCard()"
-                class="{{ menucard_class }}"
-                id="home-nav-card"
-                *ngIf="showHomeElement"
-              >
-                <ul *ngFor="let item of home_items">
-                  <li class="nav-item p-1">
-                    <a>{{ item }} </a>
-                  </li>
-                </ul>
-              </mat-card>
+              <ul class="sub-menu">
+                <li><a href="index.html">Main Home</a></li>
+                <li class="current-menu-item">
+                  <a href="index-2.html">SEO Agency</a>
+                </li>
+                <li>
+                  <a href="index-3.html">Marketing Company</a>
+                </li>
+                <li>
+                  <a href="index-4.html">Digital Marketing</a>
+                </li>
+                <li><a href="index-5.html">SEO Company</a></li>
+                <li><a href="index-6.html">Business SEO</a></li>
+                <li><a href="index-7.html">SaaS Home</a></li>
+                <li><a href="index-8.html">SEO Consultant</a></li>
+              </ul>
             </li>
 
-            <li
-              class="nav-item active"
-              fxLayout="row wrap"
-              (mouseover)="showCard($event, 'shop')"
-            >
+            <li class="nav-item active" fxLayout="row wrap">
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
@@ -55,18 +49,22 @@
                 ><span>Shop</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
               </a>
-              <mat-card
-                (mouseover)="fixCard()"
-                class="{{ menucard_class }}"
-                id="home-nav-card"
-                *ngIf="showShopElement"
-              >
-                <ul *ngFor="let item of shop_items">
-                  <li class="nav-item p-1">
-                    <a>{{ item }} </a>
-                  </li>
-                </ul>
-              </mat-card>
+              <ul class="sub-menu" fxLayout="column">
+                <li><a href="index.html">Main Home</a></li>
+                <li class="current-menu-item">
+                  <a href="index-2.html">SEO Agency</a>
+                </li>
+                <li>
+                  <a href="index-3.html">Marketing Company</a>
+                </li>
+                <li>
+                  <a href="index-4.html">Digital Marketing</a>
+                </li>
+                <li><a href="index-5.html">SEO Company</a></li>
+                <li><a href="index-6.html">Business SEO</a></li>
+                <li><a href="index-7.html">SaaS Home</a></li>
+                <li><a href="index-8.html">SEO Consultant</a></li>
+              </ul>
             </li>
             <li class="nav-item active" fxLayout="row wrap">
               <a
@@ -76,12 +74,24 @@
                 ><span>Blog</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
               </a>
+              <ul class="sub-menu">
+                <li><a href="index.html">Main Home</a></li>
+                <li class="current-menu-item">
+                  <a href="index-2.html">SEO Agency</a>
+                </li>
+                <li>
+                  <a href="index-3.html">Marketing Company</a>
+                </li>
+                <li>
+                  <a href="index-4.html">Digital Marketing</a>
+                </li>
+                <li><a href="index-5.html">SEO Company</a></li>
+                <li><a href="index-6.html">Business SEO</a></li>
+                <li><a href="index-7.html">SaaS Home</a></li>
+                <li><a href="index-8.html">SEO Consultant</a></li>
+              </ul>
             </li>
-            <li
-              class="nav-item active"
-              fxLayout="row wrap"
-              (mouseover)="showCard($event, 'page')"
-            >
+            <li class="nav-item active" fxLayout="row wrap">
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
@@ -89,18 +99,22 @@
                 ><span>Pages</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon></a
               >
-              <mat-card
-                (mouseover)="fixCard()"
-                class="{{ menucard_class }}"
-                id="home-nav-card"
-                *ngIf="showPageElement"
-              >
-                <ul *ngFor="let item of pages_items">
-                  <li class="nav-item p-1">
-                    <a>{{ item }} </a>
-                  </li>
-                </ul>
-              </mat-card>
+              <ul class="sub-menu">
+                <li><a href="index.html">Main Home</a></li>
+                <li class="current-menu-item">
+                  <a href="index-2.html">SEO Agency</a>
+                </li>
+                <li>
+                  <a href="index-3.html">Marketing Company</a>
+                </li>
+                <li>
+                  <a href="index-4.html">Digital Marketing</a>
+                </li>
+                <li><a href="index-5.html">SEO Company</a></li>
+                <li><a href="index-6.html">Business SEO</a></li>
+                <li><a href="index-7.html">SaaS Home</a></li>
+                <li><a href="index-8.html">SEO Consultant</a></li>
+              </ul>
             </li>
             <li class="nav-item active" fxLayout="row wrap">
               <a
@@ -110,6 +124,22 @@
                 ><span>Home</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
               </a>
+              <ul class="sub-menu">
+                <li><a href="index.html">Main Home</a></li>
+                <li class="current-menu-item">
+                  <a href="index-2.html">SEO Agency</a>
+                </li>
+                <li>
+                  <a href="index-3.html">Marketing Company</a>
+                </li>
+                <li>
+                  <a href="index-4.html">Digital Marketing</a>
+                </li>
+                <li><a href="index-5.html">SEO Company</a></li>
+                <li><a href="index-6.html">Business SEO</a></li>
+                <li><a href="index-7.html">SaaS Home</a></li>
+                <li><a href="index-8.html">SEO Consultant</a></li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -274,7 +304,7 @@
               <div class="space-tag"></div>
 
               <div fxLayout="row">
-                <div id="navbarNav">
+                <div id="navbarNav" class="bottom-navbar">
                   <ul class="main-navbar" fxLayout="row wrap">
                     <li
                       class="nav-item active"
@@ -291,19 +321,22 @@
                           >keyboard_arrow_down</mat-icon
                         >
                       </a>
-
-                      <mat-card
-                        (mouseover)="fixCard()"
-                        class="{{ menucard_class }}"
-                        id="home-nav-card"
-                        *ngIf="showHomeElement"
-                      >
-                        <ul *ngFor="let item of home_items">
-                          <li class="nav-item p-1">
-                            <a>{{ item }} </a>
-                          </li>
-                        </ul>
-                      </mat-card>
+                      <ul class="sub-menu" fxLayout="column">
+                        <li><a href="index.html">Main Home</a></li>
+                        <li class="current-menu-item">
+                          <a href="index-2.html">SEO Agency</a>
+                        </li>
+                        <li>
+                          <a href="index-3.html">Marketing Company</a>
+                        </li>
+                        <li>
+                          <a href="index-4.html">Digital Marketing</a>
+                        </li>
+                        <li><a href="index-5.html">SEO Company</a></li>
+                        <li><a href="index-6.html">Business SEO</a></li>
+                        <li><a href="index-7.html">SaaS Home</a></li>
+                        <li><a href="index-8.html">SEO Consultant</a></li>
+                      </ul>
                     </li>
 
                     <li
@@ -321,19 +354,22 @@
                           >keyboard_arrow_down</mat-icon
                         >
                       </a>
-
-                      <mat-card
-                        (mouseover)="fixCard()"
-                        class="{{ menucard_class }}"
-                        id="home-nav-card"
-                        *ngIf="showShopElement"
-                      >
-                        <ul *ngFor="let item of shop_items">
-                          <li class="nav-item p-1">
-                            <a>{{ item }} </a>
-                          </li>
-                        </ul>
-                      </mat-card>
+                      <ul class="sub-menu" fxLayout="column">
+                        <li><a href="index.html">Main Home</a></li>
+                        <li class="current-menu-item">
+                          <a href="index-2.html">SEO Agency</a>
+                        </li>
+                        <li>
+                          <a href="index-3.html">Marketing Company</a>
+                        </li>
+                        <li>
+                          <a href="index-4.html">Digital Marketing</a>
+                        </li>
+                        <li><a href="index-5.html">SEO Company</a></li>
+                        <li><a href="index-6.html">Business SEO</a></li>
+                        <li><a href="index-7.html">SaaS Home</a></li>
+                        <li><a href="index-8.html">SEO Consultant</a></li>
+                      </ul>
                     </li>
                     <li class="nav-item active" fxLayout="row wrap">
                       <a
@@ -346,6 +382,22 @@
                           >keyboard_arrow_down</mat-icon
                         >
                       </a>
+                      <ul class="sub-menu" fxLayout="column">
+                        <li><a href="index.html">Main Home</a></li>
+                        <li class="current-menu-item">
+                          <a href="index-2.html">SEO Agency</a>
+                        </li>
+                        <li>
+                          <a href="index-3.html">Marketing Company</a>
+                        </li>
+                        <li>
+                          <a href="index-4.html">Digital Marketing</a>
+                        </li>
+                        <li><a href="index-5.html">SEO Company</a></li>
+                        <li><a href="index-6.html">Business SEO</a></li>
+                        <li><a href="index-7.html">SaaS Home</a></li>
+                        <li><a href="index-8.html">SEO Consultant</a></li>
+                      </ul>
                     </li>
                     <li
                       class="nav-item active"
@@ -362,18 +414,22 @@
                           >keyboard_arrow_down</mat-icon
                         >
                       </a>
-                      <mat-card
-                        (mouseover)="fixCard()"
-                        class="{{ menucard_class }}"
-                        id="home-nav-card"
-                        *ngIf="showPageElement"
-                      >
-                        <ul *ngFor="let item of pages_items">
-                          <li class="nav-item p-1">
-                            <a>{{ item }} </a>
-                          </li>
-                        </ul>
-                      </mat-card>
+                      <ul class="sub-menu" fxLayout="column">
+                        <li><a href="index.html">Main Home</a></li>
+                        <li class="current-menu-item">
+                          <a href="index-2.html">SEO Agency</a>
+                        </li>
+                        <li>
+                          <a href="index-3.html">Marketing Company</a>
+                        </li>
+                        <li>
+                          <a href="index-4.html">Digital Marketing</a>
+                        </li>
+                        <li><a href="index-5.html">SEO Company</a></li>
+                        <li><a href="index-6.html">Business SEO</a></li>
+                        <li><a href="index-7.html">SaaS Home</a></li>
+                        <li><a href="index-8.html">SEO Consultant</a></li>
+                      </ul>
                     </li>
                     <li class="nav-item active" fxLayout="row wrap">
                       <a
@@ -386,6 +442,22 @@
                           >keyboard_arrow_down</mat-icon
                         >
                       </a>
+                      <ul class="sub-menu" fxLayout="column">
+                        <li><a href="index.html">Main Home</a></li>
+                        <li class="current-menu-item">
+                          <a href="index-2.html">SEO Agency</a>
+                        </li>
+                        <li>
+                          <a href="index-3.html">Marketing Company</a>
+                        </li>
+                        <li>
+                          <a href="index-4.html">Digital Marketing</a>
+                        </li>
+                        <li><a href="index-5.html">SEO Company</a></li>
+                        <li><a href="index-6.html">Business SEO</a></li>
+                        <li><a href="index-7.html">SaaS Home</a></li>
+                        <li><a href="index-8.html">SEO Consultant</a></li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -407,7 +479,6 @@
     class="navbar navbar-expand-lg navbar-light"
     id="top-navbar"
     fxShow="false"
-    (mouseout)="hideCard()"
     *ngIf="showElement"
   >
     <app-allcat-menu></app-allcat-menu>

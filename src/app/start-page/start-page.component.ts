@@ -7,8 +7,6 @@ import {
 } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from '../shared/product.service';
-import { forkJoin } from 'rxjs';
-import { IgxCarouselComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-start-page',
@@ -109,7 +107,7 @@ export class StartPageComponent implements OnInit {
     'assets/carousel/featured6.jpg',
     'assets/carousel/featured7.jpg',
   ];
-  @ViewChild('carousel') public carousel: IgxCarouselComponent;
+
   prods$;
   prodsAll$;
   cars: any[];
@@ -203,9 +201,5 @@ export class StartPageComponent implements OnInit {
   }
   hideCard() {
     this.menucard_class = 'home-menu-card-hide';
-  }
-
-  public onSlideChanged(carousel: IgxCarouselComponent) {
-    this.current = carousel.current + 1;
   }
 }

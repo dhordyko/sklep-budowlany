@@ -376,22 +376,3 @@ p {
   padding: 15px 0;
   background: #fdb813;
 }
-.tag {
-  background: rgba(100, 100, 100, 0.5);
-  display: block;
-  color: white;
-  position: absolute;
-  left: 150px;
-  padding: 0.5rem 1rem;
-
-  transform-origin: 100% 0;
-  font-family: "Helvetica Neue";
-  font-weight: 300;
-  letter-spacing: 1px;
-  transition: 3s;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(253, 182, 19, 0.9);
-  }
-}

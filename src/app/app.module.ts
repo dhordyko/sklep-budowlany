@@ -47,15 +47,6 @@ import { environment } from '../environments/environment';
 import { MatMenuModule } from '@angular/material/menu';
 import { StartPageComponent } from './start-page/start-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {
-  IgxCarouselModule,
-  IgxSliderModule,
-  IgxDropDownModule,
-  IgxInputGroupModule,
-  IgxRippleModule,
-  IgxIconModule,
-  IgxToggleModule,
-} from 'igniteui-angular';
 
 import { AllcatMenuComponent } from './allcat-menu/allcat-menu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -126,14 +117,9 @@ import { SlideMenuModule } from 'primeng/slidemenu';
     MatInputModule,
     MatBadgeModule,
     FlexLayoutModule,
-    IgxCarouselModule,
-    IgxDropDownModule,
-    IgxInputGroupModule,
-    IgxRippleModule,
-    IgxIconModule,
-    IgxToggleModule,
+
     HammerModule,
-    IgxSliderModule,
+
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
