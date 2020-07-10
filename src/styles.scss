@@ -76,6 +76,14 @@ app-start-page {
 .igx-nav-arrow {
   color: #fdb813 !important;
 }
+.carousel-control-prev {
+  height: 20%;
+  margin: auto;
+}
+mat-drawer > .mat-drawer-inner-container {
+  width: 23vw !important;
+}
+
 p-carousel > .ui-carousel-items-container {
   overflow: none !important;
 }
