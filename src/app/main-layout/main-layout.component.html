@@ -15,7 +15,7 @@
 
       <div class="menu_container" fxLayout="row" fxLayoutGap="150px">
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul fxLayout="row">
+          <ul fxLayout="row wrap">
             <li
               class="nav-item active"
               fxLayout="row wrap"
@@ -24,7 +24,7 @@
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
-                fxLayoutAlign="center center"
+                fxLayoutAlign="center start"
                 ><span>Home</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon></a
               >
@@ -51,7 +51,7 @@
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
-                fxLayoutAlign="center center"
+                fxLayoutAlign="center start"
                 ><span>Shop</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
               </a>
@@ -72,7 +72,7 @@
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
-                fxLayoutAlign="center center"
+                fxLayoutAlign="center start"
                 ><span>Blog</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
               </a>
@@ -85,7 +85,7 @@
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
-                fxLayoutAlign="center center"
+                fxLayoutAlign="center start"
                 ><span>Pages</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon></a
               >
@@ -106,7 +106,7 @@
               <a
                 class="nav-link px-0"
                 fxLayout="row wrap"
-                fxLayoutAlign="center center"
+                fxLayoutAlign="center start"
                 ><span>Home</span>
                 <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
               </a>
@@ -249,36 +249,44 @@
             </div>
           </div>
         </section>
+        <!-- ------------main navbar bottom------------ -->
         <section class="main-pagenav" *ngIf="showMainNav">
           <div
             id="main-pagenav-container"
             class="row pt-3"
             fxLayout="row wrap"
-            fxLayoutAlign="space-between center"
+            fxLayoutGap="50px"
+            fxLayoutAlign="center start"
+            [ngStyle]="{ width: '100vw' }"
           >
-            <div fxLayout="row" fxLayoutGap="200px">
+            <div class="nav-item active" fxLayout="row wrap">
+              <a class="sidebar-toggle mr-2 mt-2" (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+              </a>
+              <app-allcat-menu></app-allcat-menu>
+            </div>
+            <div fxLayout="row">
               <div class="space-tag"></div>
-              <div class="nav-item active" fxLayout="row wrap">
-                <a class="sidebar-toggle mr-2 mt-2" (click)="drawer.toggle()">
-                  <mat-icon>menu</mat-icon>
-                </a>
-                <app-allcat-menu></app-allcat-menu>
-              </div>
 
-              <div fxLayout="row" fxLayoutGap="130px">
+              <div fxLayout="row">
                 <div id="navbarNav">
-                  <ul class="main-navbar" fxLayout="row" fxLayoutGap="40px">
+                  <ul class="main-navbar" fxLayout="row wrap">
                     <li
                       class="nav-item active"
                       fxLayout="row wrap"
                       (mouseover)="showCard($event, 'home')"
                     >
-                      <a class="nav-link px-0">Home</a>
-                      <div class="pt-3">
+                      <a
+                        class="nav-link px-0"
+                        fxLayout="row wrap"
+                        fxLayoutAlign="center start"
+                      >
+                        <span>Home</span>
                         <mat-icon class="arrow-icon"
                           >keyboard_arrow_down</mat-icon
                         >
-                      </div>
+                      </a>
+
                       <mat-card
                         (mouseover)="fixCard()"
                         class="{{ menucard_class }}"
@@ -298,12 +306,17 @@
                       fxLayout="row wrap"
                       (mouseover)="showCard($event, 'shop')"
                     >
-                      <a class="nav-link px-0">Shop</a>
-                      <div class="pt-3">
+                      <a
+                        class="nav-link px-0"
+                        fxLayout="row wrap"
+                        fxLayoutAlign="center start"
+                      >
+                        <span>Shop</span>
                         <mat-icon class="arrow-icon"
                           >keyboard_arrow_down</mat-icon
                         >
-                      </div>
+                      </a>
+
                       <mat-card
                         (mouseover)="fixCard()"
                         class="{{ menucard_class }}"
@@ -318,24 +331,32 @@
                       </mat-card>
                     </li>
                     <li class="nav-item active" fxLayout="row wrap">
-                      <a class="nav-link px-0" href="#">Blog</a>
-                      <div class="pt-3">
+                      <a
+                        class="nav-link px-0"
+                        fxLayout="row wrap"
+                        fxLayoutAlign="center start"
+                      >
+                        <span>Blog</span>
                         <mat-icon class="arrow-icon"
                           >keyboard_arrow_down</mat-icon
                         >
-                      </div>
+                      </a>
                     </li>
                     <li
                       class="nav-item active"
                       fxLayout="row wrap"
                       (mouseover)="showCard($event, 'page')"
                     >
-                      <a class="nav-link px-0" href="#">Pages</a>
-                      <div class="pt-3">
+                      <a
+                        class="nav-link px-0"
+                        fxLayout="row wrap"
+                        fxLayoutAlign="center start"
+                      >
+                        <span>Pages</span>
                         <mat-icon class="arrow-icon"
                           >keyboard_arrow_down</mat-icon
                         >
-                      </div>
+                      </a>
                       <mat-card
                         (mouseover)="fixCard()"
                         class="{{ menucard_class }}"
@@ -350,12 +371,16 @@
                       </mat-card>
                     </li>
                     <li class="nav-item active" fxLayout="row wrap">
-                      <a class="nav-link px-0" href="#">About us</a>
-                      <div class="pt-3">
+                      <a
+                        class="nav-link px-0"
+                        fxLayout="row wrap"
+                        fxLayoutAlign="center start"
+                      >
+                        <span>About us</span>
                         <mat-icon class="arrow-icon"
                           >keyboard_arrow_down</mat-icon
                         >
-                      </div>
+                      </a>
                     </li>
                   </ul>
                 </div>
