@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from '../shared/product.service';
 import { forkJoin } from 'rxjs';
@@ -105,6 +111,7 @@ export class StartPageComponent implements OnInit {
   ];
   @ViewChild('carousel') public carousel: IgxCarouselComponent;
   prods$;
+  prodsAll$;
   cars: any[];
   public loop = true;
   public pause = true;
@@ -114,8 +121,12 @@ export class StartPageComponent implements OnInit {
   public total: number;
   public current: number;
   responsiveOptions;
+  gridsize: number;
+  public _opened: boolean = false;
+  menucard_class = '';
 
   Development;
+  brands: string[] = ['Select All', 'HTC', 'HP', 'Lenovo', 'LG', 'Apple'];
 
   constructor(config: NgbCarouselConfig, private serv: ProductService) {
     // customize default values of carousels used by this component tree
@@ -132,9 +143,28 @@ export class StartPageComponent implements OnInit {
     //this.total = this.slides.length;
     //this.current = this.carousel.current;
     const promise = this.serv.getProducts().toPromise();
+    const promiseAll = this.serv.getProducts().toPromise();
     this.prods$ = promise.then((data) =>
       this.chunks(data.success.products.data, 5)
     );
+    this.prodsAll$ = promiseAll.then((data) => data.success.products.data);
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3,
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2,
+      },
+      {
+        breakpoint: '600px',
+        numVisible: 2,
+        numScroll: 1,
+      },
+    ];
   }
 
   chunks(array, size) {
@@ -148,6 +178,31 @@ export class StartPageComponent implements OnInit {
 
   randomIndex() {
     return Math.floor(Math.random() * (10 - 1)) + 1;
+  }
+  //category view realization
+  setBrandCat(brand) {
+    this.serv.setBrand(brand);
+  }
+  @Output() rangeChange = new EventEmitter<any>();
+  formatLabel(value: number) {
+    return `${value}zl`;
+  }
+  filterPrices() {
+    this.serv.setPrice(this.gridsize);
+  }
+
+  //sidebar show-hide
+  public _toggleSidebar() {
+    this._opened = !this._opened;
+    this.serv.SideBarOpen.next(this._opened);
+  }
+  //fire sortedprice component after slider action
+  updateSetting(event) {
+    this.gridsize = event.value;
+    // this.router.navigate(['sortedprice']);
+  }
+  hideCard() {
+    this.menucard_class = 'home-menu-card-hide';
   }
 
   public onSlideChanged(carousel: IgxCarouselComponent) {

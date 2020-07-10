@@ -1,70 +1,78 @@
 <div fxShow.xs="false" fxShow.sm="false" fxShow.md="false">
   <section class="main-slider-carousel">
-    <div fxLayout="row" fxLayoutAlign="center">
-      <ngb-carousel *ngIf="images">
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper animate__animated animate__fadeIn">
-            <img [src]="images[0]" alt="Random first slide" />
-            <div
-              class="slider-text-container slider-main-1"
-              fxLayout="column"
-              fxLayoutGap="8px"
-              fxLayoutAlign="center center"
-            >
-              <h2>The New</h2>
-              <h1>The New</h1>
-              <p>Lorem ipsum</p>
-              <a>Shopping Now</a>
-            </div>
-          </div>
-          <div class="carousel-caption"></div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper animate__animated animate__fadeIn">
-            <img [src]="images[1]" alt="Random second slide" />
-            <div
-              class="slider-text-container slider-main-2"
-              fxLayout="column"
-              fxLayoutGap="8px"
-              fxLayoutAlign="center center"
-            >
-              <h2>The New</h2>
-              <h1>The New</h1>
-              <p>Lorem ipsum</p>
-              <a>Shopping Now</a>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper animate__animated animate__fadeIn">
-            <img [src]="images[2]" alt="Random third slide" />
-            <div
-              class="slider-text-container slider-main-3"
-              fxLayout="column"
-              fxLayoutGap="8px"
-              fxLayoutAlign="center center"
-            >
-              <h2>The New</h2>
-              <h1>The New</h1>
-              <p>Lorem ipsum</p>
-              <a>Shopping Now</a>
-            </div>
-          </div>
-        </ng-template>
-      </ngb-carousel>
-    </div>
+    <mat-drawer-container class="example-container">
+      <mat-drawer #drawer [mode]="'side'">I'm a drawer</mat-drawer>
+      <mat-drawer-content>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <ngb-carousel *ngIf="images">
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+                <img [src]="images[0]" alt="Random first slide" />
+                <div
+                  class="slider-text-container slider-main-1"
+                  fxLayout="column"
+                  fxLayoutGap="8px"
+                  fxLayoutAlign="center center"
+                >
+                  <h2>The New</h2>
+                  <h1>The New</h1>
+                  <p>Lorem ipsum</p>
+                  <a>Shopping Now</a>
+                </div>
+              </div>
+              <div class="carousel-caption"></div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+                <img [src]="images[1]" alt="Random second slide" />
+                <div
+                  class="slider-text-container slider-main-2"
+                  fxLayout="column"
+                  fxLayoutGap="8px"
+                  fxLayoutAlign="center center"
+                >
+                  <h2>The New</h2>
+                  <h1>The New</h1>
+                  <p>Lorem ipsum</p>
+                  <a>Shopping Now</a>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <div class="picsum-img-wrapper animate__animated animate__fadeIn">
+                <img [src]="images[2]" alt="Random third slide" />
+                <div
+                  class="slider-text-container slider-main-3"
+                  fxLayout="column"
+                  fxLayoutGap="8px"
+                  fxLayoutAlign="center center"
+                >
+                  <h2>The New</h2>
+                  <h1>The New</h1>
+                  <p>Lorem ipsum</p>
+                  <a>Shopping Now</a>
+                  <a mat-raised-button (click)="drawer.toggle()">
+                    Toggle drawer
+                  </a>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
   </section>
   <br />
   <!-- ------------------------------------------ -->
 
   <section class="contact-icons-row">
-    <div fxLayout="row wrap" class="m-3" fxLayoutAlign="space-evenly start">
+    <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
       <div class="shipping-icon-container col1" fxLayout="row wrap">
-        <div class="icon-wrapper">
+        <div class="icon-wrapper ml-2">
           <mat-icon class="truck-icon">local_shipping</mat-icon>
         </div>
         <div class="text-wrapper pt-2">
-          <p class="mx-4">Free Shipping on Order</p>
+          <p class="mx-auto px-3">Free Shipping on Order</p>
         </div>
       </div>
       <div class="shipping-icon-container col2" fxLayout="row wrap">
@@ -72,7 +80,7 @@
           <mat-icon class="truck-icon">local_phone</mat-icon>
         </div>
         <div class="text-wrapper pt-2">
-          <p class="mx-4">Contact us 24 hrs a day</p>
+          <p class="mx-auto px-3">Contact us 24 hrs a day</p>
         </div>
       </div>
       <div class="shipping-icon-container col3" fxLayout="row wrap">
@@ -80,7 +88,7 @@
           <mat-icon class="truck-icon">send</mat-icon>
         </div>
         <div class="text-wrapper pt-2">
-          <p class="mx-4">You’ve 30 days to Return</p>
+          <p class="mx-auto px-3">You’ve 30 days to Return</p>
         </div>
       </div>
       <div class="shipping-icon-container col4" fxLayout="row wrap">
@@ -88,7 +96,7 @@
           <mat-icon class="truck-icon">credit_card</mat-icon>
         </div>
         <div class="text-wrapper pt-2">
-          <p class="mx-4">Free Shipping on Order</p>
+          <p class="mx-auto px-3">Free Shipping on Order</p>
         </div>
       </div>
     </div>
@@ -100,8 +108,7 @@
     <div
       class="banners-wrapper"
       fxLayout="row wrap"
-      fxLayoutGap="30px"
-      fxLayoutAlign="center center"
+      fxLayoutAlign="space-evenly center"
       class="m-4"
     >
       <div class="single-banner">
@@ -145,46 +152,34 @@
   <br />
   <section class="items-carousel"></section>
   <!-- ----------------caurousel of goods ------------- -->
-  <igx-carousel
-    #carousel
-    [loop]="loop"
-    [pause]="pause"
-    (onSlideChanged)="onSlideChanged(carousel)"
-    *ngIf="prods$ | async as products"
-    [ngStyle]="{ height: '500px' }"
+  <section
+    [ngStyle]="{ 'margin-bottom': '30px' }"
+    class="product-mobile-carousel"
+    *ngIf="prodsAll$ | async as products"
   >
-    <igx-slide *ngFor="let product of products">
-      <div fxLayout="row wrap" fxLayoutAlign="center center" class="mr-2">
-        <app-product
-          [product]="product[0]"
-          [ngStyle]="{ width: '15vw' }"
-          class="mr-4"
-        ></app-product>
-        <app-product
-          [product]="product[1]"
-          [ngStyle]="{ width: '15vw' }"
-          class="mr-4"
-        ></app-product>
-        <app-product
-          [product]="product[2]"
-          [ngStyle]="{ width: '15vw' }"
-          class="mr-4"
-        ></app-product>
-        <app-product
-          [product]="product[3]"
-          [ngStyle]="{ width: '15vw' }"
-          class="mr-4"
-        ></app-product>
-        <app-product
-          [product]="product[4]"
-          [ngStyle]="{ width: '15vw' }"
-          class="mr-4"
-        ></app-product>
-      </div>
-    </igx-slide>
-
-    <span>{{ current }} out of {{ total }}</span>
-  </igx-carousel>
+    <p-carousel
+      [value]="products"
+      [style]="{ 'max-width': '100vw', 'margin-top': '2em' }"
+      verticalViewPortHeight="200px"
+      fxShow.sm="true"
+      [numVisible]="5"
+      [numScroll]="1"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template
+        class="carousel-product-mobile"
+        let-category
+        pTemplate="item"
+      >
+        <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+          <app-product
+            [product]="category"
+            class="single-product"
+          ></app-product>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </section>
   <!-- ----------------caurousel of categories ------------- -->
   <section class="category-carousel p-4">
     <div fxLayout="row" fxLayoutAlign="center">

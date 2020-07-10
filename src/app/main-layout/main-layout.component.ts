@@ -7,6 +7,7 @@ import {
   ViewChild,
   EventEmitter,
   HostListener,
+  ViewEncapsulation,
   Directive,
 } from '@angular/core';
 import { ProductService } from '../shared/product.service';
@@ -14,6 +15,8 @@ import { Router } from '@angular/router';
 
 import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
+
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-main-layout',
@@ -24,7 +27,7 @@ import { debounceTime, map } from 'rxjs/operators';
 export class MainLayoutComponent implements OnInit {
   category: 'smart_phones';
   SelectedBrand: string;
-  public _opened: boolean = false;
+
   package: any;
   gridsize: number;
   filterData: any[];
@@ -33,6 +36,7 @@ export class MainLayoutComponent implements OnInit {
   keyUpSubscription: Subscription;
   searchText = '';
   animate = false;
+  items: MenuItem[];
 
   showHomeElement: boolean = false;
   showShopElement: boolean = false;
@@ -50,7 +54,6 @@ export class MainLayoutComponent implements OnInit {
   home_items = ['HOME1', 'HOME2', 'HOME3', 'HOME4', 'HOME5', 'HOME6'];
   shop_items = ['SHOP1', 'SHOP2', 'SHOP3', 'SHOP4', 'SHOP5', 'SHOP6'];
   pages_items = ['PAGE1', 'PAGE2', 'PAGE3', 'PAGE4', 'PAGE5', 'PAGE6'];
-  brands: string[] = ['Select All', 'HTC', 'HP', 'Lenovo', 'LG', 'Apple'];
 
   constructor(private prodServ: ProductService, private router: Router) {}
 
@@ -165,31 +168,6 @@ export class MainLayoutComponent implements OnInit {
       this.prodServ.setCategory(category);
     }
   }
-  //category view realization
-  setBrandCat(brand) {
-    this.prodServ.setBrand(brand);
-  }
 
-  //fire sortedprice component after slider action
-  updateSetting(event) {
-    this.gridsize = event.value;
-    // this.router.navigate(['sortedprice']);
-  }
-
-  //Price value showup in sidebar
-
-  @Output() rangeChange = new EventEmitter<any>();
-  formatLabel(value: number) {
-    return `${value}zl`;
-  }
   //filtering items by prices
-  filterPrices() {
-    this.prodServ.setPrice(this.gridsize);
-  }
-
-  //sidebar show-hide
-  public _toggleSidebar() {
-    this._opened = !this._opened;
-    this.prodServ.SideBarOpen.next(this._opened);
-  }
 }

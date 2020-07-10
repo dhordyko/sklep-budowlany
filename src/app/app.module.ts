@@ -68,6 +68,7 @@ import { StartMobileComponent } from './start-mobile/start-mobile.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { SlideMenuModule } from 'primeng/slidemenu';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { ToastModule } from 'primeng/toast';
     GalleriaModule,
     CarouselModule,
     ButtonModule,
+    SlideMenuModule,
     ToastModule,
     MatExpansionModule,
     MatRadioModule,

@@ -177,6 +177,11 @@ p {
 :host ::ng-deep app-product button {
   display: none !important;
 }
+
+// ----------------- top icon containers---------------
+.shipping-icon-container.col2 {
+  margin-bottom: 10px;
+}
 // ----------------category-slider---------------
 .category-item-cont > img {
   max-width: 100%;
