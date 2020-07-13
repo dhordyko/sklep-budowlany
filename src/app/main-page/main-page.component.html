@@ -1,3 +1,283 @@
+<div class="container-fluid">
+  <div class="row mx-auto">
+    <div class="col-lg-9 col-md-12">
+      <!-- --------------------long-banner----------------- -->
+      <section
+        class="banner-row"
+        [ngStyle]="{ 'margin-bottom': '30px', 'margin-top': '30px' }"
+      >
+        <div
+          class="banner-wrapper"
+          fxLayout="row wrap"
+          fxLayoutAlign="center stretch"
+        >
+          <img class="banner-image" src="assets/carousel/banner11.jpg" />
+        </div>
+      </section>
+
+      <div
+        #value
+        *ngIf="products$ | async as products"
+        class="dashboard"
+        class="mr-5"
+        fxLayout="row wrap"
+        fxLayout.xs="column"
+        fxLayout.gt-xs="row wrap"
+        fxLayoutGap.xs="20px"
+        fxLayoutAlign.sm="space-evenly center"
+        fxLayoutAlign.md="space-around center"
+        fxLayoutAlign.gt-md="space-around center"
+        fxLayout.sm="{{ LayoutChange() }}"
+      >
+        <app-product
+          class="box"
+          *ngFor="let product of products"
+          [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
+          [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
+          [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
+          [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
+          [product]="product"
+        >
+        </app-product>
+
+        <!-- <app-product
+          class="box"
+          *ngFor="
+            let product of products
+              | search: prodServ.searchText
+              | sorting: prodServ.category
+              | sortBrand: prodServ.brand
+              | priceSort: prodServ.price
+          "
+          [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
+          [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
+          [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
+          [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
+          [product]="product"
+        >
+        </app-product> -->
+
+        <div
+          class="container-fluid mt-5"
+          *ngIf="(products | search: prodServ.searchText).length == 0"
+        >
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <mat-card class="no-item">
+                <mat-card-content class="bg-light">
+                  <div class="d-flex justify-content-center">
+                    <div class="float-left" fxShow="true" fxShow.xs="false">
+                      <img
+                        mat-card-image
+                        alt=""
+                        src="assets/clipart164927.png"
+                        class="img-fluid rounded mx-auto d-block"
+                      />
+                    </div>
+
+                    <div class="text-left mr-4">
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+
+                      <h1
+                        class="text-danger font-weight-bold mt-6 text-center"
+                        style="font-size: 3.5em;"
+                      >
+                        Product Not Found
+                      </h1>
+                      <h3 class="text-muted font-weight-bold mt-5 text-center">
+                        <em>Please return to the main page</em>
+                      </h3>
+                    </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-12">
+      <aside class="sidebar_widget">
+        <div class="widget_inner">
+          <div class="widget_list widget_filter">
+            <h2>Filter by price</h2>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Prices
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div id="price">
+                <h3>Price:{{ gridsize.value }}</h3>
+              </div>
+
+              <mat-slider
+                thumbLabel
+                [displayWith]="formatLabel"
+                tickInterval="100"
+                min="1"
+                max="2000"
+                #gridsize
+                (change)="updateSetting($event)"
+                [value]="gridsize"
+                (click)="filterPrices()"
+              ></mat-slider>
+            </mat-expansion-panel>
+          </div>
+          <div class="widget_list widget_categories">
+            <h2>categories</h2>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  All Categories
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <ul
+                class="ml-4"
+                fxLayout="column"
+                fxLayoutGap="15px"
+                fxLayoutAlign="space-around start"
+              >
+                <br />
+                <li [routerLink]="['/category', 'all']">
+                  <a
+                    (click)="setProductCat('all')"
+                    class="defaultLink"
+                    routerLinkActive="activeLink"
+                    >Show All</a
+                  >
+                </li>
+                <li [routerLink]="['/category', 'laptops']">
+                  <a
+                    class="defaultLink"
+                    routerLinkActive="activeLink"
+                    (click)="setProductCat('laptops')"
+                    >Laptops</a
+                  >
+                </li>
+                <li [routerLink]="['/category', 'smart_phones']">
+                  <a
+                    class="defaultLink"
+                    routerLinkActive="activeLink"
+                    (click)="setProductCat('smart_phones')"
+                    >Smart Phones</a
+                  >
+                </li>
+                <li [routerLink]="['/category', 'tv_audio']">
+                  <a
+                    class="defaultLink"
+                    routerLinkActive="activeLink"
+                    (click)="setProductCat('tv_audio')"
+                    >Tv&Audio</a
+                  >
+                </li>
+                <li [routerLink]="['/category', 'headphones']">
+                  <a
+                    class="defaultLink"
+                    routerLinkActive="activeLink"
+                    (click)="setProductCat('headphones')"
+                    >Headphones</a
+                  >
+                </li>
+                <li [routerLink]="['/category', 'cameras']">
+                  <a
+                    class="defaultLink"
+                    routerLinkActive="activeLink"
+                    (click)="setProductCat('cameras')"
+                    >Cameras</a
+                  >
+                </li>
+                <li [routerLink]="['/cart']">
+                  <a class="defaultLink" routerLinkActive="activeLink">Cart</a>
+                </li>
+              </ul>
+            </mat-expansion-panel>
+          </div>
+
+          <div class="widget_list widget_categories">
+            <h2>Manufacturer</h2>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Brands
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-radio-group>
+                <div
+                  fxLayout="column"
+                  fxLayoutGap="15px"
+                  fxLayoutAlign="space-start start"
+                  *ngFor="let brand of brands"
+                >
+                  <mat-radio-button
+                    style="width: 10px;"
+                    class="text-muted"
+                    (click)="setBrandCat(brand)"
+                    [value]="brand"
+                    name="fieldName"
+                    ngDefaultControl
+                  >
+                    {{ brand }}
+                  </mat-radio-button>
+                </div>
+              </mat-radio-group>
+            </mat-expansion-panel>
+          </div>
+          <div class="widget_list widget_categories">
+            <h2>Select By Color</h2>
+            <ul>
+              <li>
+                <input type="checkbox" />
+                <a href="#">Black (6)</a>
+                <span class="checkmark"></span>
+              </li>
+              <li>
+                <input type="checkbox" />
+                <a href="#"> Blue (8)</a>
+                <span class="checkmark"></span>
+              </li>
+              <li>
+                <input type="checkbox" />
+                <a href="#">Brown (10)</a>
+                <span class="checkmark"></span>
+              </li>
+              <li>
+                <input type="checkbox" />
+                <a href="#"> Green (6)</a>
+                <span class="checkmark"></span>
+              </li>
+              <li>
+                <input type="checkbox" />
+                <a href="#">Pink (4)</a>
+                <span class="checkmark"></span>
+              </li>
+              <li>
+                <input type="checkbox" />
+                <a href="#">White (2)</a>
+                <span class="checkmark"></span>
+              </li>
+              <li>
+                <input type="checkbox" />
+                <a href="#">Yellow (3)</a>
+                <span class="checkmark"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="shop_sidebar_banner">
+          <a href="#"><img src="assets/img/bg/banner12.jpg" alt="" /></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
 <div
   #value
   *ngIf="products$ | async as products"

@@ -13,17 +13,31 @@
       (click)="idPassing()"
       (mouseover)="showButtons()"
     >
-      <img
+      <a
         (click)="idPassing()"
         mat-card-image
         alt=""
-        src="{{ product.url_image }}"
+        style=" background: url('{{ product.url_image }}')"
         class="img-fluid rounded mx-auto d-block"
         [routerLink]="['/product', product.id]"
-      />
+      ></a>
+      <div
+        class="add_to_cart"
+        fxLayout="row wrap"
+        fxLayoutAlign="center center"
+      >
+        <a mat-stroked-button color="primary" *ngIf="showElement" class="addBtn"
+          >Add to Cart</a
+        >
+      </div>
     </a>
-    <mat-divider></mat-divider>
-    <ul fxLayout="column" fxLayoutGap="50px" *ngIf="showElement">
+
+    <ul
+      class="icon-wrapper-list"
+      fxLayout="column"
+      fxLayoutGap="50px"
+      *ngIf="showElement"
+    >
       <li>
         <div class="icon-wrapper" [routerLink]="">
           <mat-icon class="truck-icon">favorite_border</mat-icon>
@@ -40,21 +54,17 @@
         </div>
       </li>
     </ul>
-    <a mat-stroked-button color="primary" *ngIf="showElement" class="addBtn"
-      >Add to Cart</a
-    >
+
     <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
   <!-- [src]="image" -->
   <a [routerLink]="" class="my-2 manuf-name">{{ product.manufacturer }}</a>
 
-  <mat-card-content
-    (mouseout)="hideButtons()"
-    fxLayout="column "
-    fxLayoutGap="10px"
-  >
-    <a [routerLink]="" class="prod-name">{{ product.name }}</a>
-    <span class="current-price">{{ product.client_price }} zł</span>
+  <mat-card-content (mouseout)="hideButtons()">
+    <div fxLayout="column " fxLayoutGap="10px">
+      <a [routerLink]="" class="prod-name">{{ product.name }}</a>
+      <span class="current-price">{{ product.client_price }} zł</span>
+    </div>
   </mat-card-content>
 
   <mat-card-actions

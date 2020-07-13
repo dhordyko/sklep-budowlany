@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { ProductService } from '../shared/product.service';
 
 import { Router } from '@angular/router';
@@ -15,7 +23,9 @@ export class MainPageComponent implements OnInit {
   category = this.prodServ.category;
   price: number = 0;
   product: boolean;
+  brands: string[] = ['Select All', 'HTC', 'HP', 'Lenovo', 'LG', 'Apple'];
   @Input() data: any = [];
+  gridsize: number;
 
   constructor(public prodServ: ProductService, private router: Router) {}
 
@@ -32,6 +42,30 @@ export class MainPageComponent implements OnInit {
     const promise = this.prodServ.getProducts().toPromise();
     this.products$ = promise.then((data) => data.success.products.data);
   }
+  @Output() rangeChange = new EventEmitter<any>();
+  formatLabel(value: number) {
+    return `${value}zl`;
+  }
+  //fire sortedprice component after slider action
+  updateSetting(event) {
+    this.gridsize = event.value;
+  }
+  //filtering items by prices
+  filterPrices() {
+    this.prodServ.setPrice(this.gridsize);
+  }
+  //category view realization
+  setBrandCat(brand) {
+    this.prodServ.setBrand(brand);
+  }
+  //category vieiconw realization
+  setProductCat(category) {
+    this.category = category;
+    if (this.category !== ('cart' as string)) {
+      this.prodServ.setCategory(category);
+    }
+  }
+
   LayoutChange(): String {
     if (this.sideBarOpen) {
       return 'column';

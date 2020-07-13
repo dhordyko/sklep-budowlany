@@ -287,7 +287,7 @@ p {
 // -------------------Product card Section------------------
 
 :host ::ng-deep .single-article > mat-card {
-  width: 50%;
+  width: 65%;
   height: 30%;
   padding: 0 auto;
   margin: 0 auto !important;
@@ -314,118 +314,16 @@ p {
 }
 // -------------------Footer Section Version------------------
 
-.footer_three {
-  background: #f8f8f8;
-}
-.footer_top {
-  padding: 58px 0 60px;
-}
-.footer_logo {
-  margin-bottom: 23px;
-}
-.support-icon-container {
-  margin-top: 20px;
-  width: 100%;
-}
-.support-icon-container > span > mat-icon {
-  font-size: 60px;
-  color: #fdb813;
+.product-mobile-carousel {
+  padding: 0 20px;
 }
 
-.support-text > span {
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 700;
-}
-.support-telephone {
-  font-family: "Overpass", sans-serif;
-  font-size: 24px;
-  line-height: 27px;
-  font-weight: 400;
-  color: #333;
-  text-decoration: none;
-}
-.support-telephone:hover {
-  color: #fdb813;
-}
-
-.subscribe_form form input {
-  width: 100%;
-  height: 48px;
-  color: #666;
-  font-size: 13px;
-  background: none;
-  border: 0;
-  padding: 0 120px 0 15px;
-}
-.subscribe_form form {
-  position: relative;
-  width: 100%;
-  background: #f0f0f0;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-.footer_contact > p {
-  padding-right: 50px;
-}
-.subscribe_form form button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  background: #fdb813;
-  font-weight: 700;
-  padding: 0 18px;
-  border: 0;
-  font-size: 15px;
-  text-transform: capitalize;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-.widgets_container h3 {
-  font-size: 18px;
-  line-height: 24px;
-  text-transform: capitalize;
-  font-weight: 600;
-  font-family: "Open Sans", sans-serif;
-  margin-bottom: 20px;
-}
-
-.information-wrapper > h4 {
-  margin-bottom: 20px;
-
-  text-transform: uppercase;
-  font-weight: 600;
-  font-family: "Open Sans", sans-serif;
-}
-
-.information-wrapper > .information-list > ul > li > a {
-  display: block;
-  font-weight: 400;
-  font-size: 15px;
-  font-family: "Open Sans", sans-serif;
-  text-decoration: none;
-  color: #343a40;
-  margin-bottom: 10px;
-  transition: all 0.2s ease 0s;
-}
-.information-wrapper > .information-list > ul > li > a:hover {
-  color: #fdb813;
-  padding-left: 10px;
-  text-decoration: none;
-  cursor: pointer;
-}
-.widgets_container.widgets_subscribe > h4 {
-  text-transform: uppercase;
-  font-weight: 600;
-  font-family: "Open Sans", sans-serif;
-
-  margin-bottom: 40px;
-}
-#mc-form {
-  margin-bottom: 25px;
-}
-.footer_bottom {
-  padding: 15px 0;
-  background: #fdb813;
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  :host ::ng-deep .single-article > mat-card {
+    width: 60%;
+  }
+  :host ::ng-deep .single-article > mat-card > .mat-card-content {
+    width: 80%;
+    height: 26vh;
+  }
 }

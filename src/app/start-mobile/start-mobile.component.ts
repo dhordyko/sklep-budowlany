@@ -63,8 +63,8 @@ export class StartMobileComponent implements OnInit {
         numScroll: 2,
       },
       {
-        breakpoint: '600px',
-        numVisible: 2,
+        breakpoint: '490px',
+        numVisible: 1,
         numScroll: 1,
       },
     ];

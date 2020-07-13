@@ -11,7 +11,7 @@ mat-card:hover {
 mat-card-content {
   cursor: pointer;
 }
-img {
+.image-container > a {
   width: 150px;
   height: 150px;
 
@@ -45,6 +45,7 @@ img {
 .prod-name:hover {
   color: #fdb813 !important;
 }
+
 .icon-wrapper {
   color: #333;
   height: 40px;
@@ -88,9 +89,8 @@ mat-card-content {
   cursor: pointer;
 }
 .addBtn {
-  top: 120px;
   color: #333;
-  position: absolute;
+  bottom: 0px;
   font-size: 14px;
   font-weight: 700;
   padding: 0 10px;
@@ -98,7 +98,7 @@ mat-card-content {
   height: 36px;
   text-transform: capitalize;
   background: #fdb813;
-  display: block;
+  position: absolute;
   border-radius: 0px;
   animation-fill-mode: both;
   -webkit-animation-duration: 1s;

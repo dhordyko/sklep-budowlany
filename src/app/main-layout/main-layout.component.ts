@@ -46,7 +46,8 @@ export class MainLayoutComponent implements OnInit {
   menucard_class = '';
   navbar_class = '';
   showFiller = false;
-
+  chosenLang: any = [];
+  chosenCurrency: any = [];
   @ViewChild('search') search: ElementRef;
   @ViewChild('sdbSearch') sdbSearch: ElementRef;
   @ViewChild('menu_card') menu_card: ElementRef;
@@ -54,6 +55,21 @@ export class MainLayoutComponent implements OnInit {
   home_items = ['HOME1', 'HOME2', 'HOME3', 'HOME4', 'HOME5', 'HOME6'];
   shop_items = ['SHOP1', 'SHOP2', 'SHOP3', 'SHOP4', 'SHOP5', 'SHOP6'];
   pages_items = ['PAGE1', 'PAGE2', 'PAGE3', 'PAGE4', 'PAGE5', 'PAGE6'];
+  languages = [
+    {
+      lang_name: 'English',
+      icon: 'flag-icon-gb',
+    },
+    { lang_name: 'Polish', icon: 'flag-icon-pl' },
+  ];
+  currency = [
+    {
+      name: 'PLN',
+      icon: 'flag-icon-pl',
+    },
+    { name: 'USD', icon: 'flag-icon-us' },
+    { name: 'EURO', icon: 'flag-icon-eu' },
+  ];
 
   constructor(private prodServ: ProductService, private router: Router) {}
 
@@ -61,7 +77,8 @@ export class MainLayoutComponent implements OnInit {
     setTimeout(() => {
       this.animate = true;
     }, 100);
-
+    this.chosenLang = this.languages[0];
+    this.chosenCurrency = this.currency[0];
     this.prodServ.getProducts();
     this.prodServ.CartTotalPrice.subscribe(
       (total_cost: number) => (this.IconPrice = total_cost)
@@ -132,6 +149,12 @@ export class MainLayoutComponent implements OnInit {
   }
   handleScroll(event) {
     const scrollTop = event.path[0].scrollTop;
+  }
+  langOption(langOption) {
+    this.chosenLang = langOption;
+  }
+  currencyOption(option) {
+    this.chosenCurrency = option;
   }
 
   ngAfterViewInit() {
