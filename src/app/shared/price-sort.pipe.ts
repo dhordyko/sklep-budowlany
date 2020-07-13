@@ -4,9 +4,9 @@ import { Product } from '../interfaces';
   name: 'priceSort',
 })
 export class PriceSortPipe implements PipeTransform {
-  transform(products: Product[], price = 5000): any {
+  transform(products: Product[], price = 20): any {
     return products.filter((product) => {
-      return product.cost <= price;
+      return product.client_price <= price;
     });
   }
 }

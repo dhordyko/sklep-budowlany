@@ -8,8 +8,10 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { ProductService } from '../shared/product.service';
-
+import { Product } from '../interfaces';
 import { Router } from '@angular/router';
+import { Subscription, fromEvent } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -23,9 +25,14 @@ export class MainPageComponent implements OnInit {
   category = this.prodServ.category;
   price: number = 0;
   product: boolean;
+  keyUpSubscription: Subscription;
   brands: string[] = ['Select All', 'HTC', 'HP', 'Lenovo', 'LG', 'Apple'];
   @Input() data: any = [];
   gridsize: number;
+  @ViewChild('search') search: ElementRef;
+  sortOptions: Product[];
+
+  sortKey: string;
 
   constructor(public prodServ: ProductService, private router: Router) {}
 
@@ -64,6 +71,14 @@ export class MainPageComponent implements OnInit {
     if (this.category !== ('cart' as string)) {
       this.prodServ.setCategory(category);
     }
+  }
+  ngAfterViewInit() {
+    this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(1000),
+        map((event: Event) => (<HTMLInputElement>event.target).value)
+      )
+      .subscribe((event) => this.prodServ.setSearch(event));
   }
 
   LayoutChange(): String {

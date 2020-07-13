@@ -24,6 +24,7 @@ export interface Product {
   replacers: number;
   catalog_price: number;
   cost: number;
+  client_price: number;
   currency: string;
   vat: string;
   vat_reverse: 0;

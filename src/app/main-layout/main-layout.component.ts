@@ -52,9 +52,6 @@ export class MainLayoutComponent implements OnInit {
   @ViewChild('sdbSearch') sdbSearch: ElementRef;
   @ViewChild('menu_card') menu_card: ElementRef;
 
-  home_items = ['HOME1', 'HOME2', 'HOME3', 'HOME4', 'HOME5', 'HOME6'];
-  shop_items = ['SHOP1', 'SHOP2', 'SHOP3', 'SHOP4', 'SHOP5', 'SHOP6'];
-  pages_items = ['PAGE1', 'PAGE2', 'PAGE3', 'PAGE4', 'PAGE5', 'PAGE6'];
   languages = [
     {
       lang_name: 'English',
@@ -81,7 +78,8 @@ export class MainLayoutComponent implements OnInit {
     this.chosenCurrency = this.currency[0];
     this.prodServ.getProducts();
     this.prodServ.CartTotalPrice.subscribe(
-      (total_cost: number) => (this.IconPrice = total_cost)
+      (total_cost: number) =>
+        (this.IconPrice = Math.round(total_cost * 100) / 100)
     );
     this.prodServ.CartTotalQunatity.subscribe(
       (total_qnt: number) => (this.CartQuantity = total_qnt)
@@ -107,7 +105,7 @@ export class MainLayoutComponent implements OnInit {
   // ---------show top navbar on scroll event ---------
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event) {
-    if (window.pageYOffset >= 190) {
+    if (window.pageYOffset >= 160) {
       this.showElement = true;
       this.showMainNav = false;
     }

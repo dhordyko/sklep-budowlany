@@ -7,26 +7,24 @@
     fxLayout="row wrap"
     fxLayoutAlign="center"
   >
-    <a
-      class="image-container"
-      [routerLink]="['/product', product.id]"
-      (click)="idPassing()"
-      (mouseover)="showButtons()"
-    >
+    <a class="image-container" (mouseover)="showButtons()">
       <a
-        (click)="idPassing()"
         mat-card-image
         alt=""
         style=" background: url('{{ product.url_image }}')"
         class="img-fluid rounded mx-auto d-block"
-        [routerLink]="['/product', product.id]"
       ></a>
       <div
         class="add_to_cart"
         fxLayout="row wrap"
         fxLayoutAlign="center center"
       >
-        <a mat-stroked-button color="primary" *ngIf="showElement" class="addBtn"
+        <a
+          mat-stroked-button
+          color="primary"
+          *ngIf="showElement"
+          class="addBtn"
+          (click)="addToCart()"
           >Add to Cart</a
         >
       </div>
@@ -49,9 +47,13 @@
         </div>
       </li>
       <li>
-        <div class="icon-wrapper" [routerLink]="">
+        <a
+          class="icon-wrapper"
+          [routerLink]="['/product', product.id]"
+          (click)="idPassing()"
+        >
           <mat-icon class="truck-icon">remove_red_eye</mat-icon>
-        </div>
+        </a>
       </li>
     </ul>
 
@@ -72,45 +74,5 @@
     fxLayoutAlign="space-between center"
     (mouseout)="hideButtons()"
   >
-    <button
-      (click)="addToCart()"
-      fxShow="true"
-      fxShow.xs="false"
-      fxShow.md="true"
-      fxShow.sm="true"
-      class="mb-2 mr-2 roundBtn"
-      mat-fab
-      color="warn"
-      aria-label="Example icon button with a delete icon"
-      (click)="openSnackBar()"
-    >
-      <mat-icon
-        [ngStyle.sm]="{ 'font-size': '20px' }"
-        #icon
-        matBadge="{{ product.quantity }}"
-        matBadgePosition="before"
-        matBadgeColor="primary"
-        >add_shopping_cart</mat-icon
-      >
-    </button>
-    <button
-      (click)="addToCart()"
-      fxShow="false"
-      fxShow.xs="true"
-      fxShow.md="false"
-      fxShow.sm="false"
-      class="mb-2 mr-2"
-      mat-mini-fab
-      color="warn"
-      (click)="openSnackBar()"
-    >
-      <mat-icon
-        #icon
-        matBadge="{{ product.quantity }}"
-        matBadgePosition="before"
-        matBadgeColor="primary"
-        >add_shopping_cart</mat-icon
-      >
-    </button>
   </mat-card-actions>
 </mat-card>

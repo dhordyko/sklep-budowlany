@@ -33,13 +33,9 @@ footer {
 }
 *::-webkit-scrollbar-track {
   background: #f4f4f4;
+  width: 150px;
 }
-*::-webkit-scrollbar-thumb {
-  background-color: #e95420;
-  border-radius: 50px;
 
-  border: 3px solid #f4f4f4;
-}
 .mat-badge-content {
   color: black;
   background: #fdb813 !important;

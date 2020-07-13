@@ -60,7 +60,9 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { SlideMenuModule } from 'primeng/slidemenu';
+import { DataViewModule } from 'primeng/dataview';
 
+import { PanelModule } from 'primeng/panel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,9 +119,9 @@ import { SlideMenuModule } from 'primeng/slidemenu';
     MatInputModule,
     MatBadgeModule,
     FlexLayoutModule,
-
+    DataViewModule,
     HammerModule,
-
+    PanelModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

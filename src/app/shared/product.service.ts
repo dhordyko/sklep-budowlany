@@ -53,12 +53,12 @@ export class ProductService {
 
     if (existItem) {
       existItem.quantity++;
-      existItem.total = existItem.quantity * +existItem.cost;
+      existItem.total = existItem.quantity * +existItem.client_price.toFixed(2);
     } else {
       this.ProductsCart.push(product);
 
       product.quantity = 1;
-      product.total = product.quantity * +product.cost;
+      product.total = product.quantity * +product.client_price.toFixed(2);
     }
 
     localStorage.setItem('cart', JSON.stringify(this.ProductsCart));

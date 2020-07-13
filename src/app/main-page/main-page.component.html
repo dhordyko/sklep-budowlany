@@ -14,93 +14,84 @@
           <img class="banner-image" src="assets/carousel/banner11.jpg" />
         </div>
       </section>
-
-      <div
-        #value
-        *ngIf="products$ | async as products"
-        class="dashboard"
-        class="mr-5"
-        fxLayout="row wrap"
-        fxLayout.xs="column"
-        fxLayout.gt-xs="row wrap"
-        fxLayoutGap.xs="20px"
-        fxLayoutAlign.sm="space-evenly center"
-        fxLayoutAlign.md="space-around center"
-        fxLayoutAlign.gt-md="space-around center"
-        fxLayout.sm="{{ LayoutChange() }}"
-      >
-        <app-product
-          class="box"
-          *ngFor="let product of products"
-          [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
-          [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
-          [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
-          [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
-          [product]="product"
+      <p class="my-0" fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-label>Search</mat-label>
+        <input
+          class="form-control py-4"
+          type="text"
+          style="width: 600px;"
+          placeholder="Search"
+          #search
+          name="searchText"
+        />
+        <mat-icon
+          id="search-icon"
+          style="font-size: 28px; font-weight: 500;"
+          matSuffix
+          >search</mat-icon
         >
-        </app-product>
-
-        <!-- <app-product
-          class="box"
-          *ngFor="
-            let product of products
+      </p>
+      <div *ngIf="products$ | async as products">
+        <p-dataView
+          #value
+          *ngIf="
+            products
               | search: prodServ.searchText
-              | sorting: prodServ.category
-              | sortBrand: prodServ.brand
               | priceSort: prodServ.price
+              | sorting: prodServ.category
+              | sortBrand: prodServ.brand as result
           "
-          [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
-          [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
-          [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
-          [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
-          [product]="product"
+          [value]="result"
+          class="dashboard"
+          class="mr-5"
+          fxLayout="row wrap"
+          fxLayoutGap.xs="20px"
+          [paginator]="true"
+          [rows]="20"
+          layout="grid"
         >
-        </app-product> -->
-
-        <div
-          class="container-fluid mt-5"
-          *ngIf="(products | search: prodServ.searchText).length == 0"
-        >
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-              <mat-card class="no-item">
-                <mat-card-content class="bg-light">
-                  <div class="d-flex justify-content-center">
-                    <div class="float-left" fxShow="true" fxShow.xs="false">
-                      <img
-                        mat-card-image
-                        alt=""
-                        src="assets/clipart164927.png"
-                        class="img-fluid rounded mx-auto d-block"
-                      />
-                    </div>
-
-                    <div class="text-left mr-4">
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-
-                      <h1
-                        class="text-danger font-weight-bold mt-6 text-center"
-                        style="font-size: 3.5em;"
-                      >
-                        Product Not Found
-                      </h1>
-                      <h3 class="text-muted font-weight-bold mt-5 text-center">
-                        <em>Please return to the main page</em>
-                      </h3>
-                    </div>
-                  </div>
-                </mat-card-content>
-              </mat-card>
+          <p-header>
+            <div class="ui-helper-clearfix">
+              <div class="p-grid">
+                <div class="p-col-12 p-md-4">
+                  <p-dropdown
+                    [(ngModel)]="sortKey"
+                    placeholder="Sort By"
+                    [style]="{ 'min-width': '140px' }"
+                  ></p-dropdown>
+                </div>
+                <div class="p-col-6 p-md-4 filter-container">
+                  <div style="position: relative;"></div>
+                </div>
+                <div class="p-col-6 p-md-4" style="text-align: right;">
+                  <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+              </div>
             </div>
-            <div class="col-md-1"></div>
+          </p-header>
+          <!-- <ng-template let-product pTemplate="listItem">
+          <div class="p-col-12">
+            <app-product [product]="product"> </app-product>
           </div>
-        </div>
+        </ng-template> -->
+
+          <ng-template let-product pTemplate="gridItem">
+            <div style="padding: 0.5em;" class="p-col-12 p-md-3">
+              <app-product
+                class="box"
+                [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
+                [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
+                [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
+                [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
+                [product]="product"
+              >
+              </app-product>
+            </div>
+          </ng-template>
+        </p-dataView>
       </div>
     </div>
+
     <div class="col-lg-3 col-md-12">
       <aside class="sidebar_widget">
         <div class="widget_inner">
@@ -274,92 +265,6 @@
           <a href="#"><img src="assets/img/bg/banner12.jpg" alt="" /></a>
         </div>
       </aside>
-    </div>
-  </div>
-</div>
-
-<div
-  #value
-  *ngIf="products$ | async as products"
-  class="dashboard"
-  class="mr-5"
-  fxLayout="row wrap"
-  fxLayout.xs="column"
-  fxLayout.gt-xs="row wrap"
-  fxLayoutGap.xs="20px"
-  fxLayoutAlign.sm="space-evenly center"
-  fxLayoutAlign.md="space-around center"
-  fxLayoutAlign.gt-md="space-around center"
-  fxLayout.sm="{{ LayoutChange() }}"
->
-  <app-product
-    class="box"
-    *ngFor="let product of products"
-    [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
-    [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
-    [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
-    [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
-    [product]="product"
-  >
-  </app-product>
-
-  <!-- <app-product
-    class="box"
-    *ngFor="
-      let product of products
-        | search: prodServ.searchText
-        | sorting: prodServ.category
-        | sortBrand: prodServ.brand
-        | priceSort: prodServ.price
-    "
-    [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
-    [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
-    [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
-    [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
-    [product]="product"
-  >
-  </app-product> -->
-
-  <div
-    class="container-fluid mt-5"
-    *ngIf="(products | search: prodServ.searchText).length == 0"
-  >
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <mat-card class="no-item">
-          <mat-card-content class="bg-light">
-            <div class="d-flex justify-content-center">
-              <div class="float-left" fxShow="true" fxShow.xs="false">
-                <img
-                  mat-card-image
-                  alt=""
-                  src="assets/clipart164927.png"
-                  class="img-fluid rounded mx-auto d-block"
-                />
-              </div>
-
-              <div class="text-left mr-4">
-                <br />
-                <br />
-                <br />
-                <br />
-
-                <h1
-                  class="text-danger font-weight-bold mt-6 text-center"
-                  style="font-size: 3.5em;"
-                >
-                  Product Not Found
-                </h1>
-                <h3 class="text-muted font-weight-bold mt-5 text-center">
-                  <em>Please return to the main page</em>
-                </h3>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="col-md-1"></div>
     </div>
   </div>
 </div>
