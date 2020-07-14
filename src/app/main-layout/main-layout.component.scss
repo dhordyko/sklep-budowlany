@@ -355,7 +355,8 @@ li.nav-item .btn-white {
   opacity: 1;
 }
 #navbarNav.bottom-navbar > ul > li > ul.sub-menu {
-  margin-top: 30vh;
+  margin-top: 23vh;
+  z-index: 20;
 }
 // -------------------Footer Section------------------
 
@@ -465,10 +466,40 @@ li.nav-item .btn-white {
 
   margin-bottom: 40px;
 }
-#mc-form {
-  margin-bottom: 25px;
-}
+
 .footer_bottom {
   padding: 15px 0;
   background: #fdb813;
+}
+.search_form {
+  width: 450px;
+}
+.search_form form input {
+  width: 100%;
+  height: 48px;
+  color: #666;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  padding: 0 120px 0 15px;
+}
+.search_form form {
+  position: relative;
+  width: 100%;
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+.search_form form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: #fdb813;
+  font-weight: 700;
+  padding: 0 18px;
+  border: 0;
+  font-size: 15px;
+  text-transform: capitalize;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

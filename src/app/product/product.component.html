@@ -7,13 +7,12 @@
     fxLayout="row wrap"
     fxLayoutAlign="center"
   >
-    <a class="image-container" (mouseover)="showButtons()">
+    <div class="image-container" (mouseover)="showButtons()">
       <a
-        mat-card-image
-        alt=""
-        style=" background: url('{{ product.url_image }}')"
-        class="img-fluid rounded mx-auto d-block"
+        class="product-image m-auto"
+        [style.background-image]="productImage"
       ></a>
+
       <div
         class="add_to_cart"
         fxLayout="row wrap"
@@ -28,7 +27,7 @@
           >Add to Cart</a
         >
       </div>
-    </a>
+    </div>
 
     <ul
       class="icon-wrapper-list"

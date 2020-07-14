@@ -257,6 +257,16 @@ p {
   > .image-container {
   height: 350px;
 }
+:host
+  ::ng-deep
+  .single-article
+  > mat-card
+  > mat-card-header
+  > .image-container
+  a.product-image {
+  height: 100%;
+  width: 100%;
+}
 
 .banner-row > img {
   max-width: 100%;

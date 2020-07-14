@@ -24,9 +24,9 @@ export class ProductPageComponent implements OnInit {
       const promise = this.prodServ.getProduct(id).toPromise();
       promise.then((data) => (this.product = data.success.product));
     }
-    this.prodServ.countdownEndSource.subscribe(
-      (product) => (this.product = product)
-    );
+    // this.prodServ.countdownEndSource.subscribe(
+    //   (product) => (this.product = product)
+    // );
   }
   addOneItem() {
     if (this.quantity == 50) {

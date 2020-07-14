@@ -64,7 +64,22 @@ app-start-page {
 .ui-carousel-next,
 .ui-carousel-prev {
   color: #333333;
-  background-color: #fdb813 !important;
+}
+.ui-carousel-next:hover,
+.ui-carousel-prev :hover {
+  color: #fdb813 !important;
+  border-color: #fdb813 !important;
+}
+.ui-carousel-prev,
+.ui-carousel-nex {
+  width: 3.5em;
+  height: 4.5em;
+}
+button.ui-carousel-prev,
+.ui-carousel-next {
+  background-color: white;
+  border-color: #fdb813 !important;
+  color: #fdb813 !important;
 }
 app-start-page {
   width: 100%;

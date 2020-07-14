@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 import { ProductService } from '../shared/product.service';
 import { CartTableComponent } from '../cart-table/cart-table.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Product } from '../interfaces';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -10,8 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providers: [CartTableComponent],
 })
 export class ProductComponent implements OnInit {
-  @Input() product;
-  profileImage?: SafeUrl;
+  @Input() product: Product;
+  productImage?: SafeStyle;
   image: any;
   @Input() showElement = false;
   @Input() item: any;
@@ -22,11 +23,13 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.profileImage = this.sanitizer.bypassSecurityTrustUrl(
-      this.product.image
+    this.productImage = this.sanitizer.bypassSecurityTrustStyle(
+      'url(' + this.product.url_image + ')'
     );
-    this.image = this.profileImage['changingThisBreaksApplicationSecurity'];
     this.idPassing();
+  }
+  getSantizeUrl(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
   showButtons() {
     this.showElement = true;
