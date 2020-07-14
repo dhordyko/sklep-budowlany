@@ -1,36 +1,40 @@
+<section
+  class="banner-row"
+  [ngStyle]="{ 'margin-bottom': '30px', 'margin-top': '30px' }"
+>
+  <div
+    class="banner-wrapper"
+    fxLayout="row wrap"
+    fxLayoutAlign="center stretch"
+    [ngStyle]="{ height: '200px' }"
+  ></div>
+</section>
 <div class="container-fluid">
   <div class="row mx-auto">
     <div class="col-lg-9 col-md-12">
       <!-- --------------------long-banner----------------- -->
-      <section
-        class="banner-row"
-        [ngStyle]="{ 'margin-bottom': '30px', 'margin-top': '30px' }"
-      >
-        <div
-          class="banner-wrapper"
-          fxLayout="row wrap"
-          fxLayoutAlign="center stretch"
-        >
-          <img class="banner-image" src="assets/carousel/banner11.jpg" />
+      <div fxLayout="row wrap" fxLayoutAlign="center center">
+        <div class="search_form">
+          <form
+            id="mc-form"
+            class="mc-form footer-newsletter"
+            novalidate="true"
+          >
+            <input
+              id="mc-email"
+              type="email"
+              autocomplete="off"
+              placeholder="Search..."
+              #search
+              name="searchText"
+            />
+            <button id="mc-submit">
+              Search
+            </button>
+          </form>
         </div>
-      </section>
-      <p class="my-0" fxLayout="row wrap" fxLayoutAlign="center center">
-        <mat-label>Search</mat-label>
-        <input
-          class="form-control py-4"
-          type="text"
-          style="width: 600px;"
-          placeholder="Search"
-          #search
-          name="searchText"
-        />
-        <mat-icon
-          id="search-icon"
-          style="font-size: 28px; font-weight: 500;"
-          matSuffix
-          >search</mat-icon
-        >
-      </p>
+      </div>
+
       <div *ngIf="products$ | async as products">
         <p-dataView
           #value

@@ -7,3 +7,43 @@
   width: 33.333%;
   margin-top: 2rem;
 }
+.banner-row {
+  background-image: url(src/assets/carousel/banner11.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.search_form {
+  width: 550px;
+}
+.search_form form input {
+  width: 100%;
+  height: 48px;
+  color: #666;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  padding: 0 120px 0 15px;
+}
+.search_form form {
+  position: relative;
+  width: 100%;
+  background: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.search_form form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: #fdb813;
+  font-weight: 700;
+  padding: 0 18px;
+  border: 0;
+  font-size: 15px;
+  text-transform: capitalize;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
