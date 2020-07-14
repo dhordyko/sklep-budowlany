@@ -184,8 +184,6 @@
             fxLayoutAlign="space-between start"
             style="height: 50px;"
           >
-            <p class="ml-3">Welcome to our store</p>
-
             <div fxLayout="row" fxLayoutAlign="space-around start">
               <div class="mt-4"></div>
 
@@ -523,6 +521,7 @@
     class="navbar navbar-expand-lg navbar-light"
     id="top-navbar"
     fxShow="false"
+    fxShow.lt-md="true"
     fxLayout="row wrap"
     fxLayoutAlign="space-between center"
     *ngIf="showElement"

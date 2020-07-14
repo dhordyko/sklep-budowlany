@@ -63,7 +63,9 @@
 
   <mat-card-content (mouseout)="hideButtons()">
     <div fxLayout="column " fxLayoutGap="10px">
-      <a [routerLink]="" class="prod-name">{{ product.name }}</a>
+      <a style="width: 70%;" [routerLink]="" class="prod-name">{{
+        product.name
+      }}</a>
       <span class="current-price">{{ product.client_price }} zł</span>
     </div>
   </mat-card-content>

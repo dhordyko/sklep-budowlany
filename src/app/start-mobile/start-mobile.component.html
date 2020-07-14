@@ -175,14 +175,15 @@
   </div>
 </section>
 <!-- --------------category-carousel-xs--------------- -->
-<section
-  [ngStyle]="{ 'margin-bottom': '30px' }"
-  class="d-flex justify-content-center category-carousel"
->
+<section class="d-flex justify-content-center category-carousel">
   <p-carousel
     [value]="categoryList"
     orientation="vertical"
-    [style]="{ 'max-width': '400px', 'margin-top': '2em' }"
+    [style]="{
+      'max-width': '400px',
+      'margin-top': '2em',
+      'margin-bottom': '35px'
+    }"
     verticalViewPortHeight="200px"
     fxShow.gt-xs="false"
     [numVisible]="1"
@@ -395,6 +396,7 @@
   class="product-card"
   fxShow.sm="true"
   fxShow.md="false"
+  fxShow.xs="false"
   [ngStyle]="{ 'margin-bottom': '30px' }"
 >
   <div class="product-cards-wrapper" *ngIf="prods$ | async as products">
@@ -406,6 +408,7 @@
   class="product-card"
   fxShow.sm="true"
   fxShow.md="false"
+  fxShow.xs="false"
   [ngStyle]="{ 'margin-bottom': '30px' }"
 >
   <div class="product-cards-wrapper" *ngIf="prods$ | async as products">

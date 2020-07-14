@@ -83,7 +83,7 @@ p {
   text-transform: capitalize;
   display: inline-block;
   border-radius: 3px;
-  padding: 0 30px;
+  padding: 0 15px;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-duration: 1s;
@@ -205,7 +205,7 @@ p {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
-.cat-name:hover {
+:host ::ng-deep #category-carousel .carousel-item .cat-name:hover {
   color: #fdb813;
   cursor: pointer;
 }
@@ -325,5 +325,22 @@ p {
   :host ::ng-deep .single-article > mat-card > .mat-card-content {
     width: 80%;
     height: 26vh;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+  .picsum-img-wrapper > .slider-text-container > h1,
+  .picsum-img-wrapper > .slider-text-container > h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 700px) and (max-width: 1200px) {
+  .picsum-img-wrapper > .slider-text-container.slider-main-1,
+  .picsum-img-wrapper > .slider-text-container.slider-main-2,
+  .picsum-img-wrapper > .slider-text-container.slider-main-3 {
+    top: 50px;
+    position: absolute;
+    right: 20%;
   }
 }
