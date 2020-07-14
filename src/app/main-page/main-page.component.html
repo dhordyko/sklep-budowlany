@@ -21,8 +21,6 @@
             novalidate="true"
           >
             <input
-              id="mc-email"
-              type="email"
               autocomplete="off"
               placeholder="Search..."
               #search
@@ -34,7 +32,7 @@
           </form>
         </div>
       </div>
-
+      <!-- ---------------------DataView--------------------------- -->
       <div *ngIf="products$ | async as products">
         <p-dataView
           #value
@@ -47,16 +45,13 @@
           "
           [value]="result"
           class="dashboard"
-          class="mr-5"
-          fxLayout="row wrap"
-          fxLayoutGap.xs="20px"
           [paginator]="true"
-          [rows]="20"
+          [rows]="15"
           layout="grid"
         >
           <p-header>
             <div class="ui-helper-clearfix">
-              <div class="p-grid">
+              <div style="width: 1000px;">
                 <div class="p-col-12 p-md-4">
                   <p-dropdown
                     [(ngModel)]="sortKey"
@@ -64,9 +59,7 @@
                     [style]="{ 'min-width': '140px' }"
                   ></p-dropdown>
                 </div>
-                <div class="p-col-6 p-md-4 filter-container">
-                  <div style="position: relative;"></div>
-                </div>
+                <div class="p-col-6 p-md-4 filter-container"></div>
                 <div class="p-col-6 p-md-4" style="text-align: right;">
                   <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
                 </div>
@@ -74,23 +67,21 @@
             </div>
           </p-header>
           <!-- <ng-template let-product pTemplate="listItem">
-          <div class="p-col-12">
-            <app-product [product]="product"> </app-product>
-          </div>
-        </ng-template> -->
+                    <div class="p-col-12">
+                      <app-product [product]="product"> </app-product>
+                    </div>
+                  </ng-template> -->
 
           <ng-template let-product pTemplate="gridItem">
-            <div style="padding: 0.5em;" class="p-col-12 p-md-3">
-              <app-product
-                class="box"
-                [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
-                [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
-                [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
-                [ngStyle.gt-md]="{ width: '30%', 'margin-top': '2rem' }"
-                [product]="product"
-              >
-              </app-product>
-            </div>
+            <app-product
+              class="box mx-3"
+              [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
+              [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
+              [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
+              [ngStyle.gt-md]="{ width: '26%', 'margin-top': '2rem' }"
+              [product]="product"
+            >
+            </app-product>
           </ng-template>
         </p-dataView>
       </div>
@@ -114,9 +105,9 @@
               <mat-slider
                 thumbLabel
                 [displayWith]="formatLabel"
-                tickInterval="100"
+                tickInterval="5"
                 min="1"
-                max="2000"
+                max="100"
                 #gridsize
                 (change)="updateSetting($event)"
                 [value]="gridsize"

@@ -47,3 +47,9 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.mat-slider-horizontal {
+  min-width: 240px;
+}
+:host > ::ng-deep > .p-grid {
+  width: 95%;
+}
