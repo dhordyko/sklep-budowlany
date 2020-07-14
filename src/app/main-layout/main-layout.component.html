@@ -12,7 +12,7 @@
   >
     <div
       fxLayout="row"
-      fxLayoutGap.gt-md="180px"
+      fxLayoutGap.gt-md="150px"
       fxLayoutGap.md="130px"
       [ngClass.md]="'px-5'"
     >
@@ -163,7 +163,7 @@
           class="mr-md-4 mt-3"
           style="cursor: pointer; font-size: 20px; color: black;"
         >
-          {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>$
+          {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
         </label>
         <label class="mr-md-4 mt-3" style="color: black;">
           <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"
