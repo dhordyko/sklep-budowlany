@@ -105,13 +105,11 @@ export class MainLayoutComponent implements OnInit {
   // ---------show top navbar on scroll event ---------
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event) {
-    if (window.pageYOffset >= 160) {
+    if (window.pageYOffset >= 0) {
       this.showElement = true;
-      this.showMainNav = false;
     }
-    if (window.pageYOffset <= 205) {
+    if (window.pageYOffset <= 0) {
       this.showElement = false;
-      this.showMainNav = true;
     }
   }
 
