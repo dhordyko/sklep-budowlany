@@ -156,19 +156,18 @@ export class MainLayoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(1000),
-        map((event: Event) => (<HTMLInputElement>event.target).value)
-      )
-      .subscribe((event) => this.prodServ.setSearch(event));
-
-    this.keyUpSubscription = fromEvent(this.sdbSearch.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(1000),
-        map((event: Event) => (<HTMLInputElement>event.target).value)
-      )
-      .subscribe((event) => this.prodServ.setSearch(event));
+    // this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
+    //   .pipe(
+    //     debounceTime(1000),
+    //     map((event: Event) => (<HTMLInputElement>event.target).value)
+    //   )
+    //   .subscribe((event) => this.prodServ.setSearch(event));
+    // this.keyUpSubscription = fromEvent(this.sdbSearch.nativeElement, 'keyup')
+    //   .pipe(
+    //     debounceTime(1000),
+    //     map((event: Event) => (<HTMLInputElement>event.target).value)
+    //   )
+    //   .subscribe((event) => this.prodServ.setSearch(event));
   }
 
   value(icon): any {
