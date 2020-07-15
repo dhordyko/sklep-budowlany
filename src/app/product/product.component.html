@@ -1,13 +1,14 @@
 <div class="text-center">
   <div class="flex-center"></div>
 </div>
-<mat-card class="example-card mt-3">
+<mat-card class="example-card my-2" [class.hover-shadow]="showElement">
   <mat-card-header
     class="text-center"
     fxLayout="row wrap"
     fxLayoutAlign="center"
+    (mouseover)="showButtons()"
   >
-    <div class="image-container" (mouseover)="showButtons()">
+    <div class="image-container no-hover">
       <a
         class="product-image m-auto"
         [style.background-image]="productImage"

@@ -1,6 +1,7 @@
-mat-card:hover {
-  border: 1px solid #fdb813;
+.no-hover {
+  pointer-events: none;
 }
+
 .mat-card-header {
   display: block;
   font-weight: 600;
@@ -99,4 +100,9 @@ mat-card-content {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+.hover-shadow {
+  -webkit-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
+  -moz-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
+  box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
 }

@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   image: any;
   @Input() showElement = false;
   @Input() item: any;
+
   constructor(
     private sanitizer: DomSanitizer,
     private prodServ: ProductService,
@@ -31,6 +32,7 @@ export class ProductComponent implements OnInit {
   getSantizeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
+
   showButtons() {
     this.showElement = true;
   }
