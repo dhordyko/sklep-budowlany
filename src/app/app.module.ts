@@ -63,6 +63,8 @@ import { SlideMenuModule } from 'primeng/slidemenu';
 import { DataViewModule } from 'primeng/dataview';
 
 import { PanelModule } from 'primeng/panel';
+import { LongProdCardComponent } from './long-prod-card/long-prod-card.component';
+import { PaginatorModule } from 'primeng/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +84,7 @@ import { PanelModule } from 'primeng/panel';
     AllcatMenuComponent,
     StartMobileComponent,
     MainLayoutComponent,
+    LongProdCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -122,6 +125,7 @@ import { PanelModule } from 'primeng/panel';
     DataViewModule,
     HammerModule,
     PanelModule,
+    PaginatorModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

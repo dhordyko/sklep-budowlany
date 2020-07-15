@@ -72,14 +72,6 @@ export class MainPageComponent implements OnInit {
       this.prodServ.setCategory(category);
     }
   }
-  ngAfterViewInit() {
-    this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(1000),
-        map((event: Event) => (<HTMLInputElement>event.target).value)
-      )
-      .subscribe((event) => this.prodServ.setSearch(event));
-  }
 
   LayoutChange(): String {
     if (this.sideBarOpen) {

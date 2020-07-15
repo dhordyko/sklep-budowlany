@@ -13,27 +13,9 @@
   <div class="row mx-auto">
     <div class="col-lg-9 col-md-12">
       <!-- --------------------long-banner----------------- -->
-      <div fxLayout="row wrap" fxLayoutAlign="center center">
-        <div class="search_form">
-          <form
-            id="mc-form"
-            class="mc-form footer-newsletter"
-            novalidate="true"
-          >
-            <input
-              autocomplete="off"
-              placeholder="Search..."
-              #search
-              name="searchText"
-            />
-            <button id="mc-submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
+
       <!-- ---------------------DataView--------------------------- -->
-      <div *ngIf="products$ | async as products">
+      <div *ngIf="products$ | async as products" class="dataViewConteiner">
         <p-dataView
           #value
           *ngIf="
@@ -48,12 +30,14 @@
           [paginator]="true"
           [rows]="15"
           layout="grid"
+          loadingIcon="fa-spinner"
         >
-          <p-header>
-            <div class="p-col-12 p-md-10" style="text-align: right;">
+          <p-header class="mb-4">
+            <div fxLayout="row wrap" style="text-align: left;">
               <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
             </div>
           </p-header>
+          <br />
           <!-- <ng-template let-product pTemplate="listItem">
                     <div class="p-col-12">
                       <app-product [product]="product"> </app-product>
@@ -70,6 +54,12 @@
               [product]="product"
             >
             </app-product>
+          </ng-template>
+          <ng-template let-product pTemplate="listItem">
+            <div class="p-col-12">
+              <app-long-prod-card class="box mx-3" [product]="product">
+              </app-long-prod-card>
+            </div>
           </ng-template>
         </p-dataView>
       </div>

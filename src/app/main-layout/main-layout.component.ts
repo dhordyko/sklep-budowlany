@@ -115,30 +115,6 @@ export class MainLayoutComponent implements OnInit {
 
   // ------navbar animation-------
 
-  showCard(event, card_name: String) {
-    if (card_name === 'home') {
-      this.showShopElement = false;
-      this.showHomeElement = true;
-      this.showPageElement = false;
-      this.menucard_class =
-        'animate__animated animate__slideInDown home-menu-card';
-    }
-    if (card_name === 'shop') {
-      this.showHomeElement = false;
-      this.showShopElement = true;
-      this.showPageElement = false;
-      this.menucard_class =
-        'animate__animated animate__slideInDown home-menu-card';
-    }
-    if (card_name === 'page') {
-      this.showHomeElement = false;
-      this.showShopElement = false;
-      this.showPageElement = true;
-      this.menucard_class =
-        'animate__animated animate__slideInDown home-menu-card';
-    }
-  }
-
   showNav() {
     this.navbar_class = 'animate__animated animate__slideInDown';
     this.showElement = true;
@@ -154,18 +130,12 @@ export class MainLayoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    // this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
-    //   .pipe(
-    //     debounceTime(1000),
-    //     map((event: Event) => (<HTMLInputElement>event.target).value)
-    //   )
-    //   .subscribe((event) => this.prodServ.setSearch(event));
-    // this.keyUpSubscription = fromEvent(this.sdbSearch.nativeElement, 'keyup')
-    //   .pipe(
-    //     debounceTime(1000),
-    //     map((event: Event) => (<HTMLInputElement>event.target).value)
-    //   )
-    //   .subscribe((event) => this.prodServ.setSearch(event));
+    this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(1000),
+        map((event: Event) => (<HTMLInputElement>event.target).value)
+      )
+      .subscribe((event) => this.prodServ.setSearch(event));
   }
 
   value(icon): any {

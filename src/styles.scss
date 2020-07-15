@@ -85,9 +85,7 @@ button.ui-carousel-prev,
 app-start-page {
   width: 100%;
 }
-.igx-nav-arrow {
-  color: #fdb813 !important;
-}
+
 .carousel-control-prev {
   height: 20%;
   margin: auto;
@@ -97,4 +95,16 @@ p-carousel > .ui-carousel-items-container {
   overflow: none !important;
 
   position: absolute;
+}
+// ----------------------MainPage DataView Component----------------
+.ui-dataview-header {
+  border: 1px solid #ededed;
+}
+.ui-dataview-header {
+  width: 60vw;
+  margin-bottom: 30px;
+}
+.ui-paginator-bottom {
+  border: 1px solid #ededed;
+  padding: 20px;
 }

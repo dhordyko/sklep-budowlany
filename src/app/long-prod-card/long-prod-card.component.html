@@ -1,0 +1,67 @@
+<mat-card class="example-card my-2" [class.hover-shadow]="showElement">
+  <div class="p-grid">
+    <mat-card-header
+      class="text-center p-col"
+      fxLayout="row wrap"
+      fxLayoutAlign="center"
+    >
+      <div class="image-container no-hover">
+        <a
+          class="product-image m-auto"
+          [style.background-image]="productImage"
+        ></a>
+      </div>
+
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="p-col" fxLayout="column " fxLayoutGap="15px ">
+      <p>{{ product.manufacturer }}</p>
+
+      <p [routerLink]="" class="prod-name">{{ product.name }}</p>
+      <p class="prod-description">{{ product.description }}</p>
+    </mat-card-content>
+    <mat-card-actions
+      class="p-col"
+      fxLayout="column wrap"
+      fxLayoutAlign="center center"
+      fxLayoutGap="24px "
+    >
+      <p class="stock-availability">
+        Dostępność na magazyni : <span>{{ product.count_available }}</span>
+      </p>
+      <p>
+        Cena : <span class="current-price">{{ product.client_price }} zł</span>
+      </p>
+      <a mat-stroked-button color="primary" class="addBtn" (click)="addToCart()"
+        >Add to Cart</a
+      >
+      <ul
+        class="icon-wrapper-list"
+        fxLayout="row wrap"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px"
+      >
+        <li>
+          <div class="icon-wrapper" [routerLink]="">
+            <mat-icon class="truck-icon">favorite_border</mat-icon>
+          </div>
+        </li>
+        <li>
+          <div class="icon-wrapper" [routerLink]="">
+            <mat-icon class="truck-icon">compare_arrows</mat-icon>
+          </div>
+        </li>
+        <li>
+          <div
+            class="icon-wrapper"
+            [routerLink]="['/product', product.id]"
+            (click)="idPassing()"
+          >
+            <mat-icon class="truck-icon">remove_red_eye</mat-icon>
+          </div>
+        </li>
+      </ul>
+    </mat-card-actions>
+  </div>
+</mat-card>

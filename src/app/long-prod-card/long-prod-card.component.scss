@@ -1,0 +1,96 @@
+.mat-card-header,
+.stock-availability {
+  display: block;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+.stock-availability > span {
+  color: #fdb813;
+  font-size: 16px;
+}
+mat-card-header {
+  cursor: pointer;
+}
+.image-container > a {
+  width: 260px;
+  height: 260px;
+
+  display: block;
+  object-fit: scale-down;
+  overflow: hidden;
+  cursor: pointer;
+}
+.image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.prod-name {
+  font-size: 10.5px;
+  text-transform: capitalize;
+  font-weight: 400;
+  text-decoration: none;
+}
+.prod-name:hover {
+  color: #fdb813 !important;
+}
+
+.icon-wrapper {
+  color: #333;
+  height: 40px;
+  width: 40px;
+  line-height: 48px;
+  border: 1px solid #ededed;
+  border-radius: 100%;
+  text-align: center;
+  transition: 0.3s;
+  right: 5px;
+  text-align: center;
+  cursor: default;
+}
+.icon-wrapper:hover {
+  background-color: #fdb813;
+}
+.current-price {
+  color: #f30;
+  font-weight: 400;
+  font-size: 20px;
+  margin-left: 8px;
+}
+mat-card-header {
+  border-bottom: 1px solid #ededed;
+}
+mat-card-content {
+  overflow: hidden;
+  cursor: pointer;
+  border-right: 1 px solid #ededed;
+}
+.addBtn {
+  color: #333;
+  bottom: 0px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 50px;
+  line-height: 36px;
+  height: 36px;
+  text-transform: capitalize;
+  background: #fdb813;
+
+  border-radius: 0px;
+}
+.addBtn:hover {
+  color: #fdb813;
+  background: #333;
+}
+.product-image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.hover-shadow {
+  -webkit-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
+  -moz-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
+  box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
+}
