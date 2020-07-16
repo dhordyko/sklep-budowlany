@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { DataView } from 'primeng/dataview';
+import { SelectItem } from 'primeng/api';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -32,10 +33,12 @@ export class MainPageComponent implements OnInit {
   gridsize: number;
   @ViewChild('search') search: ElementRef;
   @ViewChild('dataview', { static: false }) dataView: DataView;
-  sortOptions: Product[];
+  sortOptions: SelectItem[];
 
   sortKey: string;
+  sortField: string;
 
+  sortOrder: number;
   constructor(public prodServ: ProductService, private router: Router) {}
 
   ngOnInit() {
@@ -51,6 +54,11 @@ export class MainPageComponent implements OnInit {
 
     const promise = this.prodServ.getProducts().toPromise();
     this.products$ = promise.then((data) => data.success.products.data);
+
+    this.sortOptions = [
+      { label: 'Manufacturer', value: 'brand' },
+      { label: 'Sort by Price : low ot high', value: 'lowPriceFirst' },
+    ];
   }
 
   @Output() rangeChange = new EventEmitter<any>();
@@ -58,8 +66,8 @@ export class MainPageComponent implements OnInit {
     return `${value}zl`;
   }
   // number of items on sorting page
-  itemNumberOnPage(event) {
-    console.log(event);
+  onSortChange(event) {
+    this.prodServ.getSortOption(event.value);
   }
   //fire sortedprice component after slider action
   updateSetting(event) {

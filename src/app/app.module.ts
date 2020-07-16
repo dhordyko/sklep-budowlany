@@ -65,6 +65,8 @@ import { DataViewModule } from 'primeng/dataview';
 import { PanelModule } from 'primeng/panel';
 import { LongProdCardComponent } from './long-prod-card/long-prod-card.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { SortByPipe } from './shared/sort-by.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +87,7 @@ import { PaginatorModule } from 'primeng/paginator';
     StartMobileComponent,
     MainLayoutComponent,
     LongProdCardComponent,
+    SortByPipe,
   ],
   imports: [
     BrowserModule,

@@ -23,22 +23,31 @@
               | search: prodServ.searchText
               | priceSort: prodServ.price
               | sorting: prodServ.category
-              | sortBrand: prodServ.brand as result
+              | sortBrand: prodServ.brand
+              | sortBy: prodServ.SortOption as result
           "
           [value]="result"
           class="dashboard"
           [paginator]="true"
-          [rows]="5"
+          [rows]="30"
           layout="grid"
           loadingIcon="fa-spinner"
           paginatorPosition="both"
           currentPageReportTemplate="{first}-{last} of {totalRecords} records"
           showCurrentPageReport="true"
-          (onPage)="itemNumberOnPage($event)"
+          [sortField]="sortField"
+          [sortOrder]="sortOrder"
         >
           <p-header class="mb-4">
             <div fxLayout="row wrap" style="text-align: left;">
               <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+              <p-dropdown
+                [options]="sortOptions"
+                [(ngModel)]="sortKey"
+                placeholder="Sort By"
+                (onChange)="onSortChange($event)"
+                [style]="{ 'min-width': '140px' }"
+              ></p-dropdown>
               <span> </span>
             </div>
           </p-header>

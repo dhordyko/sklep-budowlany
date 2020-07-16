@@ -14,6 +14,7 @@ export class ProductService {
   searchText = '';
   price: number = 5000;
   order: Partial<Order> = {};
+  SortOption = '';
   countdownEndSource = new BehaviorSubject<any>(null);
   CartTotalPrice = new BehaviorSubject<any>(null);
   CartTotalQunatity = new BehaviorSubject<any>(null);
@@ -22,6 +23,7 @@ export class ProductService {
   ProductsCart: Product[] = [];
   sumItems: Product[] = [];
   CACHE_KEY = 'products';
+  selectedOption: string;
   constructor(private http: HttpClient, private router: Router) {}
 
   // getProducts(): Observable<any> {
@@ -75,5 +77,8 @@ export class ProductService {
   }
   setSearch(searchText) {
     this.searchText = searchText;
+  }
+  getSortOption(option) {
+    this.SortOption = option;
   }
 }
