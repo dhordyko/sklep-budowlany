@@ -112,3 +112,7 @@ p-carousel > .ui-carousel-items-container {
   color: #fff;
   background: #fdb813;
 }
+.ui-paginator-current.ng-star-inserted {
+  background: transparent !important;
+  color: #333 !important;
+}

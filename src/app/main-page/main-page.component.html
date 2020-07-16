@@ -17,7 +17,7 @@
       <!-- ---------------------DataView--------------------------- -->
       <div *ngIf="products$ | async as products" class="dataViewConteiner">
         <p-dataView
-          #value
+          #dataview
           *ngIf="
             products
               | search: prodServ.searchText
@@ -31,10 +31,15 @@
           [rows]="5"
           layout="grid"
           loadingIcon="fa-spinner"
+          paginatorPosition="both"
+          currentPageReportTemplate="{first}-{last} of {totalRecords} records"
+          showCurrentPageReport="true"
+          (onPage)="itemNumberOnPage($event)"
         >
           <p-header class="mb-4">
             <div fxLayout="row wrap" style="text-align: left;">
               <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+              <span> </span>
             </div>
           </p-header>
           <br />

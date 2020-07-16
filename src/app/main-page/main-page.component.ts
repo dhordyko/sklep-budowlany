@@ -12,6 +12,7 @@ import { Product } from '../interfaces';
 import { Router } from '@angular/router';
 import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
+import { DataView } from 'primeng/dataview';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -30,6 +31,7 @@ export class MainPageComponent implements OnInit {
   @Input() data: any = [];
   gridsize: number;
   @ViewChild('search') search: ElementRef;
+  @ViewChild('dataview', { static: false }) dataView: DataView;
   sortOptions: Product[];
 
   sortKey: string;
@@ -40,6 +42,7 @@ export class MainPageComponent implements OnInit {
     // if (localStorage.getItem('products')) {
     //   this.products = JSON.parse(localStorage['products']);
     // }
+
     this.prodServ.SideBarOpen.subscribe((value) => (this.sideBarOpen = value));
 
     if (!navigator.onLine) {
@@ -49,9 +52,14 @@ export class MainPageComponent implements OnInit {
     const promise = this.prodServ.getProducts().toPromise();
     this.products$ = promise.then((data) => data.success.products.data);
   }
+
   @Output() rangeChange = new EventEmitter<any>();
   formatLabel(value: number) {
     return `${value}zl`;
+  }
+  // number of items on sorting page
+  itemNumberOnPage(event) {
+    console.log(event);
   }
   //fire sortedprice component after slider action
   updateSetting(event) {
