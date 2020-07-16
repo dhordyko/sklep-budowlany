@@ -57,7 +57,16 @@ export class MainPageComponent implements OnInit {
 
     this.sortOptions = [
       { label: 'Manufacturer', value: 'brand' },
-      { label: 'Sort by Price : low ot high', value: 'lowPriceFirst' },
+      { label: 'Sort by Price : low to high', value: 'lowPriceFirst' },
+      { label: 'Sort by Price : high to low', value: 'highPriceFirst' },
+      {
+        label: 'Sort by Client Discount : low to high',
+        value: 'lowDiscountFirst',
+      },
+      {
+        label: 'Sort by Client Discount : high to low',
+        value: 'highDiscountFirst',
+      },
     ];
   }
 
