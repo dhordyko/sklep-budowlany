@@ -47,6 +47,7 @@ export class MainPageComponent implements OnInit {
   sortItemsNumber = 0;
   categoriesDataItem = { label: '', value: '' };
   categoriesData: any[] = [];
+  manufacturerData: any[] = [];
   constructor(
     public prodServ: ProductService,
     private router: Router,
@@ -71,17 +72,27 @@ export class MainPageComponent implements OnInit {
     const promise = this.prodServ.getProducts().toPromise();
     this.products$ = promise.then((data) => data.success.products.data);
     promise.then((data) => {
-      var temparray = [];
+      var catarray = [];
+      var manarray = [];
       for (let i in data.success.products.data) {
         if (
-          !temparray.find(
+          !catarray.find(
             (val) => val === data.success.products.data[i].categories
           )
         ) {
-          temparray.push(data.success.products.data[i].categories);
+          catarray.push(data.success.products.data[i].categories);
+        }
+        // ================manufacturer categories==============
+        if (
+          !manarray.find(
+            (val) => val === data.success.products.data[i].manufacturer
+          )
+        ) {
+          manarray.push(data.success.products.data[i].manufacturer);
         }
       }
-      this.categoryDataSet(temparray);
+      this.categoryDataSet(catarray);
+      this.manufacturerDataSet(manarray);
     });
 
     this.sortOptions = [
@@ -100,7 +111,6 @@ export class MainPageComponent implements OnInit {
   }
 
   categoryDataSet(categories) {
-    console.log(categories);
     for (let i in categories) {
       var name = categories[i].split('&gt;')[0];
       var subname1 = categories[i].split('&gt;')[1];
@@ -117,6 +127,13 @@ export class MainPageComponent implements OnInit {
     }
 
     console.log(this.categoriesData);
+  }
+  manufacturerDataSet(manufacturers) {
+    for (let i in manufacturers) {
+      this.manufacturerData.push({ brand: manufacturers[i] });
+    }
+
+    console.log(this.manufacturerData);
   }
 
   @Output() rangeChange = new EventEmitter<any>();

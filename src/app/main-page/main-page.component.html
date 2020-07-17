@@ -208,32 +208,25 @@
 
           <div class="widget_list widget_categories">
             <h2>Manufacturer</h2>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Brands
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-radio-group>
-                <div
-                  fxLayout="column"
-                  fxLayoutGap="15px"
-                  fxLayoutAlign="space-start start"
-                  *ngFor="let brand of brands"
+            <mat-radio-group>
+              <div
+                fxLayout="column"
+                fxLayoutGap="15px"
+                fxLayoutAlign="space-start start"
+                *ngFor="let brand of manufacturerData"
+              >
+                <mat-radio-button
+                  style="width: 10px;"
+                  class="text-muted"
+                  (click)="setBrandCat(brand)"
+                  [value]="brand.brand"
+                  name="fieldName"
+                  ngDefaultControl
                 >
-                  <mat-radio-button
-                    style="width: 10px;"
-                    class="text-muted"
-                    (click)="setBrandCat(brand)"
-                    [value]="brand"
-                    name="fieldName"
-                    ngDefaultControl
-                  >
-                    {{ brand }}
-                  </mat-radio-button>
-                </div>
-              </mat-radio-group>
-            </mat-expansion-panel>
+                  {{ brand.brand }}
+                </mat-radio-button>
+              </div>
+            </mat-radio-group>
           </div>
         </div>
         <div class="shop_sidebar_banner"></div>
