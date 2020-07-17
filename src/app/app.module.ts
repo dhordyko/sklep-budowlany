@@ -66,7 +66,8 @@ import { PanelModule } from 'primeng/panel';
 import { LongProdCardComponent } from './long-prod-card/long-prod-card.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { SortByPipe } from './shared/sort-by.pipe';
-
+import { SliderModule } from 'primeng/slider';
+import { InputTextModule } from 'primeng/inputtext';
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,6 +130,8 @@ import { SortByPipe } from './shared/sort-by.pipe';
     HammerModule,
     PanelModule,
     PaginatorModule,
+    SliderModule,
+    InputTextModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

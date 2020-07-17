@@ -14,6 +14,7 @@ import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { DataView } from 'primeng/dataview';
 import { SelectItem } from 'primeng/api';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -34,11 +35,13 @@ export class MainPageComponent implements OnInit {
   @ViewChild('search') search: ElementRef;
   @ViewChild('dataview', { static: false }) dataView: DataView;
   sortOptions: SelectItem[];
-
+  rangeValues: number[] = [0, 1000];
   sortKey: string;
   sortField: string;
-
+  paginatorTemplate = '';
   sortOrder: number;
+  rangeValues: number[];
+
   constructor(public prodServ: ProductService, private router: Router) {}
 
   ngOnInit() {
@@ -73,6 +76,11 @@ export class MainPageComponent implements OnInit {
   @Output() rangeChange = new EventEmitter<any>();
   formatLabel(value: number) {
     return `${value}zl`;
+  }
+  paginatorTemplateUpload() {
+    return $(
+      '.ui-paginator-bottom >.ui-paginator-current.ng-star-inserted'
+    ).text();
   }
   // number of items on sorting page
   onSortChange(event) {

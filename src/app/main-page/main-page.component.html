@@ -29,26 +29,26 @@
           [value]="result"
           class="dashboard"
           [paginator]="true"
-          [rows]="30"
+          [rows]="5"
           layout="grid"
           loadingIcon="fa-spinner"
-          paginatorPosition="both"
           currentPageReportTemplate="{first}-{last} of {totalRecords} records"
           showCurrentPageReport="true"
           [sortField]="sortField"
           [sortOrder]="sortOrder"
         >
           <p-header class="mb-4">
-            <div fxLayout="row wrap" style="text-align: left;">
+            <div fxLayout="row wrap" fxLayout="20px">
               <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
               <p-dropdown
+                class="m-auto"
                 [options]="sortOptions"
                 [(ngModel)]="sortKey"
                 placeholder="Sort By"
                 (onChange)="onSortChange($event)"
-                [style]="{ 'min-width': '140px' }"
+                [style]="{ 'min-width': '300px', 'min-height': '15px' }"
               ></p-dropdown>
-              <span> </span>
+              <span class="float-right">{{ paginatorTemplateUpload() }} </span>
             </div>
           </p-header>
           <br />
@@ -79,33 +79,32 @@
       </div>
     </div>
 
-    <div class="col-lg-3 col-md-12" style="top: 100px;">
+    <div
+      class="col-lg-3 col-md-12"
+      style="top: 100px; background: #f4f4f4; position: sticky;"
+    >
       <aside class="sidebar_widget">
         <div class="widget_inner">
-          <div class="widget_list widget_filter">
-            <h2>Filter by price</h2>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Prices
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div id="price">
-                <h3>Price:{{ gridsize.value }}</h3>
-              </div>
-
-              <mat-slider
-                thumbLabel
-                [displayWith]="formatLabel"
-                tickInterval="5"
-                min="1"
-                max="100"
-                #gridsize
-                (change)="updateSetting($event)"
-                [value]="gridsize"
-                (click)="filterPrices()"
-              ></mat-slider>
-            </mat-expansion-panel>
+          <div
+            class="range-slider-widget"
+            fxLayout="column"
+            fxLayoutAlign="start"
+            fxLayoutGap="30px"
+          >
+            <h5>Filter by price</h5>
+            <p-slider
+              [(ngModel)]="rangeValues"
+              [style]="{ width: '14em' }"
+              [range]="true"
+            ></p-slider>
+            <button>Filter</button>
+            <div
+              class="range-values-raport"
+              fxLayout="row wrap"
+              fxLayoutAlign="end"
+            >
+              <p>Range: {{ rangeValues[0] + " - " + rangeValues[1] }}</p>
+            </div>
           </div>
           <div class="widget_list widget_categories">
             <h2>categories</h2>

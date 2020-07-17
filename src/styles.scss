@@ -114,5 +114,9 @@ p-carousel > .ui-carousel-items-container {
 }
 .ui-paginator-current.ng-star-inserted {
   background: transparent !important;
-  color: #333 !important;
+  width: 0px;
+}
+.ui-dropdown.ui-widget.ui-state-default.ui-corner-all {
+  border: 1px solid #333333;
+  border-radius: 5px;
 }
