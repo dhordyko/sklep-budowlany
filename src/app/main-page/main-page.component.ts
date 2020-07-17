@@ -44,7 +44,9 @@ export class MainPageComponent implements OnInit {
   paginatorTemplate = '';
   sortOrder: number;
   rangeValues: number[];
-
+  sortItemsNumber = 0;
+  categoriesDataItem = { label: '', value: '' };
+  categoriesData: any[] = [];
   constructor(
     public prodServ: ProductService,
     private router: Router,
@@ -62,14 +64,25 @@ export class MainPageComponent implements OnInit {
     //   this.products = JSON.parse(localStorage['products']);
     // }
 
-    this.prodServ.SideBarOpen.subscribe((value) => (this.sideBarOpen = value));
-
     if (!navigator.onLine) {
       this.router.navigate(['/offline']);
     }
 
     const promise = this.prodServ.getProducts().toPromise();
     this.products$ = promise.then((data) => data.success.products.data);
+    promise.then((data) => {
+      var temparray = [];
+      for (let i in data.success.products.data) {
+        if (
+          !temparray.find(
+            (val) => val === data.success.products.data[i].categories
+          )
+        ) {
+          temparray.push(data.success.products.data[i].categories);
+        }
+      }
+      this.categoryDataSet(temparray);
+    });
 
     this.sortOptions = [
       { label: 'Manufacturer', value: 'brand' },
@@ -84,6 +97,26 @@ export class MainPageComponent implements OnInit {
         value: 'highDiscountFirst',
       },
     ];
+  }
+
+  categoryDataSet(categories) {
+    console.log(categories);
+    for (let i in categories) {
+      var name = categories[i].split('&gt;')[0];
+      var subname1 = categories[i].split('&gt;')[1];
+      var subname2 = categories[i].split('&gt;')[
+        categories[i].split('&gt;').length - 1
+      ];
+      if (!this.categoriesData.find((val) => val.type === subname1)) {
+        this.categoriesData.push({
+          name: name,
+          type: subname1,
+          form: subname2,
+        });
+      }
+    }
+
+    console.log(this.categoriesData);
   }
 
   @Output() rangeChange = new EventEmitter<any>();

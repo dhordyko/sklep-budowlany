@@ -68,6 +68,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { SortByPipe } from './shared/sort-by.pipe';
 import { SliderModule } from 'primeng/slider';
 import { InputTextModule } from 'primeng/inputtext';
+import { ItemsCountPipe } from './shared/items-count.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +90,7 @@ import { InputTextModule } from 'primeng/inputtext';
     MainLayoutComponent,
     LongProdCardComponent,
     SortByPipe,
+    ItemsCountPipe,
   ],
   imports: [
     BrowserModule,
