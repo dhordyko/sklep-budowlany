@@ -114,20 +114,13 @@ export class StartPageComponent implements OnInit {
   formatLabel(value: number) {
     return `${value}zl`;
   }
-  filterPrices() {
-    this.serv.setPrice(this.gridsize);
-  }
 
   //sidebar show-hide
   public _toggleSidebar() {
     this._opened = !this._opened;
     this.serv.SideBarOpen.next(this._opened);
   }
-  //fire sortedprice component after slider action
-  updateSetting(event) {
-    this.gridsize = event.value;
-    // this.router.navigate(['sortedprice']);
-  }
+
   hideCard() {
     this.menucard_class = 'home-menu-card-hide';
   }

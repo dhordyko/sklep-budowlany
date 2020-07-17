@@ -99,10 +99,7 @@ export class MainPageComponent implements OnInit {
   onSortChange(event) {
     this.prodServ.getSortOption(event.value);
   }
-  //fire sortedprice component after slider action
-  updateSetting(event) {
-    this.gridsize = event.value;
-  }
+
   //filtering items by prices
   filterPrices() {
     this.prodServ.setPrice(
