@@ -6,6 +6,8 @@ import {
   ElementRef,
   Output,
   EventEmitter,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { ProductService } from '../shared/product.service';
 import { Product } from '../interfaces';
@@ -20,6 +22,7 @@ import * as $ from 'jquery';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
   providers: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainPageComponent implements OnInit {
   products$;
@@ -42,7 +45,17 @@ export class MainPageComponent implements OnInit {
   sortOrder: number;
   rangeValues: number[];
 
-  constructor(public prodServ: ProductService, private router: Router) {}
+  constructor(
+    public prodServ: ProductService,
+    private router: Router,
+    private ref: ChangeDetectorRef
+  ) {
+    setInterval(() => {
+      this.paginatorTemplateUpload();
+      // require view to be updated
+      this.ref.markForCheck();
+    }, 500);
+  }
 
   ngOnInit() {
     // if (localStorage.getItem('products')) {
