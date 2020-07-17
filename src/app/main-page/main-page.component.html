@@ -86,24 +86,28 @@
       <aside class="sidebar_widget">
         <div class="widget_inner">
           <div
-            class="range-slider-widget"
+            class="range-slider-widget mt-4"
             fxLayout="column"
             fxLayoutAlign="start"
             fxLayoutGap="30px"
           >
             <h5>Filter by price</h5>
             <p-slider
-              [(ngModel)]="rangeValues"
+              [(ngModel)]="rangeSliderValues"
               [style]="{ width: '14em' }"
               [range]="true"
             ></p-slider>
-            <button>Filter</button>
+            <button class="price-slider-btn" (click)="filterPrices()">
+              Filter
+            </button>
             <div
               class="range-values-raport"
               fxLayout="row wrap"
               fxLayoutAlign="end"
             >
-              <p>Range: {{ rangeValues[0] + " - " + rangeValues[1] }}</p>
+              <p>
+                Range: {{ rangeSliderValues[0] + " - " + rangeSliderValues[1] }}
+              </p>
             </div>
           </div>
           <div class="widget_list widget_categories">

@@ -12,7 +12,7 @@ export class ProductService {
   category = 'all';
   brand = 'select all';
   searchText = '';
-  price: number = 5000;
+  price = [];
   order: Partial<Order> = {};
   SortOption = '';
   countdownEndSource = new BehaviorSubject<any>(null);
@@ -69,8 +69,9 @@ export class ProductService {
   setCategory(category) {
     this.category = category.toLowerCase();
   }
-  setPrice(price) {
-    this.price = price;
+  setPrice(val1: number, val2: number) {
+    this.price = [];
+    this.price.push(val1, val2);
   }
   setBrand(brand) {
     this.brand = brand.toLowerCase();

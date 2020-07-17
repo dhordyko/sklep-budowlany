@@ -35,7 +35,7 @@ export class MainPageComponent implements OnInit {
   @ViewChild('search') search: ElementRef;
   @ViewChild('dataview', { static: false }) dataView: DataView;
   sortOptions: SelectItem[];
-  rangeValues: number[] = [0, 1000];
+  rangeSliderValues: number[] = [0, 1000];
   sortKey: string;
   sortField: string;
   paginatorTemplate = '';
@@ -92,7 +92,10 @@ export class MainPageComponent implements OnInit {
   }
   //filtering items by prices
   filterPrices() {
-    this.prodServ.setPrice(this.gridsize);
+    this.prodServ.setPrice(
+      this.rangeSliderValues[0],
+      this.rangeSliderValues[1]
+    );
   }
   //category view realization
   setBrandCat(brand) {
