@@ -29,7 +29,7 @@
           [value]="result"
           class="dashboard"
           [paginator]="true"
-          [rows]="5"
+          [rows]="30"
           layout="grid"
           loadingIcon="fa-spinner"
           currentPageReportTemplate="{first}-{last} of {totalRecords} records"
@@ -112,27 +112,21 @@
           </div>
           <div class="widget_list widget_categories">
             <h2>categories</h2>
-            <ul *ngFor="let category of categoriesData">
-              <li>
-                <input type="checkbox" />
-                <a href="#">{{ category.name }}</a>
-                <span class="checkmark"></span>
-                <ul class="submenu-type">
-                  <li>
-                    <input type="checkbox" />
-                    <a href="#">{{ category.type }}</a>
-                    <span class="checkmark"></span>
-                  </li>
-                </ul>
-                <ul class="submenu-form">
-                  <li>
-                    <input type="checkbox" />
-                    <a href="#">{{ category.form }}</a>
-                    <span class="checkmark"></span>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            <div *ngFor="let category of categoriesData">
+              <span
+                class="example-list-section"
+                fxLayout="column"
+                fxLayoutGap="20px"
+              >
+                <mat-checkbox
+                  class="example-margin"
+                  (change)="setProductCat()"
+                  [(ngModel)]="category.checked"
+                >
+                  {{ category.name }}
+                </mat-checkbox>
+              </span>
+            </div>
           </div>
 
           <div class="widget_list widget_categories">
@@ -218,7 +212,7 @@
                 <mat-radio-button
                   style="width: 10px;"
                   class="text-muted"
-                  (click)="setBrandCat(brand)"
+                  (click)="setBrandCat(brand.brand)"
                   [value]="brand.brand"
                   name="fieldName"
                   ngDefaultControl

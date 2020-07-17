@@ -69,6 +69,8 @@ import { SortByPipe } from './shared/sort-by.pipe';
 import { SliderModule } from 'primeng/slider';
 import { InputTextModule } from 'primeng/inputtext';
 import { ItemsCountPipe } from './shared/items-count.pipe';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -134,6 +136,8 @@ import { ItemsCountPipe } from './shared/items-count.pipe';
     PaginatorModule,
     SliderModule,
     InputTextModule,
+    MatListModule,
+    MatCheckboxModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

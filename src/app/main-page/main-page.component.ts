@@ -37,6 +37,7 @@ export class MainPageComponent implements OnInit {
   gridsize: number;
   @ViewChild('search') search: ElementRef;
   @ViewChild('dataview', { static: false }) dataView: DataView;
+  ElementRef;
   sortOptions: SelectItem[];
   rangeSliderValues: number[] = [0, 1000];
   sortKey: string;
@@ -113,27 +114,19 @@ export class MainPageComponent implements OnInit {
   categoryDataSet(categories) {
     for (let i in categories) {
       var name = categories[i].split('&gt;')[0];
-      var subname1 = categories[i].split('&gt;')[1];
-      var subname2 = categories[i].split('&gt;')[
-        categories[i].split('&gt;').length - 1
-      ];
-      if (!this.categoriesData.find((val) => val.type === subname1)) {
+
+      if (!this.categoriesData.find((val) => val.name === name)) {
         this.categoriesData.push({
           name: name,
-          type: subname1,
-          form: subname2,
+          checked: false,
         });
       }
     }
-
-    console.log(this.categoriesData);
   }
   manufacturerDataSet(manufacturers) {
     for (let i in manufacturers) {
       this.manufacturerData.push({ brand: manufacturers[i] });
     }
-
-    console.log(this.manufacturerData);
   }
 
   @Output() rangeChange = new EventEmitter<any>();
@@ -162,11 +155,11 @@ export class MainPageComponent implements OnInit {
     this.prodServ.setBrand(brand);
   }
   //category vieiconw realization
-  setProductCat(category) {
-    this.category = category;
-    if (this.category !== ('cart' as string)) {
-      this.prodServ.setCategory(category);
-    }
+  setProductCat(CatChk) {
+    var checkedCat = this.categoriesData
+      .filter((x) => x.checked === true)
+      .map((x) => x.name);
+    this.prodServ.setCategory(checkedCat);
   }
 
   LayoutChange(): String {

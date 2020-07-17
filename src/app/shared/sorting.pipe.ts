@@ -4,16 +4,28 @@ import { Product } from '../interfaces';
   name: 'sorting',
 })
 export class SortingPipe implements PipeTransform {
-  transform(products: Product[], category = ''): any {
-    if (category === 'all') {
+  transform(products: Product[], category = []): any {
+    console.log(category);
+    if (category.length === 0) {
       return products;
     }
-    return products.filter((product) => {
-      return (
-        product.category.replace(/\s|&/g, '').toLocaleLowerCase() ==
-        category.replace(/_/g, '')
-      );
+
+    var array1 = [],
+      array2 = [];
+
+    category.filter((x) =>
+      array1.push(x.replace(/\s|&/g, '').toLocaleLowerCase())
+    );
+
+    return products.filter((p) => {
+      for (let i of array1) {
+        return (
+          p.categories
+            .split('&gt;')[0]
+            .replace(/\s|&/g, '')
+            .toLocaleLowerCase() === i
+        );
+      }
     });
-    //return product.category.trim().toLowerCase() == category;
   }
 }

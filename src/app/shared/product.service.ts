@@ -9,7 +9,7 @@ import { startWith } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ProductService {
-  category = 'all';
+  category = [];
   brand = 'select all';
   searchText = '';
   price = [];
@@ -66,8 +66,8 @@ export class ProductService {
     localStorage.setItem('cart', JSON.stringify(this.ProductsCart));
   }
 
-  setCategory(category) {
-    this.category = category.toLowerCase();
+  setCategory(category: any[]) {
+    this.category = category;
   }
   setPrice(val1: number, val2: number) {
     this.price = [];
