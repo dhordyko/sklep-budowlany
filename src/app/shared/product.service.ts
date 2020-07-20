@@ -25,6 +25,7 @@ export class ProductService {
   sumItems: Product[] = [];
   CACHE_KEY = 'products';
   selectedOption: string;
+  itemsPerCategory: number[] = [];
   constructor(private http: HttpClient, private router: Router) {}
 
   // getProducts(): Observable<any> {

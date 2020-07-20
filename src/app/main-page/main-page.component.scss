@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .dashboard {
   display: flex;
   flex-wrap: wrap;
@@ -24,20 +26,48 @@
 }
 .price-slider-btn {
   width: 70px;
-  border-radius: 15px;
-  color: #fff;
-  background-color: black;
+
+  line-height: 30px;
+  padding: 0 20px;
+  text-transform: capitalize;
+  color: $white;
+  background: $black;
+  border: 0;
+  border-radius: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 .price-slider-btn:hover {
-  color: black;
-  background-color: #fdb813;
+  color: $black;
+  background-color: $yellow;
 }
 // Sidebar styles
+.sidebar-panel {
+  top: 100px;
+  background: $white;
+  position: sticky;
+  padding: 20px;
+  background: $sorting-panel-color;
+}
 .sidebar_widget > h4 {
   font-size: 16px;
-  margin: 0 0 15px;
-  padding: 0 0 5px;
   text-transform: uppercase;
   font-weight: 800;
   line-height: 24px;
+}
+.range-slider-widget,
+.widget_manufs,
+.widget_categories {
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 29px;
+  padding-bottom: 20px;
+}
+
+.chk-brand-text,
+.chk-manuf-text {
+  font-size: 17px;
+  display: block;
+  line-height: 27px;
+  margin-left: 8px;
+  letter-spacing: 0.95px;
 }

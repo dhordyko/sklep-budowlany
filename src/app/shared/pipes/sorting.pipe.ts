@@ -1,9 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Product } from '../../interfaces';
+import { ProductService } from '../product.service';
 @Pipe({
   name: 'sorting',
 })
 export class SortingPipe implements PipeTransform {
+  constructor(private prodServ: ProductService) {}
   transform(products: Product[], category = []): any {
     if (category.length === 0) {
       return products;
@@ -27,11 +29,13 @@ export class SortingPipe implements PipeTransform {
         });
       })
     );
+
     var arr = [];
 
     for (let i of array2) {
       arr = [...i];
     }
+
     var newArray = Array.prototype.concat.apply([], arr);
     return (products = newArray);
   }

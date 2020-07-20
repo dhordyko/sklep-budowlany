@@ -49,6 +49,8 @@ export class MainPageComponent implements OnInit {
 
   categoriesData: any[] = [];
   manufacturerData: any[] = [];
+  categoryItemsLength = [];
+  manufItemsLength = [];
   constructor(
     public prodServ: ProductService,
     private router: Router,
@@ -74,8 +76,11 @@ export class MainPageComponent implements OnInit {
     this.products$ = promise.then((data) => data.success.products.data);
     promise.then((data) => {
       var catarray = [];
+      var allcatarray = [];
       var manarray = [];
+      var allmanarray = [];
       for (let i in data.success.products.data) {
+        allcatarray.push(data.success.products.data[i].categories);
         if (
           !catarray.find(
             (val) => val === data.success.products.data[i].categories
@@ -84,6 +89,7 @@ export class MainPageComponent implements OnInit {
           catarray.push(data.success.products.data[i].categories);
         }
         // ================manufacturer categories==============
+        allmanarray.push(data.success.products.data[i].manufacturer);
         if (
           !manarray.find(
             (val) => val === data.success.products.data[i].manufacturer
@@ -94,6 +100,8 @@ export class MainPageComponent implements OnInit {
       }
       this.categoryDataSet(catarray);
       this.manufacturerDataSet(manarray);
+      this.itemsPerCategory(allcatarray, this.categoriesData);
+      this.itemsPerManufacturer(allmanarray, this.manufacturerData);
     });
 
     this.sortOptions = [
@@ -113,7 +121,7 @@ export class MainPageComponent implements OnInit {
 
   categoryDataSet(categories) {
     for (let i in categories) {
-      var name = categories[i].split('&gt;')[0];
+      var name = categories[i].split('&gt;')[0].toLocaleLowerCase();
 
       if (!this.categoriesData.find((val) => val.name === name)) {
         this.categoriesData.push({
@@ -125,8 +133,56 @@ export class MainPageComponent implements OnInit {
   }
   manufacturerDataSet(manufacturers) {
     for (let i in manufacturers) {
-      this.manufacturerData.push({ brand: manufacturers[i], checked: false });
+      this.manufacturerData.push({
+        brand: manufacturers[i].toLocaleLowerCase(),
+        checked: false,
+      });
     }
+  }
+
+  itemsPerCategory(catarray, catdata) {
+    var array1 = [];
+    var array2 = [];
+
+    catdata.filter((x) => array1.push(x.name.replace(/\s|&/g, '')));
+
+    array2.push(
+      array1.map(function (e) {
+        return catarray.filter((p) => {
+          return (
+            p.split('&gt;')[0].replace(/\s|&/g, '').toLocaleLowerCase() === e
+          );
+        });
+      })
+    );
+
+    array2.filter((x) => {
+      for (let i of x) {
+        this.categoryItemsLength.push(i.length);
+      }
+    });
+  }
+  itemsPerManufacturer(catarray, catdata) {
+    var array1 = [];
+    var array2 = [];
+
+    catdata.filter((x) => array1.push(x.brand.replace(/\s|&/g, '')));
+
+    array2.push(
+      array1.map(function (e) {
+        return catarray.filter((p) => {
+          return (
+            p.split('&gt;')[0].replace(/\s|&/g, '').toLocaleLowerCase() === e
+          );
+        });
+      })
+    );
+
+    array2.filter((x) => {
+      for (let i of x) {
+        this.manufItemsLength.push(i.length);
+      }
+    });
   }
 
   @Output() rangeChange = new EventEmitter<any>();

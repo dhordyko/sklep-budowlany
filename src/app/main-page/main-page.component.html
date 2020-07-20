@@ -79,14 +79,11 @@
       </div>
     </div>
 
-    <div
-      class="col-lg-3 col-md-12"
-      style="top: 100px; background: #f4f4f4; position: sticky;"
-    >
+    <div class="col-lg-3 col-md-12 sidebar-panel">
       <aside class="sidebar_widget">
         <div class="widget_inner">
           <div
-            class="range-slider-widget mt-4"
+            class="range-slider-widget mt-4 pl-2"
             fxLayout="column"
             fxLayoutAlign="start"
             fxLayoutGap="30px"
@@ -106,43 +103,51 @@
               fxLayoutAlign="end"
             >
               <p>
-                Range: {{ rangeSliderValues[0] + " - " + rangeSliderValues[1] }}
+                Range: zł{{
+                  rangeSliderValues[0] + " - " + rangeSliderValues[1]
+                }}
               </p>
             </div>
           </div>
           <div class="widget_list widget_categories">
-            <h4>Categories</h4>
-            <div *ngFor="let category of categoriesData">
+            <h4 class="mb-4">Categories</h4>
+            <div *ngFor="let category of categoriesData; let i = index">
               <span
                 class="example-list-section"
                 fxLayout="column"
                 fxLayoutGap="20px"
               >
                 <mat-checkbox
-                  class="example-margin"
+                  class="example-margin mb-1"
                   (change)="setProductCat()"
                   [(ngModel)]="category.checked"
                 >
-                  {{ category.name }}
+                  <span [class.chk-brand-text]="true" class="text-capitalize">{{
+                    category.name
+                  }}</span
+                  ><span>({{ categoryItemsLength[i] }})</span>
                 </mat-checkbox>
               </span>
             </div>
           </div>
 
-          <div class="widget_list widget_categories">
-            <h4>Manufacturer</h4>
-            <div *ngFor="let brand of manufacturerData">
+          <div class="widget_list widget_manufs">
+            <h4 class="mb-4">Manufacturer</h4>
+            <div *ngFor="let brand of manufacturerData; let i = index">
               <span
                 class="example-list-section"
                 fxLayout="column"
                 fxLayoutGap="20px"
               >
                 <mat-checkbox
-                  class="example-margin"
+                  class="example-margin mb-1 text-lowercase"
                   (change)="setManufacturer()"
                   [(ngModel)]="brand.checked"
                 >
-                  {{ brand.brand }}
+                  <span class="text-capitalize" [class.chk-manuf-text]="true">{{
+                    brand.brand
+                  }}</span
+                  ><span>({{ manufItemsLength[i] }})</span>
                 </mat-checkbox>
               </span>
             </div>
