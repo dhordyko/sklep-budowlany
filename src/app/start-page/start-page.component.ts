@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from '../shared/product.service';
 
@@ -53,7 +47,6 @@ export class StartPageComponent implements OnInit {
   menucard_class = '';
 
   Development;
-  brands: string[] = ['Select All', 'HTC', 'HP', 'Lenovo', 'LG', 'Apple'];
 
   constructor(config: NgbCarouselConfig, private serv: ProductService) {
     // customize default values of carousels used by this component tree
@@ -66,15 +59,14 @@ export class StartPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.carousel.stop();
-    //this.total = this.slides.length;
-    //this.current = this.carousel.current;
+    // Data from Server
     const promise = this.serv.getProducts().toPromise();
     const promiseAll = this.serv.getProducts().toPromise();
     this.prods$ = promise.then((data) =>
       this.chunks(data.success.products.data, 5)
     );
     this.prodsAll$ = promiseAll.then((data) => data.success.products.data);
+    // Responsive options for ngPrime Carousel
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -93,10 +85,9 @@ export class StartPageComponent implements OnInit {
       },
     ];
   }
-
+  //Cut general array by five elements per item
   chunks(array, size) {
     let results = [];
-    results = [];
     while (array.length) {
       results.push(array.splice(0, size));
     }

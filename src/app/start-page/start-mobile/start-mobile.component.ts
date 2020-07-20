@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ProductService } from '../shared/product.service';
+import { ProductService } from './../../shared/product.service';
 
 @Component({
   selector: 'app-start-mobile',

@@ -91,7 +91,7 @@
             fxLayoutAlign="start"
             fxLayoutGap="30px"
           >
-            <h5>Filter by price</h5>
+            <h4>Filter by price</h4>
             <p-slider
               [(ngModel)]="rangeSliderValues"
               [style]="{ width: '14em' }"
@@ -111,7 +111,7 @@
             </div>
           </div>
           <div class="widget_list widget_categories">
-            <h2>categories</h2>
+            <h4>Categories</h4>
             <div *ngFor="let category of categoriesData">
               <span
                 class="example-list-section"
@@ -130,78 +130,7 @@
           </div>
 
           <div class="widget_list widget_categories">
-            <h2>categories</h2>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  All Categories
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-
-              <ul
-                class="ml-4"
-                fxLayout="column"
-                fxLayoutGap="15px"
-                fxLayoutAlign="space-around start"
-              >
-                <br />
-                <li [routerLink]="['/category', 'all']">
-                  <a
-                    (click)="setProductCat('all')"
-                    class="defaultLink"
-                    routerLinkActive="activeLink"
-                    >Show All</a
-                  >
-                </li>
-                <li [routerLink]="['/category', 'laptops']">
-                  <a
-                    class="defaultLink"
-                    routerLinkActive="activeLink"
-                    (click)="setProductCat('laptops')"
-                    >Laptops</a
-                  >
-                </li>
-                <li [routerLink]="['/category', 'smart_phones']">
-                  <a
-                    class="defaultLink"
-                    routerLinkActive="activeLink"
-                    (click)="setProductCat('smart_phones')"
-                    >Smart Phones</a
-                  >
-                </li>
-                <li [routerLink]="['/category', 'tv_audio']">
-                  <a
-                    class="defaultLink"
-                    routerLinkActive="activeLink"
-                    (click)="setProductCat('tv_audio')"
-                    >Tv&Audio</a
-                  >
-                </li>
-                <li [routerLink]="['/category', 'headphones']">
-                  <a
-                    class="defaultLink"
-                    routerLinkActive="activeLink"
-                    (click)="setProductCat('headphones')"
-                    >Headphones</a
-                  >
-                </li>
-                <li [routerLink]="['/category', 'cameras']">
-                  <a
-                    class="defaultLink"
-                    routerLinkActive="activeLink"
-                    (click)="setProductCat('cameras')"
-                    >Cameras</a
-                  >
-                </li>
-                <li [routerLink]="['/cart']">
-                  <a class="defaultLink" routerLinkActive="activeLink">Cart</a>
-                </li>
-              </ul>
-            </mat-expansion-panel>
-          </div>
-
-          <div class="widget_list widget_categories">
-            <h2>Manufacturer</h2>
+            <h4>Manufacturer</h4>
             <mat-radio-group>
               <div
                 fxLayout="column"

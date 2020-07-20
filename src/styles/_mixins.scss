@@ -1,0 +1,20 @@
+// Start-page top slider
+@mixin top-slider-text($top, $right, $margin-top) {
+  top: $top;
+  position: absolute;
+  right: $right;
+  margin-top: $margin-top;
+}
+@mixin top-slider-text-animation($ft-wt, $animation-delay) {
+  font-weight: $ft-wt;
+  text-transform: capitalize;
+  line-height: 1;
+  font-size: 59px;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-delay: $animation-delay;
+  animation-delay: $animation-delay;
+}

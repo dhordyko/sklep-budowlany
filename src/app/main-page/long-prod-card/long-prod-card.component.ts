@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../interfaces';
+import { Product } from '../../interfaces';
 import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
-import { ProductService } from '../shared/product.service';
+import { ProductService } from '../../shared/product.service';
 
 @Component({
   selector: 'app-long-prod-card',

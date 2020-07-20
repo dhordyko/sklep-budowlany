@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
   productImage?: SafeStyle;
   image: any;
-  @Input() showElement = false;
+  @Input() showElement = true;
   @Input() item: any;
 
   constructor(

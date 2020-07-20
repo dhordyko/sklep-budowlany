@@ -1,10 +1,9 @@
 /*Main layout footer*/
-body {
-  background: #ffffff !important;
-}
+@import "./../../styles/variables";
+
 /*top navbar stiles*/
 #top-navbar {
-  border-top: 1px solid #ededed;
+  border-top: 1px solid $white;
   animation-name: fadeInDown;
   -webkit-animation-duration: 900ms;
   animation-duration: 900ms;
@@ -29,10 +28,10 @@ body {
   font-weight: 800;
 }
 #top-navbar .navbar-nav .active > .nav-link:hover {
-  color: #fdb813;
+  color: $yellow;
 }
 #top-navbar .nav-item:hover {
-  color: #fdb813;
+  color: $yellow;
 }
 .sticky-header.sticky {
   position: fixed;
@@ -60,28 +59,7 @@ body {
 }
 
 #cart-icon-container > label:hover {
-  color: #fdb813 !important;
-}
-
-/*Material sidenav section*/
-
-.example-container {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  position: relative;
-
-  min-height: 100%;
-}
-
-.example-sidenav-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  position: absolute;
-
-  overflow-y: scroll;
+  color: $yellow !important;
 }
 
 /*menu buttons*/
@@ -109,7 +87,7 @@ body {
   opacity: 0;
 }
 #home-nav-card .nav-item:hover {
-  color: #fdb813;
+  color: $yellow;
 }
 // -----------search-section------------
 .logo {
@@ -121,7 +99,7 @@ body {
 }
 #search-icon:hover,
 .sidebar-toggle:hover {
-  color: #fdb813;
+  color: $yellow;
 }
 ::ng-deep
   .mat-badge-medium.mat-badge-overlap.mat-badge-after
@@ -129,7 +107,7 @@ body {
   right: -19px !important;
 }
 .search-section-container {
-  border-bottom: 1px solid #f4f4f4;
+  border-bottom: 1px solid $white;
 }
 
 // ---------Main navbar---------
@@ -137,121 +115,15 @@ body {
   color: black !important;
 }
 .main-navbar > li.nav-item.active > a:hover {
-  color: #fdb813 !important;
+  color: $yellow !important;
 }
 
-input[type="text"]:focus:not([readonly]) {
-  box-shadow: none;
-  border-bottom: none;
-}
-
-footer .copyright {
-  background: #333;
-
-  font-size: 15px;
-}
-::ng-deep .ng-sidebar {
-  background-color: #f4f4f4;
-  width: 250px;
-  padding: 1em 1em;
-  box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.85);
-}
-::ng-deep .mat-form-field-infix {
-  border-top: none;
-}
-::ng-deep #matSearchInput .mat-form-field-underline {
-  /*change color of underline*/
-  background-color: #f4f4f4 !important;
-}
-
-example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-}
-
-.example-radio-button {
-  margin: 5px;
-}
-mat-slider {
-  width: 10vw;
-}
-
-a {
-  font-size: 16px;
-  cursor: pointer;
-}
-.radio-button-grp {
-  font-size: 15px !important;
-}
-ul {
-  padding-left: 0px !important;
-}
-a > p {
-  font-size: 20px;
-}
-.defaultLink {
-  color: #868e96;
-}
-.activeLink {
-  color: #e95420;
-}
-
-.items-in-cart {
-  background-color: black;
-  position: relative;
-  border-radius: 50%;
-  height: 24px;
-}
-.menu-icon {
-  padding: 0px;
-  width: 100px;
-}
-.col-lg-12 {
-  padding-right: 0px;
-  padding-left: 0px;
-}
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-full-width {
-  width: 100%;
-}
-// ____________-----------------------------
-
-body {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  background-color: #ffffff;
-  color: #46484a;
-}
-
-.navbar-trans {
-  background: transparent;
-}
-
-a.logo:hover,
-a.logo:active,
-a.logo:focus {
-  text-decoration: none;
-}
-
-li.nav-item .btn {
-  margin-top: 0.2rem;
-  margin-left: 0.4rem;
-}
-li.nav-item .btn-white {
-  color: #46484a;
-}
 // --------------------nav mobile version---------------
 #cart-icon-container {
   margin-right: 40px;
 }
 .logo-mobile-bottom {
-  background: #fdb813;
+  background: $yellow;
 }
 // --------------------------sub-menu-cards------------------
 #navbarNav > ul > li > ul.sub-menu {
@@ -292,14 +164,14 @@ li.nav-item .btn-white {
   float: none;
   margin: 0px 0px;
   padding: 0px 0px;
-  background-color: #fff;
+  background-color: $white;
   -webkit-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
   -moz-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
   box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
 }
 
 #navbarNav > ul > li > a:hover {
-  color: #fdb813;
+  color: $yellow;
 }
 #navbarNav > ul > li > ul > li > a {
   font-family: "Red Hat Text", sans-serif;
@@ -333,7 +205,7 @@ li.nav-item .btn-white {
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  background-color: #fdb813;
+  background-color: $yellow;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -346,7 +218,7 @@ li.nav-item .btn-white {
   opacity: 0;
 }
 #navbarNav > ul > li > ul > li > a:hover {
-  color: #fdb813;
+  color: $yellow;
   padding-left: 15px;
 }
 #navbarNav > ul > li > ul > li > a:hover:before {
@@ -361,10 +233,11 @@ li.nav-item .btn-white {
 // -------------------Footer Section------------------
 
 .footer_three {
-  background: #f8f8f8;
+  background: $white;
 }
 .footer_top {
   padding: 58px 0 60px;
+  background: #f8f8f8;
 }
 .footer_logo {
   margin-bottom: 23px;
@@ -375,7 +248,7 @@ li.nav-item .btn-white {
 }
 .support-icon-container > span > mat-icon {
   font-size: 60px;
-  color: #fdb813;
+  color: $yellow;
 }
 
 .support-text > span {
@@ -392,7 +265,7 @@ li.nav-item .btn-white {
   text-decoration: none;
 }
 .support-telephone:hover {
-  color: #fdb813;
+  color: $yellow;
 }
 
 .subscribe_form form input {
@@ -454,7 +327,7 @@ li.nav-item .btn-white {
   transition: all 0.2s ease 0s;
 }
 .information-wrapper > .information-list > ul > li > a:hover {
-  color: #fdb813;
+  color: $yellow;
   padding-left: 10px;
   text-decoration: none;
   cursor: pointer;
@@ -469,7 +342,7 @@ li.nav-item .btn-white {
 
 .footer_bottom {
   padding: 15px 0;
-  background: #fdb813;
+  background: $yellow;
 }
 .search_form {
   width: 450px;
@@ -480,21 +353,22 @@ li.nav-item .btn-white {
   color: #666;
   font-size: 13px;
   background: none;
-  border: 0;
+  border: 0.5px solid $yellow;
   padding: 0 120px 0 15px;
 }
 .search_form form {
   position: relative;
   width: 100%;
-  background: #f0f0f0;
+  background: $white;
   border-radius: 5px;
+  border: 2px solid $yellow;
 }
 .search_form form button {
   position: absolute;
   right: 0;
   top: 0;
   height: 100%;
-  background: #fdb813;
+  background: $yellow;
   font-weight: 700;
   padding: 0 18px;
   border: 0;

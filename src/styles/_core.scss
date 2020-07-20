@@ -1,0 +1,117 @@
+ul {
+  list-style-type: none;
+}
+html,
+body {
+  width: 100%;
+  line-height: 24px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  visibility: visible;
+  font-family: "Open Sans", sans-serif !important;
+  color: #333;
+  position: absolute !important;
+  overflow-y: initial !important;
+  background: #ffffff;
+}
+
+footer {
+  bottom: 0px;
+
+  width: 100%;
+}
+
+* {
+}
+*::-webkit-scrollbar {
+}
+*::-webkit-scrollbar-track {
+  background: #f4f4f4;
+  width: 150px;
+}
+
+.mat-badge-content {
+  color: black;
+  background: #fdb813 !important;
+}
+
+mat-icon > #mat-badge-content-3 .mat-badge-content {
+  background: #fdb813 !important;
+}
+app-start-page {
+  background: #ffffff;
+}
+.carousel-indicators > li {
+  background-color: #fdb813 !important;
+}
+.carousel-control-prev-icon {
+  background-image: url(../src/assets/carousel/kisspng-arrow-computer-icons-circle-clip-art-left-arrow-5ac00ad08158b9.5867764615225351205298.png) !important;
+  margin-right: 117px;
+}
+.carousel-control-next-icon {
+  background-image: url(../src/assets/carousel/kisspng-arrow-computer-icons-encapsulated-postscript-left-arrow-5ac00c1a6bcff3.6165568715225354504416.png) !important;
+  margin-left: 117px;
+}
+.ui-carousel-dots-container {
+  display: none !important;
+}
+.ui-carousel-next,
+.ui-carousel-prev {
+  color: #333333;
+}
+.ui-carousel-next:hover,
+.ui-carousel-prev :hover {
+  color: #fdb813 !important;
+  border-color: #fdb813 !important;
+}
+.ui-carousel-prev,
+.ui-carousel-nex {
+  width: 3.5em;
+  height: 4.5em;
+}
+button.ui-carousel-prev,
+.ui-carousel-next {
+  background-color: white;
+  border-color: #fdb813 !important;
+  color: #fdb813 !important;
+  border-radius: 50%;
+}
+app-start-page {
+  width: 100%;
+}
+
+.carousel-control-prev {
+  height: 20%;
+  margin: auto;
+}
+
+p-carousel > .ui-carousel-items-container {
+  overflow: none !important;
+
+  position: absolute;
+}
+// ----------------------MainPage DataView Component----------------
+.ui-dataview-header {
+  border: 1px solid #ededed;
+}
+.ui-dataview-header {
+  width: 60vw;
+  margin-bottom: 30px;
+}
+.ui-paginator-bottom {
+  border: 1px solid #ededed;
+  padding: 20px;
+}
+.ui-paginator-page.ui-paginator-element.ui-state-default.ui-corner-all.ng-star-inserted.ui-state-active {
+  color: #fff;
+  background: #fdb813;
+}
+.ui-paginator-current.ng-star-inserted {
+  background: transparent !important;
+  width: 0px;
+}
+.ui-dropdown.ui-widget.ui-state-default.ui-corner-all {
+  border: 1px solid #333333;
+  border-radius: 5px;
+}

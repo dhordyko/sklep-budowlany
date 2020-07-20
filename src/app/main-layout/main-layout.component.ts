@@ -3,12 +3,8 @@ import {
   OnInit,
   Input,
   ElementRef,
-  Output,
   ViewChild,
-  EventEmitter,
   HostListener,
-  ViewEncapsulation,
-  Directive,
 } from '@angular/core';
 import { ProductService } from '../shared/product.service';
 import { Router } from '@angular/router';

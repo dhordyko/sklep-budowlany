@@ -1,28 +1,24 @@
 <div class="text-center">
   <div class="flex-center"></div>
 </div>
-<mat-card class="example-card my-2" [class.hover-shadow]="showElement">
+<mat-card class="example-card my-2">
   <mat-card-header
     class="text-center"
     fxLayout="row wrap"
     fxLayoutAlign="center"
-    (mouseover)="showButtons()"
   >
     <div class="image-container no-hover">
-      <a
-        class="product-image m-auto"
-        [style.background-image]="productImage"
-      ></a>
+      <a class="product-image m-auto"></a>
 
       <div
-        class="add_to_cart"
+        class="add_to_cart hover-display"
         fxLayout="row wrap"
+        fxShow="false"
         fxLayoutAlign="center center"
       >
         <a
           mat-stroked-button
           color="primary"
-          *ngIf="showElement"
           class="addBtn"
           (click)="addToCart()"
           >Add to Cart</a
@@ -31,10 +27,10 @@
     </div>
 
     <ul
-      class="icon-wrapper-list"
+      class="icon-wrapper-list hover-display"
       fxLayout="column"
       fxLayoutGap="50px"
-      *ngIf="showElement"
+      fxShow="false"
     >
       <li>
         <div class="icon-wrapper" [routerLink]="">
@@ -62,7 +58,7 @@
   <!-- [src]="image" -->
   <a [routerLink]="" class="my-2 manuf-name">{{ product.manufacturer }}</a>
 
-  <mat-card-content (mouseout)="hideButtons()">
+  <mat-card-content>
     <div fxLayout="column " fxLayoutGap="10px">
       <a style="width: 70%;" [routerLink]="" class="prod-name">{{
         product.name

@@ -155,7 +155,7 @@ export class MainPageComponent implements OnInit {
     this.prodServ.setBrand(brand);
   }
   //category vieiconw realization
-  setProductCat(CatChk) {
+  setProductCat() {
     var checkedCat = this.categoriesData
       .filter((x) => x.checked === true)
       .map((x) => x.name);
