@@ -5,7 +5,6 @@ import { Product } from '../../interfaces';
 })
 export class SortingPipe implements PipeTransform {
   transform(products: Product[], category = []): any {
-    console.log(category);
     if (category.length === 0) {
       return products;
     }

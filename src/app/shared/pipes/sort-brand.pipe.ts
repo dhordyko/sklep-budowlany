@@ -4,12 +4,29 @@ import { Product } from '../../interfaces';
   name: 'sortBrand',
 })
 export class SortBrandPipe implements PipeTransform {
-  transform(products: Product[], brand = ''): any {
-    if (brand === 'select all') {
+  transform(products: Product[], manufacturer = []): any {
+    if (manufacturer.length == 0) {
       return products;
     }
-    return products.filter((product) => {
-      return product.brand.replace(/\s|&/g, '').toLocaleLowerCase() == brand;
-    });
+    var array1 = [],
+      array2 = [];
+
+    manufacturer.filter((x) =>
+      array1.push(x.replace(/\s|&/g, '').toLocaleLowerCase())
+    );
+    array2.push(
+      array1.map(function (e) {
+        return products.filter((p) => {
+          return p.manufacturer.replace(/\s|&/g, '').toLocaleLowerCase() === e;
+        });
+      })
+    );
+    var arr = [];
+
+    for (let i of array2) {
+      arr = [...i];
+    }
+    var newArray = Array.prototype.concat.apply([], arr);
+    return (products = newArray);
   }
 }

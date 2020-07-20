@@ -10,6 +10,7 @@ import { startWith } from 'rxjs/operators';
 })
 export class ProductService {
   category = [];
+  manufacturer = [];
   brand = 'select all';
   searchText = '';
   price = [];
@@ -68,6 +69,9 @@ export class ProductService {
 
   setCategory(category: any[]) {
     this.category = category;
+  }
+  setManufacturer(manufacturer: any[]) {
+    this.manufacturer = manufacturer;
   }
   setPrice(val1: number, val2: number) {
     this.price = [];

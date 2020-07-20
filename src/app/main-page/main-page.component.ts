@@ -32,7 +32,7 @@ export class MainPageComponent implements OnInit {
   price: number = 0;
   product: boolean;
   keyUpSubscription: Subscription;
-  brands: string[] = ['Select All', 'HTC', 'HP', 'Lenovo', 'LG', 'Apple'];
+
   @Input() data: any = [];
   gridsize: number;
   @ViewChild('search') search: ElementRef;
@@ -46,7 +46,7 @@ export class MainPageComponent implements OnInit {
   sortOrder: number;
   rangeValues: number[];
   sortItemsNumber = 0;
-  categoriesDataItem = { label: '', value: '' };
+
   categoriesData: any[] = [];
   manufacturerData: any[] = [];
   constructor(
@@ -125,7 +125,7 @@ export class MainPageComponent implements OnInit {
   }
   manufacturerDataSet(manufacturers) {
     for (let i in manufacturers) {
-      this.manufacturerData.push({ brand: manufacturers[i] });
+      this.manufacturerData.push({ brand: manufacturers[i], checked: false });
     }
   }
 
@@ -160,6 +160,12 @@ export class MainPageComponent implements OnInit {
       .filter((x) => x.checked === true)
       .map((x) => x.name);
     this.prodServ.setCategory(checkedCat);
+  }
+  setManufacturer() {
+    var checkedMan = this.manufacturerData
+      .filter((x) => x.checked === true)
+      .map((x) => x.brand);
+    this.prodServ.setManufacturer(checkedMan);
   }
 
   LayoutChange(): String {

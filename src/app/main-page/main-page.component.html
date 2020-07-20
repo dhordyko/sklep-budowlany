@@ -23,7 +23,7 @@
               | search: prodServ.searchText
               | priceSort: prodServ.price
               | sorting: prodServ.category
-              | sortBrand: prodServ.brand
+              | sortBrand: prodServ.manufacturer
               | sortBy: prodServ.SortOption as result
           "
           [value]="result"
@@ -131,25 +131,21 @@
 
           <div class="widget_list widget_categories">
             <h4>Manufacturer</h4>
-            <mat-radio-group>
-              <div
+            <div *ngFor="let brand of manufacturerData">
+              <span
+                class="example-list-section"
                 fxLayout="column"
-                fxLayoutGap="15px"
-                fxLayoutAlign="space-start start"
-                *ngFor="let brand of manufacturerData"
+                fxLayoutGap="20px"
               >
-                <mat-radio-button
-                  style="width: 10px;"
-                  class="text-muted"
-                  (click)="setBrandCat(brand.brand)"
-                  [value]="brand.brand"
-                  name="fieldName"
-                  ngDefaultControl
+                <mat-checkbox
+                  class="example-margin"
+                  (change)="setManufacturer()"
+                  [(ngModel)]="brand.checked"
                 >
                   {{ brand.brand }}
-                </mat-radio-button>
-              </div>
-            </mat-radio-group>
+                </mat-checkbox>
+              </span>
+            </div>
           </div>
         </div>
         <div class="shop_sidebar_banner"></div>
