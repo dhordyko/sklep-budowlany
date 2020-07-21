@@ -67,6 +67,17 @@ mat-card-content {
   cursor: pointer;
   border-right: 1 px solid #ededed;
 }
+mat-card-actions {
+  place-content: stretch center;
+  align-items: stretch;
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  max-height: 100%;
+  padding: 0 10px !important;
+  margin: 20px 0;
+}
+
 .addBtn {
   color: #333;
   bottom: 0px;
@@ -93,11 +104,4 @@ mat-card:hover {
   -webkit-box-shadow: inset 0px 0px 0px 1px #fdb813;
   -moz-box-shadow: inset 0px 0px 0px 1px #fdb813;
   box-shadow: inset 0px 0px 0px 1px #fdb813;
-}
-
-@media (max-width: 650px) {
-  app-long-prod-card > .mat-card-actions {
-    margin: 0px;
-    padding: 0px;
-  }
 }

@@ -12,7 +12,7 @@
 </section>
 <div class="container-fluid">
   <div class="row mx-auto">
-    <div class="col-lg-9 col-md-12">
+    <div class="col-lg-8 col-md-12 dataview-col">
       <!-- --------------------long-banner----------------- -->
 
       <!-- ---------------------DataView--------------------------- -->
@@ -89,7 +89,7 @@
             </app-product>
           </ng-template>
           <ng-template let-product pTemplate="listItem">
-            <div class="p-col-12">
+            <div class="p-col-12 long-card-cont">
               <app-long-prod-card class="box mx-3" [product]="product">
               </app-long-prod-card>
             </div>
@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <div class="col-lg-3 col-md-12 sidebar-panel">
+    <div class="col-lg-4 col-md-12 sidebar-panel">
       <aside class="sidebar_widget">
         <div class="widget_inner">
           <div

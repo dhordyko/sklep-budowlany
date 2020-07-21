@@ -24,7 +24,8 @@ export class LongProdCardComponent implements OnInit {
     '&lt;br&gt;]]&gt;',
     '&lt;BR&gt;',
     '&lt;BR&gt;]]&gt;',
-    ' ]]&gt; ',
+    ']]&gt;',
+    '&lt',
   ];
   constructor(
     private sanitizer: DomSanitizer,
