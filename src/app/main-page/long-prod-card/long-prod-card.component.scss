@@ -73,7 +73,7 @@ mat-card-actions {
   flex-direction: column;
   padding-left: 20px;
   display: flex;
-  height: 30vh;
+
   border-left: 1px solid #dddddd;
   margin: 20px 0;
 }
@@ -104,4 +104,15 @@ mat-card:hover {
   -webkit-box-shadow: inset 0px 0px 0px 1px #fdb813;
   -moz-box-shadow: inset 0px 0px 0px 1px #fdb813;
   box-shadow: inset 0px 0px 0px 1px #fdb813;
+}
+@media (max-width: 960px) {
+  mat-card-content {
+    align-items: stretch;
+    flex-direction: column;
+    padding-left: 20px;
+    display: flex;
+  }
+  mat-card-actions {
+    border-left: 1px solid transparent;
+  }
 }

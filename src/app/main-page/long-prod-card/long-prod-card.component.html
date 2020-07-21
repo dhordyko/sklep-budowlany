@@ -24,7 +24,7 @@
       <p>{{ product.manufacturer }}</p>
 
       <p [routerLink]="" class="prod-name">{{ product.name }}</p>
-      <p class="prod-description">
+      <p class="prod-description mx-auto">
         {{ product.description | stringReplacement: emphasisWords }}
       </p>
     </mat-card-content>
