@@ -139,6 +139,9 @@ mat-card:hover {
 
     display: flex;
   }
+  mat-card-content {
+    border-right: 1px solid transparent !important;
+  }
 }
 
 @media (max-width: 960px) and (min-width: 601px) {
@@ -150,7 +153,7 @@ mat-card:hover {
     margin-right: auto;
   }
   mat-card-content {
-    border-right: 1px solid transparent;
+    border-right: 1px solid transparent !important;
   }
   .addBtn {
     max-width: 100%;
