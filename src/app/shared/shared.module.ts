@@ -6,6 +6,7 @@ import { PriceSortPipe } from './pipes/price-sort.pipe';
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { ItemsCountPipe } from './pipes/items-count.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { StringReplacementPipe } from './pipes/string-replacement.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SearchPipe } from './pipes/search.pipe';
     PriceSortPipe,
     SortByPipe,
     ItemsCountPipe,
+    StringReplacementPipe,
   ],
   imports: [CommonModule],
   exports: [
@@ -24,6 +26,7 @@ import { SearchPipe } from './pipes/search.pipe';
     PriceSortPipe,
     SortByPipe,
     ItemsCountPipe,
+    StringReplacementPipe,
   ],
 })
 export class SharedModule {}

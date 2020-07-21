@@ -24,7 +24,9 @@
       <p>{{ product.manufacturer }}</p>
 
       <p [routerLink]="" class="prod-name">{{ product.name }}</p>
-      <p class="prod-description">{{ product.description }}</p>
+      <p class="prod-description">
+        {{ product.description | stringReplacement: emphasisWords }}
+      </p>
     </mat-card-content>
     <mat-card-actions
       class="p-col"

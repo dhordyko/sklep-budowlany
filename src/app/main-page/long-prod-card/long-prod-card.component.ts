@@ -14,7 +14,18 @@ export class LongProdCardComponent implements OnInit {
   image: any;
   @Input() showElement = false;
   @Input() item: any;
-
+  emphasisWords: string[] = [
+    '&lt;![CDATA[',
+    ' . &lt;br&gt;&lt;br&gt;',
+    '.]]&gt;',
+    '&lt;P&gt;&lt;STRONG&gt;NITY ZRYWALNE&lt;/STRONG&gt;&lt;/P&gt;&lt;P&gt;&lt;STRONG&gt;&lt;/STRONG&gt;&lt;BR&gt;',
+    '.&lt;BR&gt;&lt;BR&gt;',
+    '&lt;br&gt;',
+    '&lt;br&gt;]]&gt;',
+    '&lt;BR&gt;',
+    '&lt;BR&gt;]]&gt;',
+    ' ]]&gt; ',
+  ];
   constructor(
     private sanitizer: DomSanitizer,
     private prodServ: ProductService
@@ -26,6 +37,7 @@ export class LongProdCardComponent implements OnInit {
     );
     this.idPassing();
   }
+
   getSantizeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
