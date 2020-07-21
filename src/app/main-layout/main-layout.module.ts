@@ -13,9 +13,9 @@ import { AllcatMenuComponent } from '../main-layout/allcat-menu/allcat-menu.comp
 import { StartPageComponent } from '../start-page/start-page.component';
 import { ProductComponent } from '../product/product.component';
 import { StartMobileComponent } from '../start-page/start-mobile/start-mobile.component';
+
 import { MainPageComponent } from '../main-page/main-page.component';
 import { LongProdCardComponent } from '../main-page/long-prod-card/long-prod-card.component';
-
 @NgModule({
   declarations: [
     MainLayoutComponent,

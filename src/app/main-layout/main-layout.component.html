@@ -531,7 +531,7 @@
 </section>
 <!---------------mobile view navbar fixed------------------- -->
 <section fxShow.xs="true" fxShow.gt-sm="false" class="logo-mobile-top">
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" [class.mobile-nav]="true">
     <div class="menu-icon-wrapper ml-5" fxLayout="row wrap">
       <a class="sidebar-toggle mr-2 mt-2">
         <mat-icon>menu</mat-icon>
@@ -551,7 +551,7 @@
   </nav>
 </section>
 <section fxShow.xs="true" fxShow.gt-sm="false" class="logo-mobile-bottom">
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" [class.mobile-nav]="true">
     <div class="logo-wrapper ml-5">
       <img src="assets/carousel/logo.png" />
     </div>

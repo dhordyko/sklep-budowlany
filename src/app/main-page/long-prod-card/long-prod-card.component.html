@@ -1,5 +1,10 @@
-<mat-card class="example-card my-2" [class.hover-shadow]="showElement">
-  <div class="p-grid">
+<mat-card class="example-card my-2" [class.hover-shadow]="showElement"
+  >'
+  <div
+    class="p-grid"
+    [ngStyle.xs]="{ display: 'block' }"
+    [ngStyle.sm]="{ display: 'block' }"
+  >
     <mat-card-header
       class="text-center p-col"
       fxLayout="row wrap"
@@ -25,7 +30,13 @@
       class="p-col"
       fxLayout="column wrap"
       fxLayoutAlign="center center"
+      fxLayoutAlign.xs="center stretch"
+      fxLayoutAlign.sm="center stretch"
       fxLayoutGap="24px "
+      [ngStyle.xs]="{
+        padding: '10px',
+        margin: '0px'
+      }"
     >
       <p class="stock-availability">
         Dostępność na magazyni : <span>{{ product.count_available }}</span>

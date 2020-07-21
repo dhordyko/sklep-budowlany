@@ -120,8 +120,9 @@
 
 // --------------------nav mobile version---------------
 #cart-icon-container {
-  margin-right: 40px;
+  margin-right: 20px;
 }
+
 .logo-mobile-bottom {
   background: $yellow;
 }
@@ -376,4 +377,11 @@
   text-transform: capitalize;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+// media queries
+@media (max-width: 600px) {
+  .mobile-nav {
+    width: 100vw;
+    max-width: 100%;
+  }
 }

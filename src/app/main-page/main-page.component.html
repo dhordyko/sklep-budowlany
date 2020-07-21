@@ -1,6 +1,7 @@
 <section
-  class="banner-row"
+  [class.banner-row]="true"
   [ngStyle]="{ 'margin-bottom': '30px', 'margin-top': '30px' }"
+  [ngStyle.xs]="{ 'background-size': 'contain' }"
 >
   <div
     class="banner-wrapper"
@@ -29,7 +30,7 @@
           [value]="result"
           class="dashboard"
           [paginator]="true"
-          [rows]="30"
+          [rows]="12"
           layout="grid"
           loadingIcon="fa-spinner"
           currentPageReportTemplate="{first}-{last} of {totalRecords} records"
@@ -38,32 +39,50 @@
           [sortOrder]="sortOrder"
         >
           <p-header class="mb-4">
-            <div fxLayout="row wrap" fxLayout="20px">
-              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            <div
+              fxLayout="row wrap"
+              fxLayout.xs="column"
+              fxLayoutAlign.xs="space-around center"
+              fxLayoutGap="20px"
+              [ngStyle.xs]="{ padding: '20px' }"
+            >
+              <p-dataViewLayoutOptions
+                [ngStyle.xs]="{ 'margin-bottom': '17px' }"
+              ></p-dataViewLayoutOptions>
               <p-dropdown
                 class="m-auto"
                 [options]="sortOptions"
                 [(ngModel)]="sortKey"
                 placeholder="Sort By"
                 (onChange)="onSortChange($event)"
-                [style]="{ 'min-width': '300px', 'min-height': '15px' }"
-              ></p-dropdown>
-              <span class="float-right">{{ paginatorTemplateUpload() }} </span>
+                [style]="{ 'min-height': '30px' }"
+              >
+              </p-dropdown>
+              <span class="float-right paginator-template"
+                >{{ paginatorTemplateUpload() }}
+              </span>
             </div>
           </p-header>
           <br />
-          <!-- <ng-template let-product pTemplate="listItem">
-                    <div class="p-col-12">
-                      <app-product [product]="product"> </app-product>
-                    </div>
-                  </ng-template> -->
 
-          <ng-template let-product pTemplate="gridItem">
+          <ng-template
+            class="grid-products-view"
+            let-product
+            pTemplate="gridItem"
+          >
             <app-product
               class="box mx-3"
-              [ngStyle.lt-md]="{ 'margin-top': '2rem' }"
-              [ngStyle.md]="{ width: '30%', 'margin-top': '2rem' }"
-              [ngStyle.sm]="{ width: '50%', 'margin-top': '2rem' }"
+              [ngStyle.lt-sm]="{
+                width: '100%',
+                'margin-top': '2rem',
+                margin: '0 50%',
+                padding: '10%'
+              }"
+              [ngStyle.sm]="{
+                width: '45%',
+                margin: '0px',
+                padding: '15px'
+              }"
               [ngStyle.gt-md]="{ width: '26%', 'margin-top': '2rem' }"
               [product]="product"
             >
@@ -91,7 +110,7 @@
             <h4>Filter by price</h4>
             <p-slider
               [(ngModel)]="rangeSliderValues"
-              [style]="{ width: '14em' }"
+              [style.gt-md]="{ width: '14em' }"
               [range]="true"
             ></p-slider>
             <button class="price-slider-btn" (click)="filterPrices()">
@@ -114,18 +133,23 @@
             <div *ngFor="let category of categoriesData; let i = index">
               <span
                 class="example-list-section"
-                fxLayout="column"
+                fxLayout="column wrap"
                 fxLayoutGap="20px"
               >
                 <mat-checkbox
                   class="example-margin mb-1"
                   (change)="setProductCat()"
                   [(ngModel)]="category.checked"
+                  fxLayout="row wrap"
                 >
-                  <span [class.chk-brand-text]="true" class="text-capitalize">{{
-                    category.name
-                  }}</span
-                  ><span>({{ categoryItemsLength[i] }})</span>
+                  <div
+                    fxLayout="row wrap"
+                    fxLayoutGap="1px"
+                    [class.chk-brand-text]="true"
+                  >
+                    <span class="text-capitalize ml-1">{{ category.name }}</span
+                    ><span>({{ categoryItemsLength[i] }})</span>
+                  </div>
                 </mat-checkbox>
               </span>
             </div>
@@ -143,11 +167,14 @@
                   class="example-margin mb-1 text-lowercase"
                   (change)="setManufacturer()"
                   [(ngModel)]="brand.checked"
+                  fxLayout="row"
                 >
-                  <span class="text-capitalize" [class.chk-manuf-text]="true">{{
-                    brand.brand
-                  }}</span
-                  ><span>({{ manufItemsLength[i] }})</span>
+                  <span class="text-capitalize" [class.chk-manuf-text]="true"
+                    >{{ brand.brand
+                    }}<span class="ml-1"
+                      >({{ manufItemsLength[i] }})</span
+                    ></span
+                  >
                 </mat-checkbox>
               </span>
             </div>

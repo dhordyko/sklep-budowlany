@@ -13,16 +13,15 @@ import { ProductService } from '../shared/product.service';
 import { Product } from '../interfaces';
 import { Router } from '@angular/router';
 import { Subscription, fromEvent } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
+
 import { DataView } from 'primeng/dataview';
 import { SelectItem } from 'primeng/api';
 import * as $ from 'jquery';
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
-  providers: [],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainPageComponent implements OnInit {
   products$;
@@ -106,14 +105,14 @@ export class MainPageComponent implements OnInit {
 
     this.sortOptions = [
       { label: 'Manufacturer', value: 'brand' },
-      { label: 'Sort by Price : low to high', value: 'lowPriceFirst' },
-      { label: 'Sort by Price : high to low', value: 'highPriceFirst' },
+      { label: 'Price : low to high', value: 'lowPriceFirst' },
+      { label: 'Price : high to low', value: 'highPriceFirst' },
       {
-        label: 'Sort by Client Discount : low to high',
+        label: 'Client Discount : low to high',
         value: 'lowDiscountFirst',
       },
       {
-        label: 'Sort by Client Discount : high to low',
+        label: 'Client Discount : high to low',
         value: 'highDiscountFirst',
       },
     ];

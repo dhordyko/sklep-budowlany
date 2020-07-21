@@ -1,10 +1,5 @@
 @import "../../styles/variables";
 
-.dashboard {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .box {
   width: 33.333%;
   margin-top: 2rem;
@@ -12,7 +7,7 @@
 .banner-row {
   background-image: url(src/assets/carousel/banner11.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
   overflow: hidden;
 }
@@ -25,9 +20,9 @@
   min-height: 100%;
 }
 .price-slider-btn {
-  width: 70px;
+  width: 100px;
 
-  line-height: 30px;
+  line-height: 40px;
   padding: 0 20px;
   text-transform: capitalize;
   color: $white;
@@ -43,9 +38,9 @@
 }
 // Sidebar styles
 .sidebar-panel {
-  top: 100px;
+  height: 1000px;
   background: $white;
-  position: sticky;
+  position: relative;
   padding: 20px;
   background: $sorting-panel-color;
 }
@@ -70,4 +65,24 @@
   line-height: 27px;
   margin-left: 8px;
   letter-spacing: 0.95px;
+}
+// MADIA QUERIES
+
+@media (max-width: 610px) {
+  .paginator-template {
+    margin-top: 16px;
+  }
+  .ui-dataview .ui-paginator-bottom {
+    width: 100% !important;
+  }
+}
+@media (min-width: 800px) and (max-width: 1400px) {
+  app-product {
+    width: 28% !important;
+    margin: 0 auto !important;
+    padding: 0px !important;
+  }
+  .dataViewConteiner {
+    margin: 0 auto;
+  }
 }

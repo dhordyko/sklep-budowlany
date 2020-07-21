@@ -89,8 +89,15 @@ mat-card-content {
   background-repeat: no-repeat;
   background-position: center;
 }
-.hover-shadow {
-  -webkit-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
-  -moz-box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
-  box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
+mat-card:hover {
+  -webkit-box-shadow: inset 0px 0px 0px 1px #fdb813;
+  -moz-box-shadow: inset 0px 0px 0px 1px #fdb813;
+  box-shadow: inset 0px 0px 0px 1px #fdb813;
+}
+
+@media (max-width: 650px) {
+  app-long-prod-card > .mat-card-actions {
+    margin: 0px;
+    padding: 0px;
+  }
 }
