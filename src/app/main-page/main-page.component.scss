@@ -43,11 +43,12 @@
   position: relative;
   padding: 20px;
   background: $sorting-panel-color;
+  border: 1px solid #e1e1e1;
 }
 .sidebar_widget > h4 {
   font-size: 16px;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 700 !important;
   line-height: 24px;
 }
 .range-slider-widget,
@@ -66,6 +67,7 @@
   margin-left: 8px;
   letter-spacing: 0.95px;
 }
+
 // MADIA QUERIES
 
 @media (max-width: 610px) {
@@ -91,6 +93,10 @@
     flex: 100% !important;
     max-width: 100% !important;
     margin: 0 auto !important;
+  }
+  .sidebar-panel {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
   }
 }
 @media (min-width: 1100px) and (max-width: 1250px) {

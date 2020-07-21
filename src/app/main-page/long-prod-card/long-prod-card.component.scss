@@ -65,16 +65,16 @@ mat-card-header {
 mat-card-content {
   overflow: hidden;
   cursor: pointer;
-  border-right: 1 px solid #ededed;
+  padding-right: 20px;
+  flex-basis: 24vw;
 }
 mat-card-actions {
-  place-content: stretch center;
-  align-items: stretch;
+  align-items: center;
   flex-direction: column;
-  box-sizing: border-box;
+  padding-left: 20px;
   display: flex;
-  max-height: 100%;
-  padding: 0 10px !important;
+  height: 30vh;
+  border-left: 1px solid #dddddd;
   margin: 20px 0;
 }
 
