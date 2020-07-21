@@ -8,6 +8,9 @@
 .pi-step-forward::before {
   content: "" !important;
 }
+.pi-step-backward::before {
+  content: "" !important;
+}
 .ui-helper-hidden-accessible {
   border: 0;
   clip: rect(0 0 0 0);

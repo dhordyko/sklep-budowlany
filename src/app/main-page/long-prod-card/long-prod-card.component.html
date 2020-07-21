@@ -24,7 +24,7 @@
       <p>{{ product.manufacturer }}</p>
 
       <p [routerLink]="" class="prod-name">{{ product.name }}</p>
-      <p class="prod-description mx-auto">
+      <p class="prod-description">
         {{ product.description | stringReplacement: emphasisWords }}
       </p>
     </mat-card-content>
@@ -44,40 +44,41 @@
           <span class="current-price">{{ product.client_price }} zł</span>
         </p>
       </div>
-
-      <a
-        mat-stroked-button
-        color="primary"
-        class="addBtn mb-4"
-        (click)="addToCart()"
-        >Add to Cart</a
-      >
-      <ul
-        class="icon-wrapper-list"
-        fxLayout="row wrap"
-        fxLayoutAlign="center center"
-        fxLayoutGap="10px"
-      >
-        <li>
-          <div class="icon-wrapper" [routerLink]="">
-            <mat-icon class="truck-icon">favorite_border</mat-icon>
-          </div>
-        </li>
-        <li>
-          <div class="icon-wrapper" [routerLink]="">
-            <mat-icon class="truck-icon">compare_arrows</mat-icon>
-          </div>
-        </li>
-        <li>
-          <div
-            class="icon-wrapper"
-            [routerLink]="['/product', product.id]"
-            (click)="idPassing()"
-          >
-            <mat-icon class="truck-icon">remove_red_eye</mat-icon>
-          </div>
-        </li>
-      </ul>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <a
+          mat-stroked-button
+          color="primary"
+          class="addBtn mb-4"
+          (click)="addToCart()"
+          >Add to Cart</a
+        >
+        <ul
+          class="icon-wrapper-list"
+          fxLayout="row wrap"
+          fxLayoutAlign="center center"
+          fxLayoutGap="10px"
+        >
+          <li>
+            <div class="icon-wrapper" [routerLink]="">
+              <mat-icon class="truck-icon">favorite_border</mat-icon>
+            </div>
+          </li>
+          <li>
+            <div class="icon-wrapper" [routerLink]="">
+              <mat-icon class="truck-icon">compare_arrows</mat-icon>
+            </div>
+          </li>
+          <li>
+            <div
+              class="icon-wrapper"
+              [routerLink]="['/product', product.id]"
+              (click)="idPassing()"
+            >
+              <mat-icon class="truck-icon">remove_red_eye</mat-icon>
+            </div>
+          </li>
+        </ul>
+      </div>
     </mat-card-actions>
   </div>
 </mat-card>
