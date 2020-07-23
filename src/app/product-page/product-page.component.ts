@@ -26,11 +26,14 @@ export class ProductPageComponent implements OnInit {
   secondFormGroup: FormGroup;
   isEditable = false;
   isActive = false;
+  prodsAll$: any;
   ngOnInit(): void {
     var id = this.route.snapshot.params['id'];
     if (!this.product) {
       const promise = this.prodServ.getProduct(id).toPromise();
       const promiseImg = this.prodServ.getProduct(id).toPromise();
+      const promiseAll = this.prodServ.getProducts().toPromise();
+      this.prodsAll$ = promiseAll.then((data) => data.success.products.data);
       promise.then((data) => (this.product = data.success.product));
       promiseImg.then((data) => {
         this.imgData(data.success.product.url_images);

@@ -14,7 +14,7 @@ mat-card {
 .ui-carousel-items-content {
   background: red;
 }
-:host ::ng-deep .ui-carousel-content {
+:host ::ng-deep .small-carousel-container > .ui-carousel-content {
   width: 330px;
   .ui-carousel-container {
     height: 200px;
@@ -99,6 +99,17 @@ mat-card {
   width: 55vw;
   margin: 0 auto;
   margin-top: 40px;
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  color: black;
+  letter-spacing: 0.95px;
+  line-height: 28px;
+  mat-label {
+    font-weight: 700;
+    font-size: 18px;
+  }
   p {
     margin-top: 20px;
   }

@@ -17,7 +17,7 @@
         </mat-card>
       </div>
       <div
-        class="col-12"
+        class="col-12 small-carousel-container"
         fxLayout="row wrap"
         fxLayoutAlign="space-around center"
       >
@@ -160,18 +160,37 @@
             </mat-step>
             <mat-step>
               <ng-template matStepLabel>Opinia o produkcie</ng-template>
-              <p>You are now done.</p>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-              </div>
             </mat-step>
           </mat-horizontal-stepper>
         </div>
-        <div #description class="col-12 description-link-container"></div>
-        <div #specifcation class="col-12 specification-container"></div>
-        <div class="col-12 review-container"></div>
       </div>
     </div>
   </div>
+</section>
+
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="product-mobile-carousel1"
+  *ngIf="prodsAll$ | async as products"
+>
+  <p-carousel [value]="products" [numVisible]="5" [numScroll]="1">
+    <ng-template let-category pTemplate="item">
+      <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+        <app-product [product]="category"></app-product>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="product-carousel2"
+  *ngIf="prodsAll$ | async as products"
+>
+  <p-carousel [value]="products" [numVisible]="5" [numScroll]="1">
+    <ng-template let-category pTemplate="item">
+      <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+        <app-product [product]="category"></app-product>
+      </div>
+    </ng-template>
+  </p-carousel>
 </section>
