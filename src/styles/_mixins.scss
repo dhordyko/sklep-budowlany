@@ -18,19 +18,7 @@
   -webkit-animation-delay: $animation-delay;
   animation-delay: $animation-delay;
 }
-@mixin btn($ft-wt, $animation-delay) {
-  color: #333;
-  bottom: 0px;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 0 50px;
-  line-height: 36px;
-  height: 36px;
-  text-transform: capitalize;
-  background: #fdb813;
 
-  border-radius: 5px;
-}
 @mixin btn($padding, $line-height) {
   color: #333;
   bottom: 0px;

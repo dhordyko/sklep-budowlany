@@ -14,22 +14,10 @@ export class LongProdCardComponent implements OnInit {
   image: any;
   @Input() showElement = false;
   @Input() item: any;
-  emphasisWords: string[] = [
-    '&lt;![CDATA[',
-    ' . &lt;br&gt;&lt;br&gt;',
-    '.]]&gt;',
-    '&lt;P&gt;&lt;STRONG&gt;NITY ZRYWALNE&lt;/STRONG&gt;&lt;/P&gt;&lt;P&gt;&lt;STRONG&gt;&lt;/STRONG&gt;&lt;BR&gt;',
-    '.&lt;BR&gt;&lt;BR&gt;',
-    '&lt;br&gt;',
-    '&lt;br&gt;]]&gt;',
-    '&lt;BR&gt;',
-    '&lt;BR&gt;]]&gt;',
-    ']]&gt;',
-    '&lt',
-  ];
+
   constructor(
     private sanitizer: DomSanitizer,
-    private prodServ: ProductService
+    public prodServ: ProductService
   ) {}
 
   ngOnInit(): void {

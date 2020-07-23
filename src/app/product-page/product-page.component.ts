@@ -3,6 +3,7 @@ import { ProductService } from '../shared/product.service';
 import { Product } from '../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-page',
@@ -12,15 +13,19 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class ProductPageComponent implements OnInit {
   constructor(
-    private prodServ: ProductService,
+    public prodServ: ProductService,
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private _formBuilder: FormBuilder
   ) {}
   product: Product;
   Productid: any;
   quantity: number = 1;
   imagesArray = Array<{ images: string }>();
-
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  isEditable = false;
+  isActive = false;
   ngOnInit(): void {
     var id = this.route.snapshot.params['id'];
     if (!this.product) {
@@ -31,9 +36,15 @@ export class ProductPageComponent implements OnInit {
         this.imgData(data.success.product.url_images);
       });
     }
-    // this.prodServ.countdownEndSource.subscribe(
-    //   (product) => (this.product = product)
-    // );
+    this.firstFormGroup = this._formBuilder.group({});
+    this.secondFormGroup = this._formBuilder.group({});
+  }
+  applyClass() {
+    console.log('hello');
+    this.isActive = true;
+  }
+  applyHover(event) {
+    console.log(event.currentTarget.class);
   }
   addOneItem() {
     if (this.quantity == 50) {

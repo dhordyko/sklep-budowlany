@@ -99,7 +99,7 @@
               color="warn"
               (click)="addToCart()"
             >
-              <strong>Add to Cart</strong>
+              <strong>Dodaj do Koszyka</strong>
             </button>
             <button
               [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
@@ -108,20 +108,12 @@
               class="order_btn"
               color="warn"
             >
-              <strong>Order now</strong>
+              <strong>Kup Teraz</strong>
             </button>
           </div>
         </div>
       </div>
 
-      <div class="row prod-description-container">
-        <div class="col-10">
-          <div class="col-12 navigation-container"></div>
-          <div class="col-12 description-link-container"></div>
-          <div class="col-12 specification-container"></div>
-          <div class="col-12 review-container"></div>
-        </div>
-      </div>
       <div class="row carousels-container">
         <div class="col-12">
           <div class="col-10"></div>
@@ -133,3 +125,53 @@
     </div>
   </div>
 </div>
+<section class="product-description">
+  <div class="container-fluid">
+    <div
+      class="row prod-description-container"
+      fxLayout="row wrap"
+      fxLayoutAlign="center center"
+    >
+      <div class="col-10">
+        <div class="col-12 navigation-container">
+          <mat-horizontal-stepper labelPosition="bottom" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel> Opis</ng-template>
+
+                <mat-label>{{ product.name }}</mat-label>
+                <p>
+                  {{
+                    product.description
+                      | stringReplacement: prodServ.emphasisWords
+                  }}
+                </p>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Specyfikacja</ng-template>
+
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Opinia o produkcie</ng-template>
+              <p>You are now done.</p>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+        <div #description class="col-12 description-link-container"></div>
+        <div #specifcation class="col-12 specification-container"></div>
+        <div class="col-12 review-container"></div>
+      </div>
+    </div>
+  </div>
+</section>
