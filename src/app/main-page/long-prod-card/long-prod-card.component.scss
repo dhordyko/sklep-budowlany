@@ -1,3 +1,5 @@
+@import "../../../styles/mixins";
+
 .mat-card-header,
 .stock-availability {
   display: block;
@@ -81,21 +83,10 @@ mat-card-content {
 }
 
 .addBtn {
-  color: #333;
-  bottom: 0px;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 0 50px;
-  line-height: 36px;
-  height: 36px;
-  text-transform: capitalize;
-  background: #fdb813;
-
-  border-radius: 5px;
+  @include btn(0 50px, 36px);
 }
 .addBtn:hover {
-  color: #fdb813;
-  background: #333;
+  @include btn-hover();
 }
 .product-image {
   background-size: contain;

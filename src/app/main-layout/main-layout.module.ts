@@ -16,6 +16,7 @@ import { StartMobileComponent } from '../start-page/start-mobile/start-mobile.co
 
 import { MainPageComponent } from '../main-page/main-page.component';
 import { LongProdCardComponent } from '../main-page/long-prod-card/long-prod-card.component';
+
 @NgModule({
   declarations: [
     MainLayoutComponent,

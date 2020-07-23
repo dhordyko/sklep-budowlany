@@ -8,6 +8,7 @@ export class SortingPipe implements PipeTransform {
   constructor(private prodServ: ProductService) {}
   transform(products: Product[], category = []): any {
     if (category.length === 0) {
+      console.log(products);
       return products;
     }
 

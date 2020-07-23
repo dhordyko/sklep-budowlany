@@ -115,11 +115,3 @@ mat-card:hover {
   -moz-box-shadow: inset 0px 0px 0px 1px #fdb813;
   box-shadow: inset 0px 0px 0px 1px #fdb813;
 }
-@media (max-width: 600px) {
-  .image-container {
-    height: 36vh;
-    display: block;
-    -o-object-fit: scale-down;
-    object-fit: scale-down;
-  }
-}
