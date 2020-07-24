@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row product-view-container">
-    <div class="col">
+    <div class="col" fxLayout="column" fxLayoutAlign="space-around center">
       <div class="col-12">
         <mat-card>
           <mat-card-header>
@@ -17,9 +17,9 @@
         </mat-card>
       </div>
       <div
-        class="col-12 small-carousel-container"
+        class="col-9 small-carousel-container"
         fxLayout="row wrap"
-        fxLayoutAlign="space-around center"
+        fxLayoutAlign="center center"
       >
         <p-carousel
           [value]="imagesArray"
@@ -30,7 +30,11 @@
           <ng-template let-item pTemplate="item">
             <div fxLayout="row wrap" fxLayoutAlign="space-around center">
               <div class="row pt-4">
-                <div class="col-12">
+                <div
+                  class="col-12"
+                  fxLayout="row wrap"
+                  fxLayoutAlign="space-around center"
+                >
                   <img [src]="item.images" style="height: 150px;" />
                 </div>
               </div>
@@ -63,7 +67,7 @@
         </p>
         <div fxLayout="column" fxLayoutGap="60px">
           <div class="btns_container" fxLayout="row wrap">
-            <h1><small>Quantity :</small></h1>
+            <h3>Ilość :</h3>
             <div class="d-flex justify-content-center mt-2 mx-3">
               <button
                 class="remove_btn"
@@ -113,19 +117,10 @@
           </div>
         </div>
       </div>
-
-      <div class="row carousels-container">
-        <div class="col-12">
-          <div class="col-10"></div>
-        </div>
-        <div class="col-12">
-          <div class="col-10"></div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
-<section class="product-description">
+<section class="product-description" [ngStyle]="{ 'margin-top': '70px' }">
   <div class="container-fluid">
     <div
       class="row prod-description-container"
