@@ -63,11 +63,7 @@ app-start-page {
 .ui-carousel-prev {
   color: #333333;
 }
-.ui-carousel-next:hover,
-.ui-carousel-prev :hover {
-  color: #fdb813 !important;
-  border-color: #fdb813 !important;
-}
+
 .ui-carousel-prev,
 .ui-carousel-nex {
   width: 3.5em;
@@ -78,7 +74,6 @@ button.ui-carousel-prev,
   background-color: white;
   border-color: transparent !important;
   color: #fdb813 !important;
-  border-radius: 50%;
 }
 app-start-page {
   width: 100%;
@@ -118,4 +113,11 @@ p-carousel > .ui-carousel-items-container {
 .ui-dropdown.ui-widget.ui-state-default.ui-corner-all {
   border: 1px solid #333333;
   border-radius: 5px;
+}
+.mat-form-field-infix::after {
+  color: #fdb813;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple.mat-accent {
+  background-color: black;
 }

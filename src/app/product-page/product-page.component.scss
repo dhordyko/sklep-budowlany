@@ -150,3 +150,21 @@ mat-card {
     }
   }
 }
+.carousel-title {
+  padding-left: 70px;
+}
+.specification-titles,
+.specification-descr {
+  border: 1px solid #dddddd;
+}
+
+:host ::ng-deep .mat-horizontal-content-container {
+  .text-filed-container {
+    width: 100vw;
+    height: auto;
+    min-height: 20vw;
+  }
+}
+:host ::ng-deep .feedback-textarea {
+  width: 100vw;
+}

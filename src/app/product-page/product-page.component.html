@@ -152,14 +152,89 @@
               <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Specyfikacja</ng-template>
 
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
+                <div class="container">
+                  <div class="row">
+                    <div
+                      class="col-4 specification-titles"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Compositions</p>
+                      <mat-divider></mat-divider>
+
+                      <p>Styles</p>
+                      <mat-divider></mat-divider>
+                      <p>Properties</p>
+                    </div>
+                    <div
+                      class="col-8 specification-descr"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Polyester</p>
+                      <mat-divider></mat-divider>
+                      <p>Girly</p>
+                      <mat-divider></mat-divider>
+                      <p>Short Dress</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div fxLayout="row">
+                      <p style="padding: 0px;">
+                        Fashion has been creating well-designed collections
+                        since 2010. The brand offers feminine designs delivering
+                        stylish separates and statement dresses which have since
+                        evolved into a full ready-to-wear collection in which
+                        every item is a vital part of a woman's wardrobe. The
+                        result? Cool, easy, chic looks with youthful elegance
+                        and unmistakable signature style. All the beautiful
+                        pieces are made in Italy and manufactured with the
+                        greatest attention. Now Fashion extends to a range of
+                        accessories including shoes, hats, belts and more!
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </form>
             </mat-step>
             <mat-step>
-              <ng-template matStepLabel>Opinia o produkcie</ng-template>
+              <form>
+                <ng-template matStepLabel>Opinia o produkcie</ng-template>
+                <mat-form-field class="feedback-textarea" appearance="fill">
+                  <mat-label style="color: #fdb813;"
+                    >Your review<mat-icon style="color: #fdb813;" matSuffix
+                      >sentiment_very_satisfied</mat-icon
+                    ></mat-label
+                  >
+                  <textarea matInput class="text-filed-container"></textarea>
+                </mat-form-field>
+
+                <form class="example-form" fxLayout="column" fxLayoutGap="20px">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Favorite food</mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="Sushi" />
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea
+                      matInput
+                      placeholder="Ex. It makes me feel..."
+                    ></textarea>
+                  </mat-form-field>
+                  <button
+                    [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
+                    [routerLink]="['']"
+                    mat-raised-button
+                    class="cart_btn"
+                    (click)="addToCart()"
+                  >
+                    <strong>Send</strong>
+                  </button>
+                </form>
+              </form>
             </mat-step>
           </mat-horizontal-stepper>
         </div>
@@ -173,6 +248,13 @@
   class="product-mobile-carousel1"
   *ngIf="prodsAll$ | async as products"
 >
+  <div
+    class="carousel-title"
+    fxLayout="row wrap"
+    [ngStyle]="{ 'margin-bottom': '30px' }"
+  >
+    <h1>Related Products</h1>
+  </div>
   <p-carousel [value]="products" [numVisible]="5" [numScroll]="1">
     <ng-template let-category pTemplate="item">
       <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
@@ -186,6 +268,13 @@
   class="product-carousel2"
   *ngIf="prodsAll$ | async as products"
 >
+  <div
+    class="carousel-title"
+    fxLayout="row wrap"
+    [ngStyle]="{ 'margin-bottom': '30px' }"
+  >
+    <h1>Related Products</h1>
+  </div>
   <p-carousel [value]="products" [numVisible]="5" [numScroll]="1">
     <ng-template let-category pTemplate="item">
       <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
