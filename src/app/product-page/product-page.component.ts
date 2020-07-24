@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss'],
-  styles: [],
 })
 export class ProductPageComponent implements OnInit {
   constructor(
@@ -27,6 +26,7 @@ export class ProductPageComponent implements OnInit {
   isEditable = false;
   isActive = false;
   prodsAll$: any;
+  responsiveOptions;
   ngOnInit(): void {
     var id = this.route.snapshot.params['id'];
     if (!this.product) {
@@ -41,6 +41,28 @@ export class ProductPageComponent implements OnInit {
     }
     this.firstFormGroup = this._formBuilder.group({});
     this.secondFormGroup = this._formBuilder.group({});
+    this.responsiveOptions = [
+      {
+        breakpoint: '1300px',
+        numVisible: 4,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '1100px',
+        numVisible: 3,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '780px',
+        numVisible: 2,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '600px',
+        numVisible: 1,
+        numScroll: 1,
+      },
+    ];
   }
   applyClass() {
     console.log('hello');

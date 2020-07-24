@@ -168,3 +168,54 @@ mat-card {
 :host ::ng-deep .feedback-textarea {
   width: 100vw;
 }
+mat-label {
+  color: black !important;
+}
+
+:host ::ng-deep .bottom-carousel .ui-carousel .ui-carousel-content,
+:host ::ng-deep .top-carousel .ui-carousel .ui-carousel-content {
+  @media (max-width: 380px) {
+    .ui-carousel-container {
+      padding: 0px;
+    }
+  }
+  @media (min-width: 450px) and (max-width: 600px) {
+    .ui-carousel-container {
+      padding: 10vw;
+    }
+  }
+}
+:host ::ng-deep {
+  @media (min-width: 600px) and (max-width: 1300px) {
+    app-product {
+      height: 100%;
+      min-height: 100%;
+      min-width: 100%;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .product-container {
+      margin: 0 20px;
+    }
+  }
+
+  @media (max-width: 580px) {
+    app-product {
+      height: 100%;
+      min-height: 100%;
+      min-width: 100%;
+      width: 100%;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .carousel-title {
+    h1 {
+      text-align: center;
+      margin: 0 auto;
+      padding: 0px;
+    }
+  }
+}

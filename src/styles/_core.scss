@@ -59,6 +59,7 @@ app-start-page {
 .ui-carousel-dots-container {
   display: none !important;
 }
+
 .ui-carousel-next,
 .ui-carousel-prev {
   color: #333333;
@@ -118,6 +119,10 @@ p-carousel > .ui-carousel-items-container {
   color: #fdb813;
 }
 
-.mat-form-field.mat-focused .mat-form-field-ripple.mat-accent {
-  background-color: black;
+.mat-form-field-label {
+  color: #fdb813;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #fdb813;
 }
