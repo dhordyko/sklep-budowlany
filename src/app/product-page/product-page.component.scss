@@ -1,5 +1,11 @@
 @import "../../styles/mixins";
 //image-descripti concontainer
+:host ::ng-deep {
+  .container {
+    max-width: 100%;
+    width: 100%;
+  }
+}
 .mat-image {
   max-width: 100%;
   max-height: 100%;
@@ -114,7 +120,9 @@ mat-card {
     margin-top: 20px;
   }
 }
-:host ::ng-deep .mat-horizontal-stepper-header-container {
+
+:host ::ng-deep .mat-horizontal-stepper-header-container,
+:host ::ng-deep .mat-vertical-stepper-header {
   width: 70vw;
   margin: 0 auto;
   .mat-step-header {
@@ -171,7 +179,7 @@ mat-card {
 mat-label {
   color: black !important;
 }
-
+// --------------mediaquarie-----------------
 :host ::ng-deep .bottom-carousel .ui-carousel .ui-carousel-content,
 :host ::ng-deep .top-carousel .ui-carousel .ui-carousel-content {
   @media (max-width: 380px) {
@@ -211,11 +219,32 @@ mat-label {
   }
 }
 @media (max-width: 600px) {
+  .wide-product-picture-wrapper {
+    height: 40vh;
+  }
   .carousel-title {
+    padding: 0px;
     h1 {
       text-align: center;
       margin: 0 auto;
       padding: 0px;
     }
+  }
+}
+:host ::ng-deep .wide-product-picture {
+  @media (max-width: 600px) {
+    .img-container > img {
+      max-height: 100%;
+      height: 40vh;
+    }
+  }
+}
+@media (max-width: 900px) {
+  .wide-product-picture-wrapper,
+  .product-image-carousel {
+    margin-bottom: 30px;
+  }
+  .product_d_right {
+    margin-top: 0px;
   }
 }

@@ -1,8 +1,12 @@
 <div class="container">
-  <div class="row product-view-container">
+  <div
+    class="row wrap product-view-container"
+    fxLayout.lt-md="column"
+    fxLayoutAlign.md="space-between stretch"
+  >
     <div class="col" fxLayout="column" fxLayoutAlign="space-around center">
-      <div class="col-12">
-        <mat-card>
+      <div class="col-12 wide-product-picture-wrapper">
+        <mat-card class="wide-product-picture">
           <mat-card-header>
             <mat-card-title class="card-title"> </mat-card-title>
             <mat-card-subtitle> </mat-card-subtitle>
@@ -45,7 +49,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="col-12">
+      <div class="col-12" fxLayout="column" fxLayoutAlign="space-around start">
         <h1 class="product_d_right" *ngIf="product">{{ product.name }}</h1>
         <h1 class="price_box mt-4" *ngIf="product">
           {{ product.client_price
@@ -55,7 +59,7 @@
           {{ product.manufacturer }}
         </h1>
 
-        <p class="lead" [ngStyle.sm]="{ width: '30vw' }">
+        <p class="lead">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industrys standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -72,7 +76,7 @@
           <div
             class="btns_container mb-5"
             fxLayout="row wrap"
-            fxLayoutAlign="center center"
+            fxLayoutAlign=" start"
             fxLayoutGap="60px"
           >
             <h3>Ilość :</h3>
@@ -97,28 +101,31 @@
               </button>
             </div>
           </div>
-
           <div
             class="btns_container"
             fxLayout="row wrap"
-            fxLayoutAlign="space-between stretch"
+            fxLayout.xs="column"
+            fxLayout.sm="row"
+            fxLayoutGap="20px"
+            fxLayoutGap.xs="20px"
+            fxFill
           >
             <button
-              [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
               [routerLink]="['/cart']"
               mat-raised-button
               class="cart_btn"
               color="warn"
               (click)="addToCart()"
+              [ngStyle.md]="{ width: '190px' }"
             >
               <strong>Dodaj do Koszyka</strong>
             </button>
             <button
-              [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
               mat-raised-button
               [routerLink]="['/order']"
               class="order_btn"
               color="warn"
+              [ngStyle.md]="{ width: '190px' }"
             >
               <strong>Kup Teraz</strong>
             </button>
@@ -137,7 +144,12 @@
     >
       <div class="col-10">
         <div class="col-12 navigation-container">
-          <mat-horizontal-stepper labelPosition="bottom" #stepper>
+          <mat-horizontal-stepper
+            fxShow="true"
+            fxShow.lt-lg="false"
+            labelPosition="bottom"
+            #stepper
+          >
             <mat-step [stepControl]="firstFormGroup">
               <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel> Opis</ng-template>
@@ -240,6 +252,115 @@
               </form>
             </mat-step>
           </mat-horizontal-stepper>
+
+          <mat-vertical-stepper
+            fxShow.lt-lg="true"
+            fxShow="false"
+            labelPosition="bottom"
+            #stepper
+          >
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel> Opis</ng-template>
+
+                <mat-label *ngIf="product">{{ product.name }}</mat-label>
+                <p>
+                  {{
+                    product.description
+                      | stringReplacement: prodServ.emphasisWords
+                  }}
+                </p>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Specyfikacja</ng-template>
+
+                <div class="container">
+                  <div class="row">
+                    <div
+                      class="col-4 specification-titles"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Compositions</p>
+                      <mat-divider></mat-divider>
+
+                      <p>Styles</p>
+                      <mat-divider></mat-divider>
+                      <p>Properties</p>
+                    </div>
+                    <div
+                      class="col-8 specification-descr"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Polyester</p>
+                      <mat-divider></mat-divider>
+                      <p>Girly</p>
+                      <mat-divider></mat-divider>
+                      <p>Short Dress</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div fxLayout="row">
+                      <p style="padding: 0px;">
+                        Fashion has been creating well-designed collections
+                        since 2010. The brand offers feminine designs delivering
+                        stylish separates and statement dresses which have since
+                        evolved into a full ready-to-wear collection in which
+                        every item is a vital part of a woman's wardrobe. The
+                        result? Cool, easy, chic looks with youthful elegance
+                        and unmistakable signature style. All the beautiful
+                        pieces are made in Italy and manufactured with the
+                        greatest attention. Now Fashion extends to a range of
+                        accessories including shoes, hats, belts and more!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <form>
+                <ng-template matStepLabel>Opinia o produkcie</ng-template>
+                <mat-form-field class="feedback-textarea" appearance="fill">
+                  <mat-label style="color: #fdb813;"
+                    >Your review<mat-icon style="color: #fdb813;" matSuffix>
+                      sentiment_very_satisfied</mat-icon
+                    >
+                  </mat-label>
+                  <textarea matInput class="text-filed-container"></textarea>
+                </mat-form-field>
+
+                <form class="example-form" fxLayout="column" fxLayoutGap="20px">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Favorite food</mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="Sushi" />
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea
+                      matInput
+                      placeholder="Ex. It makes me feel..."
+                    ></textarea>
+                  </mat-form-field>
+                  <button
+                    [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
+                    [routerLink]="['']"
+                    mat-raised-button
+                    class="cart_btn"
+                    (click)="addToCart()"
+                  >
+                    <strong>Send</strong>
+                  </button>
+                </form>
+              </form>
+            </mat-step>
+          </mat-vertical-stepper>
         </div>
       </div>
     </div>
@@ -253,7 +374,8 @@
   <div
     class="carousel-title"
     fxLayout="row wrap"
-    [ngStyle]="{ 'margin-bottom': '30px' }"
+    [ngStyle.gt-sm]="{ 'margin-bottom': '30px' }"
+    [ngStyle.xs]="{ 'margin-bottom': '10px' }"
   >
     <h1>Related Products</h1>
   </div>

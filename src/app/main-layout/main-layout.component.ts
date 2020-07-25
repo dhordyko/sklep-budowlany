@@ -5,13 +5,14 @@ import {
   ElementRef,
   ViewChild,
   HostListener,
+  OnDestroy,
 } from '@angular/core';
 import { ProductService } from '../shared/product.service';
 import { Router } from '@angular/router';
 
 import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
-
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -20,7 +21,7 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./main-layout.component.scss'],
   providers: [ProductService],
 })
-export class MainLayoutComponent implements OnInit {
+export class MainLayoutComponent implements OnInit, OnDestroy {
   category: 'smart_phones';
   SelectedBrand: string;
 
@@ -47,6 +48,7 @@ export class MainLayoutComponent implements OnInit {
   @ViewChild('search') search: ElementRef;
   @ViewChild('sdbSearch') sdbSearch: ElementRef;
   @ViewChild('menu_card') menu_card: ElementRef;
+  mediaSub: Subscription;
 
   languages = [
     {
@@ -64,7 +66,11 @@ export class MainLayoutComponent implements OnInit {
     { name: 'EURO', icon: 'flag-icon-eu' },
   ];
 
-  constructor(private prodServ: ProductService, private router: Router) {}
+  constructor(
+    private prodServ: ProductService,
+    private router: Router,
+    private mediaObserver: MediaObserver
+  ) {}
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -97,6 +103,12 @@ export class MainLayoutComponent implements OnInit {
 
     this.CartQuantity = number;
     this.IconPrice = price;
+    this.mediaSub = this.mediaObserver.media$.subscribe(
+      (change: MediaChange) => {
+        console.log(change.mqAlias);
+        console.log(change.mediaQuery);
+      }
+    );
   }
   // ---------show top navbar on scroll event ---------
   @HostListener('window:scroll', ['$event'])
@@ -124,7 +136,11 @@ export class MainLayoutComponent implements OnInit {
   currencyOption(option) {
     this.chosenCurrency = option;
   }
-
+  ngOnDestroy() {
+    if (this.mediaSub) {
+      this.mediaSub.unsubscribe();
+    }
+  }
   ngAfterViewInit() {
     this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
       .pipe(
