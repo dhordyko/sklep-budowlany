@@ -101,9 +101,9 @@ mat-card-content {
   align-content: center;
 }
 mat-card:hover {
-  -webkit-box-shadow: inset 0px 0px 0px 1px #fdb813;
-  -moz-box-shadow: inset 0px 0px 0px 1px #fdb813;
-  box-shadow: inset 0px 0px 0px 1px #fdb813;
+  -webkit-box-shadow: inset 0px 0px 0px 2px #fdb813;
+  -moz-box-shadow: inset 0px 0px 0px 2px #fdb813;
+  box-shadow: inset 0px 0px 0px 2px #fdb813;
 }
 @media (max-width: 960px) {
   mat-card-content {
