@@ -151,7 +151,11 @@
     <p-carousel [value]="products" [numVisible]="5" [numScroll]="1">
       <ng-template let-category pTemplate="item">
         <div fxLayout="row wrap">
-          <app-product [product]="category" class="m-auto"></app-product>
+          <app-product
+            [ngStyle]="{ 'min-width': '85%' }"
+            [product]="category"
+            class="m-auto"
+          ></app-product>
         </div>
       </ng-template>
     </p-carousel>
