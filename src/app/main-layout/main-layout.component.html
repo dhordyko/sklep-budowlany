@@ -165,10 +165,30 @@
         >
           {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
         </label>
-        <label class="mr-md-4 mt-3" style="color: black;">
+        <label
+          class="mr-md-4 mt-3 cart-label"
+          style="color: black; cursor: pointer;"
+          [routerLink]="['/cart']"
+        >
           <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"
             >shopping_cart
           </mat-icon>
+          <ul class="sub-menu">
+            <li><a href="index.html">Main Home</a></li>
+            <li class="current-menu-item">
+              <a href="index-2.html">SEO Agency</a>
+            </li>
+            <li>
+              <a href="index-3.html">Marketing Company</a>
+            </li>
+            <li>
+              <a href="index-4.html">Digital Marketing</a>
+            </li>
+            <li><a href="index-5.html">SEO Company</a></li>
+            <li><a href="index-6.html">Business SEO</a></li>
+            <li><a href="index-7.html">SaaS Home</a></li>
+            <li><a href="index-8.html">SEO Consultant</a></li>
+          </ul>
         </label>
       </li>
     </div>
@@ -301,7 +321,11 @@
                   </mat-icon>
                 </label>
 
-                <label class="mr-5 mt-3" style="color: black;">
+                <label
+                  class="mr-5 mt-3"
+                  style="color: black; cursor: pointer;"
+                  [routerLink]="['/cart']"
+                >
                   <mat-icon
                     style="font-size: 40px;"
                     #icon
@@ -315,7 +339,7 @@
                   class="mr-5 mt-3"
                   style="cursor: pointer; font-size: 20px; color: black;"
                 >
-                  {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>$
+                  {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
                 </label>
               </li>
             </div>
@@ -519,9 +543,13 @@
 
     <div id="cart-icon-container" class="nav-item active">
       <label style="cursor: pointer; font-size: 20px; color: black;">
-        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>$
+        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
       </label>
-      <label class="mr-md-4 mt-3" style="color: black;">
+      <label
+        class="mr-md-4 mt-3"
+        style="color: black; cursor: pointer;"
+        [routerLink]="['/cart']"
+      >
         <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"
           >shopping_cart
         </mat-icon>
@@ -540,7 +568,7 @@
 
     <div id="cart-icon-container" class="nav-item active">
       <label style="cursor: pointer; font-size: 20px; color: black;">
-        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>$
+        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
       </label>
       <label class="mr-md-4 mt-3" style="color: black;">
         <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"

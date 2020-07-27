@@ -141,8 +141,7 @@
       </div>
     </div>
   </section>
-  <br />
-  <section class="items-carousel"></section>
+
   <!-- ----------------caurousel of goods ------------- -->
   <section
     [ngStyle]="{ 'margin-bottom': '30px' }"
@@ -151,8 +150,8 @@
   >
     <p-carousel [value]="products" [numVisible]="5" [numScroll]="1">
       <ng-template let-category pTemplate="item">
-        <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
-          <app-product [product]="category"></app-product>
+        <div fxLayout="row wrap">
+          <app-product [product]="category" class="m-auto"></app-product>
         </div>
       </ng-template>
     </p-carousel>
@@ -342,7 +341,7 @@
         </app-product>
       </div>
       <p-carousel
-        style="width: 60vw;"
+        [style]="{ width: '60vw' }"
         class="prod-card-carousel"
         [value]="categories"
         [numVisible]="1"
@@ -437,7 +436,7 @@
         </app-product>
       </div>
       <p-carousel
-        style="width: 60vw;"
+        [style]="{ width: '60vw' }"
         class="prod-card-carousel"
         [value]="categories"
         [numVisible]="1"

@@ -22,7 +22,7 @@
         </mat-card>
       </div>
       <div
-        class="col-9 small-carousel-container"
+        class="col-9 small-carousel-container px-3"
         fxLayout="row wrap"
         fxLayoutAlign="center center"
       >
@@ -49,13 +49,18 @@
       </div>
     </div>
     <div class="col">
-      <div class="col-12" fxLayout="column" fxLayoutAlign="space-around start">
-        <h1 class="product_d_right" *ngIf="product">{{ product.name }}</h1>
-        <h1 class="price_box mt-4" *ngIf="product">
+      <div
+        class="col-12"
+        fxLayout="column"
+        fxLayoutAlign="space-around start"
+        *ngIf="product"
+      >
+        <h1 class="product_d_right">{{ product.name }}</h1>
+        <h1 class="price_box mt-4">
           {{ product.client_price
-          }}<small class="pl-2" *ngIf="product">{{ product.currency }}</small>
+          }}<small class="pl-2">{{ product.currency }}</small>
         </h1>
-        <h1 class="manuf_box" *ngIf="product">
+        <h1 class="manuf_box">
           {{ product.manufacturer }}
         </h1>
 
@@ -111,7 +116,6 @@
             fxFill
           >
             <button
-              [routerLink]="['/cart']"
               mat-raised-button
               class="cart_btn"
               color="warn"
@@ -154,8 +158,8 @@
               <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel> Opis</ng-template>
 
-                <mat-label>{{ product.name }}</mat-label>
-                <p>
+                <mat-label *ngIf="product">{{ product.name }}</mat-label>
+                <p *ngIf="product">
                   {{
                     product.description
                       | stringReplacement: prodServ.emphasisWords
@@ -264,7 +268,7 @@
                 <ng-template matStepLabel> Opis</ng-template>
 
                 <mat-label *ngIf="product">{{ product.name }}</mat-label>
-                <p>
+                <p *ngIf="product">
                   {{
                     product.description
                       | stringReplacement: prodServ.emphasisWords

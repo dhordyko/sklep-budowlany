@@ -28,7 +28,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   package: any;
   gridsize: number;
   filterData: any[];
-  IconPrice: number;
+  IconPrice: number = 0;
   CartQuantity: number;
   keyUpSubscription: Subscription;
   searchText = '';
@@ -73,6 +73,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    localStorage.clear();
     setTimeout(() => {
       this.animate = true;
     }, 100);

@@ -6,6 +6,7 @@
     width: 100%;
   }
 }
+
 .mat-image {
   max-width: 100%;
   max-height: 100%;
@@ -187,9 +188,14 @@ mat-label {
       padding: 0px;
     }
   }
-  @media (min-width: 450px) and (max-width: 600px) {
+  @media (min-width: 450px) and (max-width: 500px) {
     .ui-carousel-container {
       padding: 10vw;
+    }
+  }
+  @media (min-width: 500px) and (max-width: 600px) {
+    .ui-carousel-container {
+      padding: 15vw;
     }
   }
 }
@@ -246,5 +252,13 @@ mat-label {
   }
   .product_d_right {
     margin-top: 0px;
+  }
+}
+:host ::ng-deep .product-image-carousel {
+  .ui-carousel > .ui-carousel-content > .ui-carousel-container {
+    @media (min-width: 600px) and (max-width: 1000px) {
+      max-width: 100%;
+      width: 40vw;
+    }
   }
 }

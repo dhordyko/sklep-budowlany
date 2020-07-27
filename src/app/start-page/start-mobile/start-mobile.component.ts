@@ -48,7 +48,7 @@ export class StartMobileComponent implements OnInit {
     ];
     this.responsiveOptions = [
       {
-        breakpoint: '1200px',
+        breakpoint: '1279px',
         numVisible: 4,
         numScroll: 1,
       },
