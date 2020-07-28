@@ -81,10 +81,11 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     this.chosenLang = this.languages[0];
     this.chosenCurrency = this.currency[0];
     this.prodServ.getProducts();
-    this.prodServ.CartTotalPrice.subscribe(
-      (total_cost: number) =>
-        (this.IconPrice = Math.round(total_cost * 100) / 100)
-    );
+    this.prodServ.CartTotalPrice.subscribe((total_cost: number) => {
+      this.IconPrice = Math.round(total_cost * 100) / 100;
+      this.IconPrice.toFixed(2);
+    });
+
     this.prodServ.CartTotalQunatity.subscribe(
       (total_qnt: number) => (this.CartQuantity = total_qnt)
     );
@@ -146,6 +147,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     localStorage.setItem('cart', JSON.stringify(this.prodServ.ProductsCart));
     this.cartList = this.prodServ.ProductsCart;
     this.IconPrice -= existItem.total;
+    this.IconPrice.toFixed(2);
     this.CartQuantity -= existItem.quantity;
   }
   ngAfterViewInit() {
