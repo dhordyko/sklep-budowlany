@@ -421,10 +421,11 @@
         border-bottom: 1px solid #ededed;
         .cart-item-image {
           max-width: 150px;
+          padding: 35px 10px;
           height: auto;
-          margin-right: 10px;
+
           img {
-            width: 100%;
+            width: 70%;
           }
         }
       }
