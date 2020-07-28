@@ -202,7 +202,11 @@
             fxLayout="row"
           >
             <div class="cart-item-image">
-              <img src="{{ cartItem.url_image }}" />
+              <a
+                [ngStyle]="{
+                  'background-image': 'url(' + cartItem.url_image + ')'
+                }"
+              ></a>
             </div>
             <div class="cart-item-description" fxLayout="column">
               <span class="mb-3">{{ cartItem.name }}</span>
