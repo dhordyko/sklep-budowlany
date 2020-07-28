@@ -89,7 +89,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       (total_qnt: number) => (this.CartQuantity = total_qnt)
     );
     this.prodServ.miniCartProducts.subscribe((item: any) => {
-      console.log(item);
       this.cartList = item;
     });
 
@@ -136,6 +135,18 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     if (this.mediaSub) {
       this.mediaSub.unsubscribe();
     }
+  }
+  removeCartItem(id: number) {
+    var existItem = this.cartList.find((item) => item.id === id);
+
+    this.prodServ.ProductsCart = this.prodServ.ProductsCart.filter(
+      (item) => item.id !== id
+    );
+
+    localStorage.setItem('cart', JSON.stringify(this.prodServ.ProductsCart));
+    this.cartList = this.prodServ.ProductsCart;
+    this.IconPrice -= existItem.total;
+    this.CartQuantity -= existItem.quantity;
   }
   ngAfterViewInit() {
     this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')

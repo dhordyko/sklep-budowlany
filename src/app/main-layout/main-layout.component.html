@@ -222,7 +222,7 @@
                   </span>
                 </div>
                 <div class="cart-item-remove">
-                  <button mat-mini-fab>
+                  <button mat-mini-fab (click)="removeCartItem(cartItem.id)">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </div>
@@ -236,7 +236,7 @@
               fxLayoutAlign="space-between stretch"
             >
               <p>Sub-Total :</p>
-              <p>{{ IconPrice }} zł</p>
+              <p>zł</p>
             </div>
             <div
               class="total-price"
@@ -244,7 +244,7 @@
               fxLayoutAlign="space-between stretch"
             >
               <p>Total :</p>
-              <p>{{ IconPrice }} zł</p>
+              <p>zł</p>
             </div>
           </div>
           <div
