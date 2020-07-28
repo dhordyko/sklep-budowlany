@@ -128,9 +128,9 @@
 }
 :host ::ng-deep #top-navbar {
   #cart-icon-container {
-    ul.sub-menu {
+    div.sub-menu {
       width: 355px;
-      white-space: nowrap;
+
       padding: 18px 22px 33px;
       background: #fff;
       right: 10vw;
@@ -150,22 +150,14 @@
       -o-transition: all 0.3s ease-in-out;
       -ms-transition: all 0.3s ease-in-out;
       box-sizing: border-box;
-    }
-    ul.sub-menu:before {
-      content: "";
-      position: absolute;
-      height: 10px;
-      width: 100%;
-      top: -8px;
-      left: 0;
-    }
-    .cart-label:hover {
-      ul.sub-menu {
-        visibility: visible;
-        opacity: 1;
-      }
+      overflow: visible;
+      overflow-y: scroll;
     }
   }
+}
+.show-list {
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 // --------------------------sub-menu-cards------------------
 #navbarNav > ul > li > ul.sub-menu {
@@ -418,6 +410,30 @@
   text-transform: capitalize;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+//MiniCart list styles
+:host ::ng-deep #top-navbar {
+  #cart-icon-container {
+    div.sub-menu {
+      .cart-item-container {
+        border-bottom: 1px solid #ededed;
+        .cart-item-image > img {
+          width: 10px;
+        }
+        .cart-item-description {
+          font-weight: 400;
+          text-transform: capitalize;
+          font-size: 14px;
+          line-height: 20px;
+          display: block;
+          margin-bottom: 6px;
+          width: 200px;
+          padding: 20px 0;
+        }
+      }
+    }
+  }
 }
 // media queries
 @media (max-width: 600px) {

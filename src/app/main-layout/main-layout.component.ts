@@ -14,6 +14,7 @@ import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { MenuItem } from 'primeng/api';
+import { Product } from '../interfaces';
 
 @Component({
   selector: 'app-main-layout',
@@ -35,9 +36,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   animate = false;
   items: MenuItem[];
 
-  showHomeElement: boolean = false;
-  showShopElement: boolean = false;
-  showPageElement: boolean = false;
   showElement = false;
   showMainNav = true;
   menucard_class = '';
@@ -48,7 +46,10 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('search') search: ElementRef;
   @ViewChild('sdbSearch') sdbSearch: ElementRef;
   @ViewChild('menu_card') menu_card: ElementRef;
+  @ViewChild(' cart_list') cart_list: ElementRef;
+
   mediaSub: Subscription;
+  cartList: any[] = [];
 
   languages = [
     {
@@ -87,23 +88,11 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     this.prodServ.CartTotalQunatity.subscribe(
       (total_qnt: number) => (this.CartQuantity = total_qnt)
     );
+    this.prodServ.miniCartProducts.subscribe((item: any) => {
+      console.log(item);
+      this.cartList = item;
+    });
 
-    let price = 0;
-    let number = 0;
-
-    if (localStorage.getItem('cart')) {
-      for (
-        let i = 0;
-        i < JSON.parse(localStorage.getItem('cart')).length;
-        i++
-      ) {
-        price += Number(JSON.parse(localStorage.getItem('cart'))[i].total);
-        number += JSON.parse(localStorage.getItem('cart'))[i].quantity;
-      }
-    }
-
-    this.CartQuantity = number;
-    this.IconPrice = price;
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (change: MediaChange) => {
         console.log(change.mqAlias);
@@ -123,7 +112,12 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   }
 
   // ------navbar animation-------
-
+  showCartList() {
+    this.cart_list.nativeElement.classList.add('show-list');
+  }
+  hideCartList() {
+    this.cart_list.nativeElement.classList.remove('show-list');
+  }
   showNav() {
     this.navbar_class = 'animate__animated animate__slideInDown';
     this.showElement = true;
@@ -137,6 +131,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   currencyOption(option) {
     this.chosenCurrency = option;
   }
+
   ngOnDestroy() {
     if (this.mediaSub) {
       this.mediaSub.unsubscribe();

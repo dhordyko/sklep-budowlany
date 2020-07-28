@@ -20,7 +20,7 @@ export class ProductService {
   CartTotalPrice = new BehaviorSubject<any>(null);
   CartTotalQunatity = new BehaviorSubject<any>(null);
   SideBarOpen = new BehaviorSubject<any>(null);
-
+  miniCartProducts = new BehaviorSubject<any>(null);
   ProductsCart: Product[] = [];
   sumItems: Product[] = [];
   CACHE_KEY = 'products';
@@ -79,6 +79,7 @@ export class ProductService {
     }
 
     localStorage.setItem('cart', JSON.stringify(this.ProductsCart));
+    this.miniCartProducts.next(JSON.parse(localStorage.getItem('cart')));
   }
 
   setCategory(category: any[]) {

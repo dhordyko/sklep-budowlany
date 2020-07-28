@@ -153,44 +153,86 @@
           </ul>
         </div>
       </div>
-      <li
+
+      <div
         id="cart-icon-container"
         class="nav-item active"
         fxLayout="row wrap"
         fxLayoutAlign="center"
+        (mouseover)="showCartList()"
       >
-        <label
+        <div
           class="mr-md-4 mt-3"
           style="cursor: pointer; font-size: 20px; color: black;"
         >
           {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
-        </label>
-        <label
+        </div>
+        <div
           class="mr-md-4 mt-3 cart-label"
           style="color: black; cursor: pointer;"
           [routerLink]="['/cart']"
+          (mouseover)="showCartList()"
         >
           <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"
             >shopping_cart
           </mat-icon>
-          <ul class="sub-menu">
-            <li><a href="index.html">Main Home</a></li>
-            <li class="current-menu-item">
-              <a href="index-2.html">SEO Agency</a>
-            </li>
-            <li>
-              <a href="index-3.html">Marketing Company</a>
-            </li>
-            <li>
-              <a href="index-4.html">Digital Marketing</a>
-            </li>
-            <li><a href="index-5.html">SEO Company</a></li>
-            <li><a href="index-6.html">Business SEO</a></li>
-            <li><a href="index-7.html">SaaS Home</a></li>
-            <li><a href="index-8.html">SEO Consultant</a></li>
-          </ul>
-        </label>
-      </li>
+        </div>
+        <div
+          class="sub-menu"
+          style="height: 500px;"
+          #cart_list
+          (mouseout)="hideCartList()"
+        >
+          <div
+            *ngIf="!cartList"
+            fxLayout="column"
+            fxLayoutGap="190px"
+            fxLayoutAlign="space-between center"
+          >
+            <div></div>
+            <h1 class="text-muted text-center">
+              <em>Cart is empty right now.</em>
+            </h1>
+            <div></div>
+          </div>
+
+          <div
+            class="cart-item-container"
+            *ngFor="let cartItem of cartList"
+            fxLayout="row wrap"
+            fxLayoutGap="10px"
+            fxLayoutAlign="center center"
+          >
+            <div class="cart-item-image">
+              <img src="{{ cartItem.url_image }}" />
+            </div>
+            <div class="cart-item-description" fxLayout="column">
+              <span class="mb-3">{{ cartItem.name }}</span>
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="column" fxLayoutGap="10px">
+                  <span
+                    >Ilość:
+                    <span style="font-weight: 600; color: blue;">{{
+                      cartItem.quantity
+                    }}</span>
+                  </span>
+                  <span
+                    >Cena:
+                    <span style="font-weight: 600; color: red;">{{
+                      cartItem.total
+                    }}</span>
+                  </span>
+                </div>
+                <div class="cart-item-remove">
+                  <button mat-mini-fab>
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </section>
@@ -538,6 +580,7 @@
     fxLayout="row wrap"
     fxLayoutAlign="space-between center"
     *ngIf="showElement"
+    (mouseout)="hideCartList()"
   >
     <app-allcat-menu></app-allcat-menu>
 
