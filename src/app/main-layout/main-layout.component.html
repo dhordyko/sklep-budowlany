@@ -179,14 +179,14 @@
         </div>
         <div
           class="sub-menu"
-          style="height: 500px;"
+          style="height: 400px;"
           #cart_list
           (mouseout)="hideCartList()"
         >
           <div
             *ngIf="!cartList"
             fxLayout="column"
-            fxLayoutGap="190px"
+            fxLayoutGap="100px"
             fxLayoutAlign="space-between center"
           >
             <div></div>
@@ -199,11 +199,9 @@
           <div
             class="cart-item-container"
             *ngFor="let cartItem of cartList"
-            fxLayout="row wrap"
-            fxLayoutGap="10px"
-            fxLayoutAlign="center center"
+            fxLayout="row"
           >
-            <div class="cart-item-image">
+            <div class="cart-item-image p-2">
               <img src="{{ cartItem.url_image }}" />
             </div>
             <div class="cart-item-description" fxLayout="column">
@@ -218,9 +216,9 @@
                   </span>
                   <span
                     >Cena:
-                    <span style="font-weight: 600; color: red;">{{
-                      cartItem.total
-                    }}</span>
+                    <span style="font-weight: 600; color: red;"
+                      >{{ cartItem.total }}zł</span
+                    >
                   </span>
                 </div>
                 <div class="cart-item-remove">
@@ -230,6 +228,32 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="cart-item-summary">
+            <div
+              class="sub-total-price"
+              fxLayout="row"
+              fxLayoutAlign="space-between stretch"
+            >
+              <p>Sub-Total :</p>
+              <p>{{ IconPrice }} zł</p>
+            </div>
+            <div
+              class="total-price"
+              fxLayout="row"
+              fxLayoutAlign="space-between stretch"
+            >
+              <p>Total :</p>
+              <p>{{ IconPrice }} zł</p>
+            </div>
+          </div>
+          <div
+            class="btns-container mt-2"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+          >
+            <button mat-button class="cart-btn my-1">Przejdż do koszyka</button>
+            <button mat-button class="order-btn my-2">Kup teraz</button>
           </div>
         </div>
       </div>

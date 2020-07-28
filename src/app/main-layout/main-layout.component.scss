@@ -1,6 +1,6 @@
 /*Main layout footer*/
 @import "./../../styles/variables";
-
+@import "../../styles/mixins";
 /*top navbar stiles*/
 #top-navbar {
   border-top: 1px solid $white;
@@ -129,9 +129,9 @@
 :host ::ng-deep #top-navbar {
   #cart-icon-container {
     div.sub-menu {
-      width: 355px;
+      width: 400px;
 
-      padding: 18px 22px 33px;
+      padding: 18px 15px 0;
       background: #fff;
       right: 10vw;
       box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
@@ -416,25 +416,45 @@
 :host ::ng-deep #top-navbar {
   #cart-icon-container {
     div.sub-menu {
+      color: #333333;
       .cart-item-container {
         border-bottom: 1px solid #ededed;
-        .cart-item-image > img {
-          width: 10px;
-        }
-        .cart-item-description {
-          font-weight: 400;
-          text-transform: capitalize;
-          font-size: 14px;
-          line-height: 20px;
-          display: block;
-          margin-bottom: 6px;
-          width: 200px;
-          padding: 20px 0;
+        .cart-item-image {
+          max-width: 150px;
+          height: auto;
+          margin-right: 10px;
+          img {
+            width: 100%;
+          }
         }
       }
+
+      .cart-item-summary {
+      }
+      .cart-btn,
+      .order-btn {
+        @include btn(0 50px, 36px);
+        width: 90%;
+        border-radius: 0px !important;
+      }
+      .cart-btn:hover,
+      .order-btn:hover {
+        @include btn-hover();
+      }
+    }
+    .cart-item-description {
+      font-weight: 400;
+      text-transform: capitalize;
+      font-size: 14px;
+      line-height: 20px;
+      display: block;
+      margin-bottom: 6px;
+      width: 200px;
+      padding: 20px 0;
     }
   }
 }
+
 // media queries
 @media (max-width: 600px) {
   .mobile-nav {
