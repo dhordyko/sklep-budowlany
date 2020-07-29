@@ -786,6 +786,7 @@ input[type="text"]::-ms-clear {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 30px;
 }
 .ui-carousel-container {
   display: flex;
