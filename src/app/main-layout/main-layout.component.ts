@@ -147,8 +147,12 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     localStorage.setItem('cart', JSON.stringify(this.prodServ.ProductsCart));
     this.cartList = this.prodServ.ProductsCart;
     this.IconPrice -= existItem.total;
-    this.IconPrice.toFixed(2);
+    if (this.IconPrice < 0) {
+      this.IconPrice = 0;
+    } else this.IconPrice.toFixed(2);
+
     this.CartQuantity -= existItem.quantity;
+    console.log(this.IconPrice);
   }
   ngAfterViewInit() {
     this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
