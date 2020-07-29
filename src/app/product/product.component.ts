@@ -50,6 +50,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
+    console.log('hello');
     this.prodServ.addToCart(this.product);
     let sum = 0;
     let qnt = 0;

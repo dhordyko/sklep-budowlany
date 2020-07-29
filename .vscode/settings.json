@@ -1,0 +1,32 @@
+{
+  "window.zoomLevel": 3,
+  "editor.fontSize": 14,
+  "editor.tabSize": 1,
+  "files.autoSave": "off",
+  "editor.wordWrap": "on",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "highlight-matching-tag.styles": {
+    "opening": {
+      "left": {
+        "custom": {
+          "borderWidth": "0 0 0 3px",
+          "borderStyle": "solid",
+          "borderColor": "yellow",
+          "borderRadius": "5px"
+        }
+      },
+      "right": {
+        "custom": {
+          "borderWidth": "0 3px 0 0",
+          "borderStyle": "solid",
+          "borderColor": "yellow",
+          "borderRadius": "5px"
+        }
+      }
+    }
+  },
+  "terminal.integrated.fontSize": 14,
+  "liveServer.settings.fullReload": false
+}

@@ -20,12 +20,25 @@ export class ProductService {
   CartTotalPrice = new BehaviorSubject<any>(null);
   CartTotalQunatity = new BehaviorSubject<any>(null);
   SideBarOpen = new BehaviorSubject<any>(null);
-
+  miniCartProducts = new BehaviorSubject<any>(null);
   ProductsCart: Product[] = [];
   sumItems: Product[] = [];
   CACHE_KEY = 'products';
   selectedOption: string;
   itemsPerCategory: number[] = [];
+  emphasisWords: string[] = [
+    '&lt;![CDATA[',
+    ' . &lt;br&gt;&lt;br&gt;',
+    '.]]&gt;',
+    '&lt;P&gt;&lt;STRONG&gt;NITY ZRYWALNE&lt;/STRONG&gt;&lt;/P&gt;&lt;P&gt;&lt;STRONG&gt;&lt;/STRONG&gt;&lt;BR&gt;',
+    '.&lt;BR&gt;&lt;BR&gt;',
+    '&lt;br&gt;',
+    '&lt;br&gt;]]&gt;',
+    '&lt;BR&gt;',
+    '&lt;BR&gt;]]&gt;',
+    ']]&gt;',
+    '&lt',
+  ];
   constructor(private http: HttpClient, private router: Router) {}
 
   // getProducts(): Observable<any> {
@@ -66,6 +79,7 @@ export class ProductService {
     }
 
     localStorage.setItem('cart', JSON.stringify(this.ProductsCart));
+    this.miniCartProducts.next(JSON.parse(localStorage.getItem('cart')));
   }
 
   setCategory(category: any[]) {

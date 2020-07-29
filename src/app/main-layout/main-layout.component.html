@@ -153,24 +153,116 @@
           </ul>
         </div>
       </div>
-      <li
+
+      <div
         id="cart-icon-container"
         class="nav-item active"
         fxLayout="row wrap"
         fxLayoutAlign="center"
+        (mouseover)="showCartList()"
       >
-        <label
+        <div
           class="mr-md-4 mt-3"
           style="cursor: pointer; font-size: 20px; color: black;"
         >
-          {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
-        </label>
-        <label class="mr-md-4 mt-3" style="color: black;">
+          {{ IconPrice.toFixed(2) }}<span *ngIf="IconPrice == null">0</span>zł
+        </div>
+        <div
+          class="mr-md-4 mt-3 cart-label"
+          style="color: black; cursor: pointer;"
+          [routerLink]="['/cart']"
+          (mouseover)="showCartList()"
+        >
           <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"
             >shopping_cart
           </mat-icon>
-        </label>
-      </li>
+        </div>
+        <div
+          class="sub-menu"
+          style="height: 400px;"
+          #cart_list
+          (mouseout)="hideCartList()"
+        >
+          <div
+            *ngIf="!cartList || IconPrice === 0"
+            fxLayout="column"
+            fxLayoutGap="100px"
+            fxLayoutAlign="space-between center"
+          >
+            <div></div>
+            <h1 class="text-muted text-center">
+              <em>Cart is empty right now.</em>
+            </h1>
+            <div></div>
+          </div>
+
+          <div
+            class="cart-item-container"
+            *ngFor="let cartItem of cartList"
+            fxLayout="row"
+          >
+            <div class="cart-item-image">
+              <a
+                [ngStyle]="{
+                  'background-image': 'url(' + cartItem.url_image + ')'
+                }"
+              ></a>
+            </div>
+            <div class="cart-item-description" fxLayout="column">
+              <span class="mb-3">{{ cartItem.name }}</span>
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="column" fxLayoutGap="10px">
+                  <span
+                    >Ilość:
+                    <span style="font-weight: 600; color: blue;">{{
+                      cartItem.quantity
+                    }}</span>
+                  </span>
+                  <span
+                    >Cena:
+                    <span style="font-weight: 600; color: red;"
+                      >{{ cartItem.total }}zł</span
+                    >
+                  </span>
+                </div>
+                <div class="cart-item-remove">
+                  <button mat-mini-fab (click)="removeCartItem(cartItem.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-item-summary">
+            <div
+              class="sub-total-price"
+              fxLayout="row"
+              fxLayoutAlign="space-between stretch"
+            >
+              <p>Sub-Total :</p>
+              <p>{{ IconPrice.toFixed(2) }}zł</p>
+            </div>
+            <div
+              class="total-price"
+              fxLayout="row"
+              fxLayoutAlign="space-between stretch"
+            >
+              <p>Total :</p>
+              <p>{{ IconPrice.toFixed(2) }}zł</p>
+            </div>
+          </div>
+          <div
+            class="btns-container mt-2"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+          >
+            <button [routerLink]="'/cart'" mat-button class="cart-btn my-1">
+              Przejdż do koszyka
+            </button>
+            <button mat-button class="order-btn my-2">Kup teraz</button>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </section>
@@ -301,7 +393,12 @@
                   </mat-icon>
                 </label>
 
-                <label class="mr-5 mt-3" style="color: black;">
+                <label
+                  class="mr-5 mt-3 cart-label"
+                  style="color: black; cursor: pointer;"
+                  [routerLink]="['/cart']"
+                  (mouseover)="showCartList()"
+                >
                   <mat-icon
                     style="font-size: 40px;"
                     #icon
@@ -315,9 +412,103 @@
                   class="mr-5 mt-3"
                   style="cursor: pointer; font-size: 20px; color: black;"
                 >
-                  {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>$
+                  {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
                 </label>
               </li>
+              <div
+                class="sub-menu"
+                style="height: 400px;"
+                #cart_list
+                (mouseover)="showCartList()"
+              >
+                <div class="sub-menu-content" (mouseout)="hideCartList()">
+                  <div
+                    *ngIf="!cartList || IconPrice === 0"
+                    fxLayout="column"
+                    fxLayoutGap="100px"
+                    fxLayoutAlign="space-between center"
+                  >
+                    <div></div>
+                    <h1 class="text-muted text-center">
+                      <em>Cart is empty right now.</em>
+                    </h1>
+                    <div></div>
+                  </div>
+
+                  <div
+                    class="cart-item-container"
+                    *ngFor="let cartItem of cartList"
+                    fxLayout="row"
+                  >
+                    <div class="cart-item-image">
+                      <a
+                        [ngStyle]="{
+                          'background-image': 'url(' + cartItem.url_image + ')'
+                        }"
+                      ></a>
+                    </div>
+                    <div class="cart-item-description" fxLayout="column">
+                      <span class="mb-3">{{ cartItem.name }}</span>
+                      <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <div fxLayout="column" fxLayoutGap="10px">
+                          <span
+                            >Ilość:
+                            <span style="font-weight: 600; color: blue;">{{
+                              cartItem.quantity
+                            }}</span>
+                          </span>
+                          <span
+                            >Cena:
+                            <span style="font-weight: 600; color: red;"
+                              >{{ cartItem.total }}zł</span
+                            >
+                          </span>
+                        </div>
+                        <div class="cart-item-remove">
+                          <button
+                            mat-mini-fab
+                            (click)="removeCartItem(cartItem.id)"
+                          >
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cart-item-summary">
+                    <div
+                      class="sub-total-price"
+                      fxLayout="row"
+                      fxLayoutAlign="space-between stretch"
+                    >
+                      <p>Sub-Total :</p>
+                      <p>{{ IconPrice.toFixed(2) }}zł</p>
+                    </div>
+                    <div
+                      class="total-price"
+                      fxLayout="row"
+                      fxLayoutAlign="space-between stretch"
+                    >
+                      <p>Total :</p>
+                      <p>{{ IconPrice.toFixed(2) }}zł</p>
+                    </div>
+                  </div>
+                  <div
+                    class="btns-container mt-2"
+                    fxLayout="column"
+                    fxLayoutAlign="center center"
+                  >
+                    <button
+                      [routerLink]="'/cart'"
+                      mat-button
+                      class="cart-btn my-1"
+                    >
+                      Przejdż do koszyka
+                    </button>
+                    <button mat-button class="order-btn my-2">Kup teraz</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -514,14 +705,19 @@
     fxLayout="row wrap"
     fxLayoutAlign="space-between center"
     *ngIf="showElement"
+    (mouseout)="hideCartList()"
   >
     <app-allcat-menu></app-allcat-menu>
 
     <div id="cart-icon-container" class="nav-item active">
       <label style="cursor: pointer; font-size: 20px; color: black;">
-        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>$
+        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
       </label>
-      <label class="mr-md-4 mt-3" style="color: black;">
+      <label
+        class="mr-md-4 mt-3"
+        style="color: black; cursor: pointer;"
+        [routerLink]="['/cart']"
+      >
         <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"
           >shopping_cart
         </mat-icon>
@@ -540,7 +736,7 @@
 
     <div id="cart-icon-container" class="nav-item active">
       <label style="cursor: pointer; font-size: 20px; color: black;">
-        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>$
+        {{ IconPrice }}<span *ngIf="IconPrice == null">0</span>zł
       </label>
       <label class="mr-md-4 mt-3" style="color: black;">
         <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"

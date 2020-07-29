@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 import { MainLayoutModule } from './main-layout/main-layout.module';
 import { AppComponent } from './app.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
-import { ProductPageComponent } from './product-page/product-page.component';
+
 import { CartTableComponent } from './cart-table/cart-table.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { OfflineComponent } from './offline/offline.component';
@@ -23,7 +23,7 @@ import { OfflineComponent } from './offline/offline.component';
   declarations: [
     AppComponent,
     CartPageComponent,
-    ProductPageComponent,
+
     OrderPageComponent,
     CartTableComponent,
     OfflineComponent,

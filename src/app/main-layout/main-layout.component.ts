@@ -5,14 +5,16 @@ import {
   ElementRef,
   ViewChild,
   HostListener,
+  OnDestroy,
 } from '@angular/core';
 import { ProductService } from '../shared/product.service';
 import { Router } from '@angular/router';
 
 import { Subscription, fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
-
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { MenuItem } from 'primeng/api';
+import { Product } from '../interfaces';
 
 @Component({
   selector: 'app-main-layout',
@@ -20,23 +22,20 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./main-layout.component.scss'],
   providers: [ProductService],
 })
-export class MainLayoutComponent implements OnInit {
+export class MainLayoutComponent implements OnInit, OnDestroy {
   category: 'smart_phones';
   SelectedBrand: string;
 
   package: any;
   gridsize: number;
   filterData: any[];
-  IconPrice: number;
+  IconPrice: number = 0;
   CartQuantity: number;
   keyUpSubscription: Subscription;
   searchText = '';
   animate = false;
   items: MenuItem[];
 
-  showHomeElement: boolean = false;
-  showShopElement: boolean = false;
-  showPageElement: boolean = false;
   showElement = false;
   showMainNav = true;
   menucard_class = '';
@@ -47,6 +46,10 @@ export class MainLayoutComponent implements OnInit {
   @ViewChild('search') search: ElementRef;
   @ViewChild('sdbSearch') sdbSearch: ElementRef;
   @ViewChild('menu_card') menu_card: ElementRef;
+  @ViewChild(' cart_list') cart_list: ElementRef;
+
+  mediaSub: Subscription;
+  cartList: any[] = [];
 
   languages = [
     {
@@ -64,39 +67,38 @@ export class MainLayoutComponent implements OnInit {
     { name: 'EURO', icon: 'flag-icon-eu' },
   ];
 
-  constructor(private prodServ: ProductService, private router: Router) {}
+  constructor(
+    private prodServ: ProductService,
+    private router: Router,
+    private mediaObserver: MediaObserver
+  ) {}
 
   ngOnInit(): void {
+    localStorage.clear();
     setTimeout(() => {
       this.animate = true;
     }, 100);
     this.chosenLang = this.languages[0];
     this.chosenCurrency = this.currency[0];
     this.prodServ.getProducts();
-    this.prodServ.CartTotalPrice.subscribe(
-      (total_cost: number) =>
-        (this.IconPrice = Math.round(total_cost * 100) / 100)
-    );
+    this.prodServ.CartTotalPrice.subscribe((total_cost: number) => {
+      this.IconPrice = Math.round(total_cost * 100) / 100;
+      this.IconPrice.toFixed(2);
+    });
+
     this.prodServ.CartTotalQunatity.subscribe(
       (total_qnt: number) => (this.CartQuantity = total_qnt)
     );
+    this.prodServ.miniCartProducts.subscribe((item: any) => {
+      this.cartList = item;
+    });
 
-    let price = 0;
-    let number = 0;
-
-    if (localStorage.getItem('cart')) {
-      for (
-        let i = 0;
-        i < JSON.parse(localStorage.getItem('cart')).length;
-        i++
-      ) {
-        price += Number(JSON.parse(localStorage.getItem('cart'))[i].total);
-        number += JSON.parse(localStorage.getItem('cart'))[i].quantity;
+    this.mediaSub = this.mediaObserver.media$.subscribe(
+      (change: MediaChange) => {
+        console.log(change.mqAlias);
+        console.log(change.mediaQuery);
       }
-    }
-
-    this.CartQuantity = number;
-    this.IconPrice = price;
+    );
   }
   // ---------show top navbar on scroll event ---------
   @HostListener('window:scroll', ['$event'])
@@ -110,7 +112,12 @@ export class MainLayoutComponent implements OnInit {
   }
 
   // ------navbar animation-------
-
+  showCartList() {
+    this.cart_list.nativeElement.classList.add('show-list');
+  }
+  hideCartList() {
+    this.cart_list.nativeElement.classList.remove('show-list');
+  }
   showNav() {
     this.navbar_class = 'animate__animated animate__slideInDown';
     this.showElement = true;
@@ -125,6 +132,24 @@ export class MainLayoutComponent implements OnInit {
     this.chosenCurrency = option;
   }
 
+  ngOnDestroy() {
+    if (this.mediaSub) {
+      this.mediaSub.unsubscribe();
+    }
+  }
+  removeCartItem(id: number) {
+    var existItem = this.cartList.find((item) => item.id === id);
+
+    this.prodServ.ProductsCart = this.prodServ.ProductsCart.filter(
+      (item) => item.id !== id
+    );
+
+    localStorage.setItem('cart', JSON.stringify(this.prodServ.ProductsCart));
+    this.cartList = this.prodServ.ProductsCart;
+    this.IconPrice -= existItem.total;
+    this.IconPrice.toFixed(2);
+    this.CartQuantity -= existItem.quantity;
+  }
   ngAfterViewInit() {
     this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
       .pipe(

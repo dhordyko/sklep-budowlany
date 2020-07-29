@@ -141,32 +141,20 @@
       </div>
     </div>
   </section>
-  <br />
-  <section class="items-carousel"></section>
+
   <!-- ----------------caurousel of goods ------------- -->
   <section
     [ngStyle]="{ 'margin-bottom': '30px' }"
     class="product-mobile-carousel"
     *ngIf="prodsAll$ | async as products"
   >
-    <p-carousel
-      [value]="products"
-      [style]="{ 'max-width': '100vw', 'margin-top': '2em' }"
-      verticalViewPortHeight="200px"
-      fxShow.sm="true"
-      [numVisible]="5"
-      [numScroll]="1"
-      [responsiveOptions]="responsiveOptions"
-    >
-      <ng-template
-        class="carousel-product-mobile"
-        let-category
-        pTemplate="item"
-      >
-        <div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+    <p-carousel [value]="products" [numVisible]="5" [numScroll]="1">
+      <ng-template let-category pTemplate="item">
+        <div fxLayout="row wrap">
           <app-product
+            [ngStyle]="{ 'min-width': '85%' }"
             [product]="category"
-            class="single-product"
+            class="m-auto"
           ></app-product>
         </div>
       </ng-template>
@@ -357,7 +345,7 @@
         </app-product>
       </div>
       <p-carousel
-        style="width: 60vw;"
+        [style]="{ width: '60vw' }"
         class="prod-card-carousel"
         [value]="categories"
         [numVisible]="1"
@@ -452,7 +440,7 @@
         </app-product>
       </div>
       <p-carousel
-        style="width: 60vw;"
+        [style]="{ width: '60vw' }"
         class="prod-card-carousel"
         [value]="categories"
         [numVisible]="1"

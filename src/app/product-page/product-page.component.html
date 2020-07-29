@@ -1,98 +1,433 @@
-<div class="m-4"></div>
-<div class="container" *ngIf="product" fxLayoutAlign.sm="space-between center">
+<div class="container">
   <div
-    class="row d-flex justify-content-between mt-5"
-    fxLayout.xs="column"
-    fxLayoutGap.xs="40px"
-    fxLayout.sm="row"
-    fxLayoutGap.sm="40px"
-    fxLayout.md="column"
-    fxLayoutGap.md="40px"
+    class="row wrap product-view-container"
+    fxLayout.lt-md="column"
+    fxLayoutAlign.md="space-between stretch"
   >
-    <div class="col-md-5">
-      <mat-card
-        fxLayout.sm="column"
-        fxLayout.xs="column"
-        fxLayoutAlign.xs="space-around center"
-        fxLayoutAlign.sm="space-around center"
-        [ngStyle.xs]="{ width: '70vw', height: '70vw' }"
-        [ngStyle.sm]="{ width: '50vw', height: '50vw' }"
-        class="mb-5"
+    <div class="col" fxLayout="column" fxLayoutAlign="space-around center">
+      <div class="col-12 wide-product-picture-wrapper">
+        <mat-card class="wide-product-picture">
+          <mat-card-header>
+            <mat-card-title class="card-title"> </mat-card-title>
+            <mat-card-subtitle> </mat-card-subtitle>
+          </mat-card-header>
+          <div class="img-container">
+            <img
+              *ngIf="product"
+              mat-card-image
+              class="mat-image"
+              src="{{ product.url_image }}"
+            />
+          </div>
+        </mat-card>
+      </div>
+      <div
+        class="col-9 small-carousel-container px-3"
+        fxLayout="row wrap"
+        fxLayoutAlign="center center"
       >
-        <mat-card-header fxLayout.sm="column" [ngStyle.sm]="{ width: '30vw' }">
-          <mat-card-title class="card-title">
-            <h4 class="text-muted">TechStore</h4>
-          </mat-card-title>
-          <mat-card-subtitle>
-            <h5 class="lead">{{ product.name }}</h5>
-          </mat-card-subtitle>
-        </mat-card-header>
-        <img
-          [ngStyle.xs]="{ width: '50vw' }"
-          [ngStyle.sm]="{ width: '40vw' }"
-          mat-card-image
-          src="{{ product.url_image }}"
-        />
-      </mat-card>
+        <p-carousel
+          [value]="imagesArray"
+          numVisible="1"
+          numScroll="1"
+          class="product-image-carousel"
+        >
+          <ng-template let-item pTemplate="item">
+            <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+              <div class="row pt-4">
+                <div
+                  class="col-12"
+                  fxLayout="row wrap"
+                  fxLayoutAlign="space-around center"
+                >
+                  <img [src]="item.images" style="height: 150px;" />
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
     </div>
+    <div class="col">
+      <div
+        class="col-12"
+        fxLayout="column"
+        fxLayoutAlign="space-around start"
+        *ngIf="product"
+      >
+        <h1 class="product_d_right">{{ product.name }}</h1>
+        <h1 class="price_box mt-4">
+          {{ product.client_price
+          }}<small class="pl-2">{{ product.currency }}</small>
+        </h1>
+        <h1 class="manuf_box">
+          {{ product.manufacturer }}
+        </h1>
 
-    <div class="col-md-5" [ngStyle.sm]="{ width: '50vw' }">
-      <h1 class="mb-3">{{ product.name }}</h1>
-
-      <h1 class="text-muted my-3">
-        <small>{{ product.client_price }}$</small>
-      </h1>
-      <h3>{{ product.brand }}</h3>
-      <p class="lead" [ngStyle.sm]="{ width: '30vw' }">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industrys standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
-      </p>
-      <mat-divider></mat-divider>
-      <p class="mt-3 text-primary blockquote">Avalibility: In Stock</p>
-      <h1><small>Quantity :</small></h1>
-      <br />
-      <div class="float-left">
-        <div class="d-flex justify-content-center">
-          <button mat-icon-button (click)="removeOneItem()">
-            <mat-icon style="font-size: 30px;">remove</mat-icon>
-          </button>
-          <input
-            [(ngModel)]="quantity"
-            class="ml-3 mr-3"
-            type="text"
-            value="1"
-          />
-
-          <button mat-icon-button (click)="addOneItem()">
-            <mat-icon style="font-size: 20px;">add</mat-icon>
-          </button>
-        </div>
-        <br />
-        <br />
-        <div fxLayout.xs="row" fxLayoutAlign="center center">
-          <button
-            [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
-            [routerLink]="['/cart']"
-            mat-raised-button
-            class="mr-3 px-2"
-            color="warn"
-            (click)="addToCart()"
+        <p class="lead">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industrys standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </p>
+        <mat-divider></mat-divider>
+        <p class="mt-5 text-primary blockquote">
+          Dostępność na magazynie
+          <span class="stock_amount pl-3" *ngIf="product">{{
+            product.count_available
+          }}</span>
+        </p>
+        <div fxLayout="column">
+          <div
+            class="btns_container mb-5"
+            fxLayout="row wrap"
+            fxLayoutAlign=" start"
+            fxLayoutGap="60px"
           >
-            <strong>Add to Cart</strong>
-          </button>
-          <button
-            [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
-            mat-raised-button
-            [routerLink]="['/order']"
-            class="ml-3 px-2"
-            color="warn"
+            <h3>Ilość :</h3>
+            <div class="d-flex justify-content-center mt-2 mx-3">
+              <button
+                class="remove_btn"
+                mat-icon-button
+                (click)="removeOneItem()"
+              >
+                <mat-icon style="font-size: 24px;">remove</mat-icon>
+              </button>
+              <input
+                [class.product_qnt]="true"
+                [(ngModel)]="quantity"
+                class="ml-3 mr-3"
+                type="text"
+                value="1"
+              />
+
+              <button mat-icon-button class="add_btn" (click)="addOneItem()">
+                <mat-icon style="font-size: 20px;">add</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div
+            class="btns_container"
+            fxLayout="row wrap"
+            fxLayout.xs="column"
+            fxLayout.sm="row"
+            fxLayoutGap="20px"
+            fxLayoutGap.xs="20px"
+            fxFill
           >
-            <strong>Order now</strong>
-          </button>
+            <button
+              mat-raised-button
+              class="cart_btn"
+              color="warn"
+              (click)="addToCart()"
+              [ngStyle.md]="{ width: '190px' }"
+            >
+              <strong>Dodaj do Koszyka</strong>
+            </button>
+            <button
+              mat-raised-button
+              [routerLink]="['/order']"
+              class="order_btn"
+              color="warn"
+              [ngStyle.md]="{ width: '190px' }"
+            >
+              <strong>Kup Teraz</strong>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<section class="product-description" [ngStyle]="{ 'margin-top': '70px' }">
+  <div class="container-fluid">
+    <div
+      class="row prod-description-container"
+      fxLayout="row wrap"
+      fxLayoutAlign="center center"
+    >
+      <div class="col-10">
+        <div class="col-12 navigation-container">
+          <mat-horizontal-stepper
+            fxShow="true"
+            fxShow.lt-lg="false"
+            labelPosition="bottom"
+            #stepper
+          >
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel> Opis</ng-template>
+
+                <mat-label *ngIf="product">{{ product.name }}</mat-label>
+                <p *ngIf="product">
+                  {{
+                    product.description
+                      | stringReplacement: prodServ.emphasisWords
+                  }}
+                </p>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Specyfikacja</ng-template>
+
+                <div class="container">
+                  <div class="row">
+                    <div
+                      class="col-4 specification-titles"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Compositions</p>
+                      <mat-divider></mat-divider>
+
+                      <p>Styles</p>
+                      <mat-divider></mat-divider>
+                      <p>Properties</p>
+                    </div>
+                    <div
+                      class="col-8 specification-descr"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Polyester</p>
+                      <mat-divider></mat-divider>
+                      <p>Girly</p>
+                      <mat-divider></mat-divider>
+                      <p>Short Dress</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div fxLayout="row">
+                      <p style="padding: 0px;">
+                        Fashion has been creating well-designed collections
+                        since 2010. The brand offers feminine designs delivering
+                        stylish separates and statement dresses which have since
+                        evolved into a full ready-to-wear collection in which
+                        every item is a vital part of a woman's wardrobe. The
+                        result? Cool, easy, chic looks with youthful elegance
+                        and unmistakable signature style. All the beautiful
+                        pieces are made in Italy and manufactured with the
+                        greatest attention. Now Fashion extends to a range of
+                        accessories including shoes, hats, belts and more!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <form>
+                <ng-template matStepLabel>Opinia o produkcie</ng-template>
+                <mat-form-field class="feedback-textarea" appearance="fill">
+                  <mat-label style="color: #fdb813;"
+                    >Your review<mat-icon style="color: #fdb813;" matSuffix
+                      >sentiment_very_satisfied</mat-icon
+                    ></mat-label
+                  >
+                  <textarea matInput class="text-filed-container"></textarea>
+                </mat-form-field>
+
+                <form class="example-form" fxLayout="column" fxLayoutGap="20px">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Favorite food</mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="Sushi" />
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea
+                      matInput
+                      placeholder="Ex. It makes me feel..."
+                    ></textarea>
+                  </mat-form-field>
+                  <button
+                    [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
+                    [routerLink]="['']"
+                    mat-raised-button
+                    class="cart_btn"
+                    (click)="addToCart()"
+                  >
+                    <strong>Send</strong>
+                  </button>
+                </form>
+              </form>
+            </mat-step>
+          </mat-horizontal-stepper>
+
+          <mat-vertical-stepper
+            fxShow.lt-lg="true"
+            fxShow="false"
+            labelPosition="bottom"
+            #stepper
+          >
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel> Opis</ng-template>
+
+                <mat-label *ngIf="product">{{ product.name }}</mat-label>
+                <p *ngIf="product">
+                  {{
+                    product.description
+                      | stringReplacement: prodServ.emphasisWords
+                  }}
+                </p>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Specyfikacja</ng-template>
+
+                <div class="container">
+                  <div class="row">
+                    <div
+                      class="col-4 specification-titles"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Compositions</p>
+                      <mat-divider></mat-divider>
+
+                      <p>Styles</p>
+                      <mat-divider></mat-divider>
+                      <p>Properties</p>
+                    </div>
+                    <div
+                      class="col-8 specification-descr"
+                      fxLayout="column"
+                      fxLayoutGap="15px"
+                    >
+                      <p>Polyester</p>
+                      <mat-divider></mat-divider>
+                      <p>Girly</p>
+                      <mat-divider></mat-divider>
+                      <p>Short Dress</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div fxLayout="row">
+                      <p style="padding: 0px;">
+                        Fashion has been creating well-designed collections
+                        since 2010. The brand offers feminine designs delivering
+                        stylish separates and statement dresses which have since
+                        evolved into a full ready-to-wear collection in which
+                        every item is a vital part of a woman's wardrobe. The
+                        result? Cool, easy, chic looks with youthful elegance
+                        and unmistakable signature style. All the beautiful
+                        pieces are made in Italy and manufactured with the
+                        greatest attention. Now Fashion extends to a range of
+                        accessories including shoes, hats, belts and more!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <form>
+                <ng-template matStepLabel>Opinia o produkcie</ng-template>
+                <mat-form-field class="feedback-textarea" appearance="fill">
+                  <mat-label style="color: #fdb813;"
+                    >Your review<mat-icon style="color: #fdb813;" matSuffix>
+                      sentiment_very_satisfied</mat-icon
+                    >
+                  </mat-label>
+                  <textarea matInput class="text-filed-container"></textarea>
+                </mat-form-field>
+
+                <form class="example-form" fxLayout="column" fxLayoutGap="20px">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Favorite food</mat-label>
+                    <input matInput placeholder="Ex. Pizza" value="Sushi" />
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea
+                      matInput
+                      placeholder="Ex. It makes me feel..."
+                    ></textarea>
+                  </mat-form-field>
+                  <button
+                    [ngStyle.xs]="{ width: '30vw', 'font-size': '10' }"
+                    [routerLink]="['']"
+                    mat-raised-button
+                    class="cart_btn"
+                    (click)="addToCart()"
+                  >
+                    <strong>Send</strong>
+                  </button>
+                </form>
+              </form>
+            </mat-step>
+          </mat-vertical-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="product-mobile-carousel1"
+  *ngIf="prodsAll$ | async as products"
+>
+  <div
+    class="carousel-title"
+    fxLayout="row wrap"
+    [ngStyle.gt-sm]="{ 'margin-bottom': '30px' }"
+    [ngStyle.xs]="{ 'margin-bottom': '10px' }"
+  >
+    <h1>Related Products</h1>
+  </div>
+  <p-carousel
+    class="top-carousel"
+    [value]="products"
+    [numVisible]="5"
+    [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
+  >
+    <ng-template let-category pTemplate="item">
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="space-evenly center"
+        class="product-container"
+      >
+        <app-product [product]="category"></app-product>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<section
+  [ngStyle]="{ 'margin-bottom': '30px' }"
+  class="product-carousel2"
+  *ngIf="prodsAll$ | async as products"
+>
+  <div
+    class="carousel-title"
+    fxLayout="row wrap"
+    [ngStyle]="{ 'margin-bottom': '30px' }"
+  >
+    <h1>Related Products</h1>
+  </div>
+  <p-carousel
+    class="bottom-carousel"
+    [responsiveOptions]="responsiveOptions"
+    [value]="products"
+    [numVisible]="5"
+    [numScroll]="1"
+  >
+    <ng-template let-category pTemplate="item">
+      <div
+        class="product-container"
+        fxLayout="row wrap"
+        fxLayoutAlign="space-evenly center"
+      >
+        <app-product [product]="category"></app-product>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>

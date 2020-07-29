@@ -1,6 +1,6 @@
 /*Main layout footer*/
 @import "./../../styles/variables";
-
+@import "../../styles/mixins";
 /*top navbar stiles*/
 #top-navbar {
   border-top: 1px solid $white;
@@ -126,6 +126,17 @@
 .logo-mobile-bottom {
   background: $yellow;
 }
+:host ::ng-deep #top-navbar {
+  #cart-icon-container {
+    div.sub-menu {
+      @include cart-list();
+    }
+  }
+}
+.show-list {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 // --------------------------sub-menu-cards------------------
 #navbarNav > ul > li > ul.sub-menu {
   width: 290px;
@@ -133,7 +144,7 @@
   padding: 25px 0px;
   position: absolute;
   top: 30px;
-  z-index: 10;
+  z-index: 999;
   visibility: hidden;
   opacity: 0;
   -webkit-transform: translateY(30px);
@@ -377,6 +388,80 @@
   text-transform: capitalize;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+//MiniCart list styles
+:host ::ng-deep #top-navbar {
+  #cart-icon-container {
+    div.sub-menu {
+      color: #333333;
+      .cart-item-container {
+        border-bottom: 1px solid #ededed;
+        .cart-item-image {
+          width: 50%;
+          margin-right: 10px;
+          padding: 0 20px;
+          a {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            overflow: hidden;
+            height: 100%;
+            display: block;
+          }
+        }
+      }
+      .cart-item-summary {
+      }
+      .cart-btn,
+      .order-btn {
+        @include btn(0 50px, 36px);
+        width: 90%;
+        border-radius: 0px !important;
+      }
+      .cart-btn:hover,
+      .order-btn:hover {
+        @include btn-hover();
+      }
+    }
+    .cart-item-description {
+      font-weight: 400;
+      text-transform: capitalize;
+      font-size: 14px;
+      line-height: 20px;
+      display: block;
+      margin-bottom: 6px;
+      width: 200px;
+      padding: 20px 0;
+    }
+  }
+}
+:host ::ng-deep .search-section-container {
+  .mt-4 {
+    div.sub-menu {
+      top: 100px !important;
+      .sub-menu-content {
+        .cart-item-container {
+          border-bottom: 1px solid #ededed;
+          .cart-item-image {
+            width: 50%;
+            margin-right: 10px;
+            padding: 0 20px;
+            a {
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-position: center;
+              overflow: hidden;
+              height: 100%;
+              display: block;
+            }
+          }
+        }
+      }
+      @include cart-list();
+      color: #333333;
+    }
+  }
 }
 // media queries
 @media (max-width: 600px) {

@@ -18,3 +18,47 @@
   -webkit-animation-delay: $animation-delay;
   animation-delay: $animation-delay;
 }
+
+@mixin btn($padding, $line-height) {
+  color: #333;
+  bottom: 0px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: $padding;
+  line-height: $line-height;
+  height: 36px;
+  text-transform: capitalize;
+  background: #fdb813;
+  border-radius: 5px;
+}
+
+@mixin btn-hover() {
+  color: #fdb813;
+  background: #333;
+}
+
+@mixin cart-list() {
+  width: 400px;
+
+  padding: 18px 15px 0;
+  background: #fff;
+  right: 10vw;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid #ededed;
+  position: absolute;
+  top: 30px;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: translateY(30px);
+  -ms-transform: translateY(30px);
+  transform: translateY(30px);
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  overflow: visible;
+  overflow-y: scroll;
+}
