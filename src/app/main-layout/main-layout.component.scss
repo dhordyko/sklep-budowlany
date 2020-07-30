@@ -3,6 +3,8 @@
 @import "../../styles/mixins";
 
 /*top navbar stiles*/
+
+
 #top-navbar {
   border-top: 1px solid $white;
   animation-name: fadeInDown;
@@ -109,8 +111,7 @@
   padding-top: 45px;
 }
 
-#search-icon:hover,
-.sidebar-toggle:hover {
+#search-icon:hover {
   color: $yellow;
 }
 
@@ -535,17 +536,33 @@
 }
 
 // sidebar-styling
+
+.shadowed-div {
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-property: background-color,
+    visibility;
+}
+
+:host ::ng-deep mat-drawer-container {
+  .mat-drawer-backdrop {
+    position: fixed;
+  }
+}
+
 :host ::ng-deep mat-drawer {
   width: 290px;
   position: fixed;
   background: rgb(255, 255, 255);
-  z-index: 99;
   height: 100vh;
-  transition: all 0.5s ease 0s;
   left: 0px;
-  overflow-y: auto;
-  transform: none;
-  visibility: visible;
+
+
+  .mat-drawer-inner-container {
+    overflow: hidden !important;
+
+
+  }
 
   .sidebar-top-section {
     margin-bottom: 30px;
@@ -638,6 +655,8 @@
     }
   }
 }
+
+
 
 // media queries
 @media (max-width: 600px) {

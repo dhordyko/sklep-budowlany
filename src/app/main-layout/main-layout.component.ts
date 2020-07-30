@@ -110,7 +110,23 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       this.showElement = false;
     }
   }
+  @HostListener('click', ['$event']) onClick(event) {
+    console.log(event);
+    if (event.target.id == 'collapseBtnClose') {
+      if (document.body.classList.contains('block-scroll')) {
+        document.body.classList.remove('block-scroll');
+      }
 
+      document.body.classList.add('open-scroll');
+    }
+    if (event.target.id == 'collapseBtnOpen') {
+      if (document.body.classList.contains('open-scroll')) {
+        document.body.classList.remove('open-scroll');
+      }
+      document.body.classList.add('block-scroll');
+      console.log(document.body.classList);
+    }
+  }
   // ------navbar animation-------
   showCartList() {
     this.cart_list.nativeElement.classList.add('show-list');

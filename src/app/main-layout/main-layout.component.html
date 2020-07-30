@@ -733,8 +733,8 @@
 <section fxShow.xs="true" fxShow.gt-sm="false" class="logo-mobile-top">
   <nav class="navbar navbar-expand-lg" [class.mobile-nav]="true">
     <div class="menu-icon-wrapper ml-5" fxLayout="row wrap">
-      <a class="sidebar-toggle mr-2 mt-2" (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
+      <a  class="sidebar-toggle mr-2 mt-2" (click)="drawer.toggle()">
+        <mat-icon id="collapseBtnOpen">menu</mat-icon>
       </a>
     </div>
 
@@ -768,6 +768,19 @@
 
 <mat-drawer-container class="example-container" [ngStyle]="{'width': '100vw'}">
   <mat-drawer #drawer class="example-sidenav" mode="over" fxShow.lt-md="true">
+  <section fxShow.xs="true" fxShow.gt-sm="false" class="logo-mobile-bottom">
+  <nav class="navbar navbar-expand-lg" [class.mobile-nav]="true" fxLayout="row" fxLayoutAlign="space-between stretch">
+    <div class="logo-wrapper ml-5">
+      <img src="assets/carousel/logo.png" />
+    </div>
+<div  class="menu-icon-wrapper ml-5" fxLayout="row wrap">
+      <a class="sidebar-toggle mr-2 mt-2" (click)="drawer.toggle()">
+        <mat-icon id="collapseBtnClose">menu</mat-icon>
+      </a>
+    </div>
+
+  </nav>
+</section>
  <section class="sidebar-top-section">
           <div
             fxLayout="row wrap"
@@ -908,7 +921,7 @@
         <div
           class="cart-list-container"
           [class.show-list]="hoverElement"
-
+          style="height: 550px;"
           (mouseout)="hoverElement = false"
 
         >
@@ -1046,6 +1059,7 @@
 
 
 <section class="footer-wrapper" fxShow.gt-md="true" fxShow="false">
+<div [class.shadowed-div]=""></div>
   <footer class="footer_widgets footer_three">
     <div class="footer_top">
       <div class="container">
