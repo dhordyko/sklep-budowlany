@@ -35,7 +35,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   searchText = '';
   animate = false;
   items: MenuItem[];
-
+  panelOpenState = false;
   showElement = false;
   showMainNav = true;
   menucard_class = '';

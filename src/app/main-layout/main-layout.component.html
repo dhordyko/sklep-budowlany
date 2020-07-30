@@ -197,18 +197,18 @@
           </div>
 
           <div
-            class="cart-item-container"
+            class="cart-item-container mb-3"
             *ngFor="let cartItem of cartList"
             fxLayout="row"
           >
-            <div class="cart-item-image">
+            <div class="cart-item-image mr-1">
               <a
                 [ngStyle]="{
                   'background-image': 'url(' + cartItem.url_image + ')'
                 }"
               ></a>
             </div>
-            <div class="cart-item-description" fxLayout="column">
+            <div class="cart-item-description mb-3" fxLayout="column">
               <span class="mb-3">{{ cartItem.name }}</span>
               <div fxLayout="row" fxLayoutAlign="space-between center">
                 <div fxLayout="column" fxLayoutGap="10px">
@@ -908,7 +908,7 @@
         <div
           class="cart-list-container"
           [class.show-list]="hoverElement"
-          style="height: 550px;"
+
           (mouseout)="hoverElement = false"
 
         >
@@ -930,7 +930,7 @@
             *ngFor="let cartItem of cartList"
             fxLayout="column"
           >
-          <div fxLayout="row wrap" fxLayoutAlign="space-between stretch">
+          <div class="image-outer-container mt-3" fxLayout="row" fxLayoutAlign="center stretch">
            <div class="cart-item-image">
               <a
                 [ngStyle]="{
@@ -938,11 +938,11 @@
                 }"
               ></a>
             </div>
-            <span class="mb-3">{{ cartItem.name }}</span>
+            <span class="mb-3 pr-1">{{ cartItem.name }}</span>
 
           </div>
 
-            <div class="cart-item-description" fxLayout="column" fxLayoutAlign="center stretch" >
+            <div class="cart-item-description px-2" fxLayout="column" fxLayoutAlign="center stretch" >
 
               <div fxLayout="row" fxLayoutAlign="space-between center">
                 <div fxLayout="column" fxLayoutGap="10px">
@@ -997,6 +997,35 @@
           </div>
         </div>
       </div>
+
+
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        This is the expansion title
+      </mat-panel-title>
+      <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
   </mat-drawer>
 
 
