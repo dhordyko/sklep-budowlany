@@ -347,7 +347,7 @@
           </div>
         </section>
         <!-- -----------------Search Section--------------- -->
-        <section class="search-section">
+        <section class="search-section"  >
           <div
             fxLayout="row"
             fxLayoutAlign.gt-md="space-around center"
@@ -398,6 +398,8 @@
                   style="color: black; cursor: pointer;"
                   [routerLink]="['/cart']"
                   (mouseover)="showCartList()"
+                  (mouseout)="hideCartList()"
+
                 >
                   <mat-icon
                     style="font-size: 40px;"
@@ -419,8 +421,8 @@
                 class="sub-menu"
                 style="height: 400px;"
                 #cart_list
-                (mouseover)="showCartList()"
-                (mouseout)="hideCartList()"
+               (mouseover)="showCartList()"
+                  (mouseout)="hideCartList()"
               >
                 <div class="sub-menu-content" >
                   <div
@@ -731,7 +733,7 @@
 <section fxShow.xs="true" fxShow.gt-sm="false" class="logo-mobile-top">
   <nav class="navbar navbar-expand-lg" [class.mobile-nav]="true">
     <div class="menu-icon-wrapper ml-5" fxLayout="row wrap">
-      <a class="sidebar-toggle mr-2 mt-2">
+      <a class="sidebar-toggle mr-2 mt-2" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </a>
     </div>
@@ -764,7 +766,256 @@
   </nav>
 </section>
 
-<router-outlet></router-outlet>
+<mat-drawer-container class="example-container" [ngStyle]="{'width': '100vw'}">
+  <mat-drawer #drawer class="example-sidenav" mode="over" fxShow.lt-md="true">
+ <section class="sidebar-top-section">
+          <div
+            fxLayout="row wrap"
+            fxLayoutAlign="center center"
+            class="content "
+          >
+            <div class="content-container" fxLayout="row" fxLayoutAlign="space-between stretch">
+              <div></div>
+
+
+                <div fxLayout="row wrap" class="top-right-list">
+                  <a
+                    fxLayout="row wrap"
+                    class="pr-2 mx-2 border-right 1 border-dark"
+                  >
+                    <mat-icon style="font-size: 20px;">compare</mat-icon
+                    ><span>Compare Items</span>
+                  </a>
+                  <a fxLayout="row wrap" class="mx-2 border-right 1 border-dark"
+                    ><span>Settings</span>
+
+                    <mat-icon class="arrow-icon">keyboard_arrow_down</mat-icon>
+                  </a>
+                  <a
+                    fxLayout="row wrap"
+                    class="mx-2 border-right 1 border-dark"
+                  >
+                    <label mat-button [matMenuTriggerFor]="belowMenuCurrency">
+                      {{ chosenCurrency.name }}
+                      <span class="flag-icon {{ chosenCurrency.icon }}"></span>
+                    </label>
+                    <mat-menu #belowMenuCurrency="matMenu" yPosition="below">
+                      <div *ngFor="let option of currency">
+                        <button mat-menu-item (click)="currencyOption(option)">
+                          {{ option.name }}
+                          <span class="flag-icon {{ option.icon }}"></span>
+                        </button>
+                      </div>
+                    </mat-menu>
+
+                    <mat-icon
+                      [matMenuTriggerFor]="belowMenuCurrency"
+                      class="arrow-icon"
+                      >keyboard_arrow_down</mat-icon
+                    >
+                  </a>
+                  <a
+                    fxLayout="row wrap"
+                    class="mx-2 border-right 1 border-dark"
+                  >
+                    <div style="padding-right: 3px;">
+                      <label mat-button [matMenuTriggerFor]="belowMenuLang">
+                        {{ chosenLang.lang_name }}
+                        <span class="flag-icon {{ chosenLang.icon }}"></span>
+                      </label>
+                      <mat-menu #belowMenuLang="matMenu" yPosition="below">
+                        <div *ngFor="let option of languages">
+                          <button mat-menu-item (click)="langOption(option)">
+                            {{ option.lang_name }}
+                            <span class="flag-icon {{ option.icon }}"></span>
+                          </button>
+                        </div>
+                      </mat-menu>
+                    </div>
+
+                    <mat-icon
+                      [matMenuTriggerFor]="belowMenuLang"
+                      class="arrow-icon"
+                      >keyboard_arrow_down</mat-icon
+                    >
+                  </a>
+                </div>
+
+            </div>
+
+          </div>
+        </section>
+ <div class="search_form">
+              <form
+                id="mc-form"
+                class="mc-form footer-newsletter"
+                novalidate="true"
+              >
+                <input
+                  autocomplete="off"
+                  placeholder="Search..."
+                  #search
+                  name="searchText"
+                />
+                <button id="mc-submit">
+                  Search
+                </button>
+              </form>
+            </div>
+             <p
+                      class="support-icon-container mx-3 mt-5 pt-3"
+                      fxLayout="row wrap"
+                      fxLayoutGap="40px"
+                    >
+                      <span>
+                        <mat-icon class="support_img_icon">headset</mat-icon>
+                      </span>
+                      <span
+                        class="support-text"
+                        fxLayout="column"
+                        fxLayoutGap="10px"
+                      >
+                        <span>Customer Support</span>
+                        <a class="support-telephone" href="tel:(08)123456789"
+                          >(08) 123 456 789</a
+                        >
+                      </span>
+                      <br />
+                    </p>
+  <div
+        id="cart-icon-container"
+        class="nav-item active"
+        fxLayout="row wrap"
+        fxLayoutAlign="space-evenly center"
+        (mouseover)="hoverElement=true"
+      >
+        <div
+          class="mr-md-4 mt-3"
+          style="cursor: pointer; font-size: 20px; color: black;"
+        >
+          {{ IconPrice.toFixed(2) }}<span *ngIf="IconPrice == null">0</span>zł
+        </div>
+        <div
+          class="mr-md-4 mt-3 cart-label"
+          style="color: black; cursor: pointer;"
+          [routerLink]="['/cart']"
+          (mouseover)="showCartList()"
+        >
+          <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after"
+            >shopping_cart
+          </mat-icon>
+        </div>
+        <div
+          class="cart-list-container"
+          [class.show-list]="hoverElement"
+          style="height: 550px;"
+          (mouseout)="hoverElement = false"
+
+        >
+          <div
+            *ngIf="!cartList ||cartList.length===0"
+            fxLayout="column"
+            fxLayoutGap="100px"
+            fxLayoutAlign="space-between center"
+          >
+            <div></div>
+            <h1 class="text-muted text-center">
+              <em>Cart is empty right now.</em>
+            </h1>
+            <div></div>
+          </div>
+
+          <div
+            class="cart-item-container"
+            *ngFor="let cartItem of cartList"
+            fxLayout="column"
+          >
+          <div fxLayout="row wrap" fxLayoutAlign="space-between stretch">
+           <div class="cart-item-image">
+              <a
+                [ngStyle]="{
+                  'background-image': 'url(' + cartItem.url_image + ')'
+                }"
+              ></a>
+            </div>
+            <span class="mb-3">{{ cartItem.name }}</span>
+
+          </div>
+
+            <div class="cart-item-description" fxLayout="column" fxLayoutAlign="center stretch" >
+
+              <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="column" fxLayoutGap="10px">
+                  <span
+                    >Ilość:
+                    <span style="font-weight: 600; color: blue;">{{
+                      cartItem.quantity
+                    }}</span>
+                  </span>
+                  <span
+                    >Cena:
+                    <span style="font-weight: 600; color: red;"
+                      >{{ cartItem.total }}zł</span
+                    >
+                  </span>
+                </div>
+                <div class="cart-item-remove">
+                  <button mat-mini-fab (click)="removeCartItem(cartItem.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-item-summary">
+            <div
+              class="sub-total-price"
+              fxLayout="row"
+              fxLayoutAlign="space-between stretch"
+            >
+              <p>Sub-Total :</p>
+              <p>{{ IconPrice.toFixed(2) }}zł</p>
+            </div>
+            <div
+              class="total-price"
+              fxLayout="row"
+              fxLayoutAlign="space-between stretch"
+            >
+              <p>Total :</p>
+              <p>{{ IconPrice.toFixed(2) }}zł</p>
+            </div>
+          </div>
+          <div
+            class="btns-container mt-2"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+          >
+            <button [routerLink]="'/cart'" mat-button class="cart-btn">
+              Przejdż do koszyka
+            </button>
+            <button mat-button class="order-btn my-2">Kup teraz</button>
+          </div>
+        </div>
+      </div>
+  </mat-drawer>
+
+
+  <router-outlet></router-outlet>
+
+
+
+
+
+
+</mat-drawer-container>
+
+
+
+
+
+
+
+
 <section class="footer-wrapper" fxShow.gt-md="true" fxShow="false">
   <footer class="footer_widgets footer_three">
     <div class="footer_top">

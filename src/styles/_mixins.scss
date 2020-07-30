@@ -5,6 +5,7 @@
   right: $right;
   margin-top: $margin-top;
 }
+
 @mixin top-slider-text-animation($ft-wt, $animation-delay) {
   font-weight: $ft-wt;
   text-transform: capitalize;
@@ -37,16 +38,15 @@
   background: #333;
 }
 
-@mixin cart-list() {
-  width: 400px;
-
+@mixin cart-list($width, $top) {
+  width: $width;
   padding: 18px 15px 0;
   background: #fff;
   right: 10vw;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
   border: 1px solid #ededed;
   position: absolute;
-  top: 30px;
+  top: $top;
   z-index: 10;
   visibility: hidden;
   opacity: 0;

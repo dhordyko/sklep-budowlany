@@ -50,7 +50,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
 
   mediaSub: Subscription;
   cartList: any[] = [];
-
+  hoverElement: boolean = false;
   languages = [
     {
       lang_name: 'English',
@@ -114,6 +114,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   // ------navbar animation-------
   showCartList() {
     this.cart_list.nativeElement.classList.add('show-list');
+    console.log(this.cart_list.nativeElement.classList);
   }
   hideCartList() {
     this.cart_list.nativeElement.classList.remove('show-list');

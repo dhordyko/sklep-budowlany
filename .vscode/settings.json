@@ -28,5 +28,11 @@
     }
   },
   "terminal.integrated.fontSize": 14,
-  "liveServer.settings.fullReload": false
+  "liveServer.settings.fullReload": false,
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "plaintext": "pug"
+  }
 }
