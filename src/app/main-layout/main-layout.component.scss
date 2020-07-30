@@ -547,6 +547,7 @@
 :host ::ng-deep mat-drawer-container {
   .mat-drawer-backdrop {
     position: fixed;
+    pointer-events: none;
   }
 }
 
@@ -632,7 +633,7 @@
 
     .cart-list-container {
       padding: 5px !important;
-      height: 100vh;
+      height: 50vh;
 
       .btns-container {
 
