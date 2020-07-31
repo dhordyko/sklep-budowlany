@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 .product-image {
   object-fit: cover;
   width: 100%;
@@ -5,10 +7,12 @@
   margin-top: 20px;
   margin-left: 0px;
 }
+
 .mat-header-cell {
   font-size: 17px;
   font-weight: 500;
 }
+
 th.mat-header-cell {
   text-align: center;
 }
@@ -24,13 +28,48 @@ th.mat-header-cell {
   width: 100px;
   text-align: center;
 }
+
 md-divider {
   border-width: 1px;
   border-style: solid;
 }
+
 .mat-footer-cell {
   font-size: 21px;
 }
+
 td.mat-footer-cell-quantity {
   color: blue;
+}
+
+:host ::ng-deep table {
+
+
+  .mat-flat-button.mat-primary,
+  .mat-raised-button.mat-primary,
+  .mat-fab.mat-primary,
+  .mat-mini-fab.mat-primary {
+    color: #333;
+    background: #fdb813;
+  }
+
+  .order-btn:hover,
+  .goback-btn:hover,
+  .remove-item-btn:hover {
+    @include btn-hover();
+  }
+
+  .minus-icon:hover,
+  .plus-icon:hover {
+    color: #fdb813;
+  }
+
+  .order-btn,
+  .goback-btn {
+    border-radius: 0px !important;
+    width: 200px;
+    padding: 0 !important;
+    @include btn(0 50px, 36px)
+  }
+
 }

@@ -38,6 +38,11 @@
   background: #333;
 }
 
+@mixin icons-hover() {
+  color: #fdb813;
+
+}
+
 @mixin cart-list($width, $top, $right) {
   width: $width;
   padding: 18px 15px 0;

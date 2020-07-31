@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CartTableComponent implements OnInit {
   ///dataSource = new UserDataSource(this.prodService);
+
   dataSource = new MatTableDataSource<Product>(this.prodService.ProductsCart);
   products: Product[] = [];
   quantity: number = 1;
@@ -23,6 +24,7 @@ export class CartTableComponent implements OnInit {
   public totalSize = 0;
   totalPrice: number = 0;
   totalQuantity: number = 0;
+  CartProducts: Product[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns = [
@@ -43,6 +45,7 @@ export class CartTableComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('cart')) {
       this.prodService.ProductsCart = JSON.parse(localStorage.getItem('cart'));
+      console.log(this.prodService.ProductsCart);
     }
     this.dataSource = new MatTableDataSource<Product>(
       this.prodService.ProductsCart
@@ -53,6 +56,10 @@ export class CartTableComponent implements OnInit {
       this.totalPrice += Number(this.prodService.ProductsCart[i].total);
       this.totalQuantity += this.prodService.ProductsCart[i].quantity;
 
+      this.CartProducts = this.prodService.ProductsCart;
+      if (localStorage.getItem('cart')) {
+        this.CartProducts = JSON.parse(localStorage.getItem('cart'));
+      }
       // this.prodService.CartTotalPrice.next(this.totalPrice);
       // this.prodService.CartTotalQunatity.next(this.totalQuantity);
     }

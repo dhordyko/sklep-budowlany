@@ -13,21 +13,12 @@ import { environment } from '../environments/environment';
 // --------------------Components---------------------
 import { MainLayoutModule } from './main-layout/main-layout.module';
 import { AppComponent } from './app.component';
-import { CartPageComponent } from './cart-page/cart-page.component';
 
-import { CartTableComponent } from './cart-table/cart-table.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { OfflineComponent } from './offline/offline.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CartPageComponent,
-
-    OrderPageComponent,
-    CartTableComponent,
-    OfflineComponent,
-  ],
+  declarations: [AppComponent, OrderPageComponent, OfflineComponent],
   imports: [
     MainLayoutModule,
     NgprimeSharedModule,

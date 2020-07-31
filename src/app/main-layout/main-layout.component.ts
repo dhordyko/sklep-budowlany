@@ -74,7 +74,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    localStorage.clear();
     setTimeout(() => {
       this.animate = true;
     }, 100);
@@ -170,7 +169,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     } else this.IconPrice.toFixed(2);
 
     this.CartQuantity -= existItem.quantity;
-    console.log(this.IconPrice);
   }
   ngAfterViewInit() {
     this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
