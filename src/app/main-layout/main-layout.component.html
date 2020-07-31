@@ -532,7 +532,7 @@
 </section>
 
 <mat-drawer-container class="example-container" [ngStyle]="{'width': '100vw'}">
-  <mat-drawer #drawer class="example-sidenav" mode="over" fxShow.lt-md="true">
+  <mat-drawer #drawer fxShow.lt-md="true" fxShow="false" class="example-sidenav" mode="over">
     <section fxShow.xs="true" fxShow.gt-sm="false" class="logo-mobile-bottom sidebar-header">
       <div [class.mobile-nav]="true" fxLayout="row" fxLayoutAlign="space-between stretch">
         <div class="logo-wrapper ">

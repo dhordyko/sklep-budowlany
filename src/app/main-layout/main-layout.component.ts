@@ -95,6 +95,9 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
 
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (change: MediaChange) => {
+        if (change.mqAlias === 'sm') {
+          document.body.classList.add('open-scroll');
+        }
         console.log(change.mqAlias);
         console.log(change.mediaQuery);
       }
@@ -111,7 +114,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     }
   }
   @HostListener('click', ['$event']) onClick(event) {
-    console.log(event);
     if (event.target.id == 'collapseBtnClose') {
       if (document.body.classList.contains('block-scroll')) {
         document.body.classList.remove('block-scroll');
@@ -124,7 +126,6 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
         document.body.classList.remove('open-scroll');
       }
       document.body.classList.add('block-scroll');
-      console.log(document.body.classList);
     }
   }
   // ------navbar animation-------
