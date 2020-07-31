@@ -38,11 +38,11 @@
   background: #333;
 }
 
-@mixin cart-list($width, $top) {
+@mixin cart-list($width, $top, $right) {
   width: $width;
   padding: 18px 15px 0;
   background: #fff;
-  right: 10vw;
+  right: $right;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.15);
   border: 1px solid #ededed;
   position: absolute;

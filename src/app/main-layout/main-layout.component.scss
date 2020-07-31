@@ -144,7 +144,7 @@
 :host ::ng-deep #top-navbar {
   #cart-icon-container {
     div.sub-menu {
-      @include cart-list(400px, 30px);
+      @include cart-list(400px, 30px, 10vw);
     }
   }
 }
@@ -529,7 +529,7 @@
         }
       }
 
-      @include cart-list(400px, 30px);
+      @include cart-list(400px, 30px, 10vw);
       color: #333333;
     }
   }
@@ -557,12 +557,14 @@
   background: rgb(255, 255, 255);
   height: 100vh;
   left: 0px;
-
+  overflow-x: hidden;
 
   .mat-drawer-inner-container {
     overflow: hidden !important;
+  }
 
-
+  .logo-mobile-bottom.sidebar-header {
+    padding: 8px;
   }
 
   .sidebar-top-section {
@@ -599,7 +601,7 @@
       border-bottom: 1px solid #ededed;
 
       span {
-        font-size: 10px;
+        font-size: 13px;
         font-weight: 600;
       }
 
@@ -633,7 +635,11 @@
 
     .cart-list-container {
       padding: 5px !important;
-      height: 50vh;
+      margin: 0 auto;
+
+      @include cart-list(80%, 66vh, 3vw);
+
+
 
       .btns-container {
 
@@ -650,10 +656,32 @@
         }
       }
 
-      margin: 0 auto;
-      left: 16vw;
-      @include cart-list(75%, 57vh);
+
     }
+  }
+
+  .expension-menu-container {
+
+    margin: 50px 0;
+    position: absolute;
+    width: 100%;
+    border-radius: 0px;
+
+    mat-expansion-panel {
+      box-shadow: none !important;
+      border-bottom: 1px solid #ededed;
+    }
+  }
+
+  .email-container {
+    margin: 50px 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+
   }
 }
 

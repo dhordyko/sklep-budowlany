@@ -1,5 +1,5 @@
 {
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 4,
   "editor.fontSize": 14,
   "editor.tabSize": 1,
   "files.autoSave": "off",
@@ -30,9 +30,15 @@
   "terminal.integrated.fontSize": 14,
   "liveServer.settings.fullReload": false,
   "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "vue-html": "html",
-    "plaintext": "pug"
-  }
+  "files.associations": {
+    "*html": "html"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
+  "workbench.iconTheme": "material-icon-theme"
+
+
+
 }
