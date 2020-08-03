@@ -12,31 +12,17 @@
   </mat-card-title>
 
   <mat-card-content>
-    <mat-horizontal-stepper
-      [linear]="isLinear"
-      #stepper
-      fxShow.sm="false"
-      fxShow.md="true"
-      fxShow.gt-md="true"
-      fxShow.xs="false"
-      fxShow="false"
-    >
+    <mat-horizontal-stepper [linear]="false" #stepper fxShow.sm="false" fxShow.md="true" fxShow.gt-md="true"
+      fxShow.xs="false" fxShow="false">
       <mat-step [stepControl]="firstFormGroup">
         <div class="d-flex justify-content-center mt-4">
           <div>
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>First Name</mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="firstName"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('firstName').touched"
-                  >Please enter your name</mat-error
-                >
+                <mat-label style="color:#333">First Name</mat-label>
+                <input matInput MatFormFieldControl formControlName="firstName" required />
+                <mat-error *ngIf="firstFormGroup.get('firstName').touched">Please enter your name</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -44,7 +30,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Last Name</mat-label>
+                <mat-label style="color:#333">Last Name</mat-label>
                 <input matInput formControlName="lastName" />
               </mat-form-field>
             </form>
@@ -58,16 +44,9 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Address</mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="address"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('address').touched"
-                  >Please enter your address</mat-error
-                >
+                <mat-label style="color:#333">Address</mat-label>
+                <input matInput MatFormFieldControl formControlName="address" required />
+                <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your address</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -75,7 +54,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Town/City</mat-label>
+                <mat-label style="color:#333">Town/City</mat-label>
                 <input matInput formControlName="city" />
               </mat-form-field>
             </form>
@@ -88,16 +67,9 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>State/Counry <small>(required)</small></mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="country"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('address').touched"
-                  >Please enter your country</mat-error
-                >
+                <mat-label style="color:#333">State/Counry <small>(required)</small></mat-label>
+                <input matInput MatFormFieldControl formControlName="country" required />
+                <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your country</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -105,7 +77,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>PostCode/Zip </mat-label>
+                <mat-label style="color:#333">PostCode/Zip </mat-label>
                 <input matInput formControlName="postIndex" />
               </mat-form-field>
             </form>
@@ -118,16 +90,9 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Phone <small>(required)</small></mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="phone"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('address').touched"
-                  >Please enter your phone</mat-error
-                >
+                <mat-label style="color:#333">Phone <small>(required)</small></mat-label>
+                <input matInput MatFormFieldControl formControlName="phone" required />
+                <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your phone</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -135,42 +100,23 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Email <small> (required)</small></mat-label>
-                <input
-                  matInput
-                  formControlName="email"
-                  MatFormFieldControl
-                  required
-                />
-                <mat-error
-                  *ngIf="
+                <mat-label style="color:#333">Email <small> (required)</small></mat-label>
+                <input matInput formControlName="email" MatFormFieldControl required />
+                <mat-error *ngIf="
                     firstFormGroup.get('email').touched &&
                     firstFormGroup.get('email').invalid
-                  "
-                  >{{ getErrorMessage() }}</mat-error
-                >
+                  ">{{ getErrorMessage() }}</mat-error>
               </mat-form-field>
             </form>
           </div>
         </div>
-        <div class="mt-5 px-3">
-          <button
-            class="mx-4 py-2"
-            mat-raised-button
-            (click)="stepper.reset()"
-            style="background-color: #3f51b5; color: whitesmoke;"
-          >
-            Recet
+        <div class="mt-5 px-3 btn-container">
+          <button class="mx-4 recet-btn" mat-button (click)="stepper.reset()">
+            Wyczyść
           </button>
 
-          <button
-            #checkbtn
-            class="mx-4 py-2"
-            mat-raised-button
-            style="background-color: #3f51b5; color: whitesmoke;"
-            (click)="FirstStepCheck(stepper)"
-          >
-            Next
+          <button #checkbtn class="mx-4  next-btn" mat-button (click)="FirstStepCheck(stepper)">
+            Dalej
           </button>
         </div>
       </mat-step>
@@ -241,22 +187,18 @@
                       </span>
                       {{ IconPrice }}$
                     </h5>
-                    <mat-radio-group
-                      aria-label="Select an option"
-                      class="d-flex flex-column my-5"
-                      formControlName="shippingMode"
-                      name="shippingMode"
-                    >
-                      <mat-radio-button value="DHL"
-                        ><h6 class="text-muted text-primary">
+                    <mat-radio-group aria-label="Select an option" class="d-flex flex-column my-5"
+                      formControlName="shippingMode" name="shippingMode">
+                      <mat-radio-button value="DHL">
+                        <h6 class="text-muted text-primary">
                           <em>DHL</em>
-                        </h6></mat-radio-button
-                      >
-                      <mat-radio-button value="Inpost"
-                        ><h6 class="text-muted text-primary">
+                        </h6>
+                      </mat-radio-button>
+                      <mat-radio-button value="Inpost">
+                        <h6 class="text-muted text-primary">
                           <em>Inpost</em>
-                        </h6></mat-radio-button
-                      >
+                        </h6>
+                      </mat-radio-button>
                     </mat-radio-group>
                   </div>
                 </div>
@@ -287,7 +229,7 @@
                     <mat-divider></mat-divider>
 
                     <mat-form-field appearance="fill" class="mt-4 w-75">
-                      <mat-label>Textarea</mat-label>
+                      <mat-label style="color:#333">Textarea</mat-label>
                       <textarea matInput></textarea>
                     </mat-form-field>
                   </div>
@@ -297,22 +239,18 @@
                 <div class="row text-lg-left mt-4">
                   <div class="col-md-12">
                     <mat-divider></mat-divider>
-                    <mat-radio-group
-                      aria-label="Select an option"
-                      class="d-flex flex-column my-5"
-                      formControlName="payment"
-                      name="payment"
-                    >
-                      <mat-radio-button value="PayPal"
-                        ><h6 class="text-muted text-primary">
+                    <mat-radio-group aria-label="Select an option" class="d-flex flex-column my-5"
+                      formControlName="payment" name="payment">
+                      <mat-radio-button value="PayPal">
+                        <h6 class="text-muted text-primary">
                           <em>PayPal</em>
-                        </h6></mat-radio-button
-                      >
-                      <mat-radio-button value="CreditCard"
-                        ><h6 class="text-muted text-primary">
+                        </h6>
+                      </mat-radio-button>
+                      <mat-radio-button value="CreditCard">
+                        <h6 class="text-muted text-primary">
                           <em>CreditCard</em>
-                        </h6></mat-radio-button
-                      >
+                        </h6>
+                      </mat-radio-button>
                     </mat-radio-group>
                   </div>
                 </div>
@@ -320,22 +258,12 @@
             </mat-card-content>
           </mat-card>
           <div class="mt-5 px-3">
-            <button
-              class="mx-4 py-2"
-              mat-raised-button
-              style="background-color: #3f51b5; color: whitesmoke;"
-              matStepperPrevious
-            >
+            <button class="mx-4 py-2" mat-raised-button style="background-color: #3f51b5; color: whitesmoke;"
+              matStepperPrevious>
               Back
             </button>
-            <button
-              class="mx-4 py-2"
-              style="padding: 5px 35px;"
-              mat-raised-button
-              (click)="submit(stepper)"
-              [disabled]="submited"
-              style="background-color: #3f51b5; color: whitesmoke;"
-            >
+            <button class="mx-4 py-2" style="padding: 5px 35px;" mat-raised-button (click)="submit(stepper)"
+              [disabled]="submited" style="background-color: #3f51b5; color: whitesmoke;">
               Submit
             </button>
           </div>
@@ -357,35 +285,17 @@
     </mat-horizontal-stepper>
 
     <!-- ------------------------------------------- -->
-    <mat-vertical-stepper
-      fxShow.sm="true"
-      fxShow.md="false"
-      fxShow.xs="true"
-      fxShow="false"
-      #VertStepper
-       [linear]="isLinear"
-    >
+    <mat-vertical-stepper fxShow.sm="true" fxShow.md="false" fxShow.xs="true" fxShow="false" #VertStepper
+      [linear]="isLinear">
       <mat-step [stepControl]="firstFormGroup">
-        <div
-          fxLayout.xs="column"
-          fxLayout.sm="column"
-          fxLayout.md="column"
-          class="d-flex justify-content-center mt-4"
-        >
+        <div fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" class="d-flex justify-content-center mt-4">
           <div>
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
                 <mat-label>First Name</mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="firstName"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('firstName').touched"
-                  >Please enter your name</mat-error
-                >
+                <input matInput MatFormFieldControl formControlName="firstName" required />
+                <mat-error *ngIf="firstFormGroup.get('firstName').touched">Please enter your name</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -402,26 +312,14 @@
 
         <!-- ------------- -->
 
-        <div
-          class="d-flex justify-content-center mt-4"
-          fxLayout.xs="column"
-          fxLayout.sm="column"
-          fxLayout.md="column"
-        >
+        <div class="d-flex justify-content-center mt-4" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
           <div>
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
                 <mat-label>Address</mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="address"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('address').touched"
-                  >Please enter your address</mat-error
-                >
+                <input matInput MatFormFieldControl formControlName="address" required />
+                <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your address</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -437,26 +335,14 @@
         </div>
 
         <!-- ------------- -->
-        <div
-          class="d-flex justify-content-center mt-4"
-          fxLayout.xs="column"
-          fxLayout.sm="column"
-          fxLayout.md="column"
-        >
+        <div class="d-flex justify-content-center mt-4" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
           <div>
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
                 <mat-label>State/Counry <small>(required)</small></mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="country"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('address').touched"
-                  >Please enter your country</mat-error
-                >
+                <input matInput MatFormFieldControl formControlName="country" required />
+                <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your country</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -472,26 +358,14 @@
         </div>
 
         <!-- ------------- -->
-        <div
-          class="d-flex justify-content-center mt-4"
-          fxLayout.xs="column"
-          fxLayout.sm="column"
-          fxLayout.md="column"
-        >
+        <div class="d-flex justify-content-center mt-4" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
           <div>
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
                 <mat-label>Phone <small>(required)</small></mat-label>
-                <input
-                  matInput
-                  MatFormFieldControl
-                  formControlName="phone"
-                  required
-                />
-                <mat-error *ngIf="firstFormGroup.get('address').touched"
-                  >Please enter your phone</mat-error
-                >
+                <input matInput MatFormFieldControl formControlName="phone" required />
+                <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your phone</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -500,19 +374,11 @@
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
                 <mat-label>Email <small> (required)</small></mat-label>
-                <input
-                  matInput
-                  formControlName="email"
-                  MatFormFieldControl
-                  required
-                />
-                <mat-error
-                  *ngIf="
+                <input matInput formControlName="email" MatFormFieldControl required />
+                <mat-error *ngIf="
                     firstFormGroup.get('email').touched &&
                     firstFormGroup.get('email').invalid
-                  "
-                  >{{ getErrorMessage() }}</mat-error
-                >
+                  ">{{ getErrorMessage() }}</mat-error>
               </mat-form-field>
             </form>
           </div>
@@ -525,18 +391,9 @@
           <mat-card>
             <mat-card-content>
               <div class="container">
-                <div
-                  class="row"
-                  fxShow.sm="false"
-                  fxLayout.sm="column"
-                  fxLayout.xs="column"
-                  fxLayout.md="column"
-                >
+                <div class="row" fxShow.sm="false" fxLayout.sm="column" fxLayout.xs="column" fxLayout.md="column">
                   <div class="col-md-7 text-lg-left">
-                    <h2
-                      class="font-weight-bold text-muted"
-                      [ngStyle.xs]="{ 'font-size': '4vw' }"
-                    >
+                    <h2 class="font-weight-bold text-muted" [ngStyle.xs]="{ 'font-size': '4vw' }">
                       List of Products
                     </h2>
                   </div>
@@ -556,10 +413,7 @@
 
                     <div class="col-md-4 text-lg-left">
                       <div class="col-md-5 text-lg-left">
-                        <h2
-                          [ngStyle.xs]="{ 'font-size': '4vw' }"
-                          class="font-weight-bold text-muted mb-5"
-                        >
+                        <h2 [ngStyle.xs]="{ 'font-size': '4vw' }" class="font-weight-bold text-muted mb-5">
                           Total Price
                         </h2>
                       </div>
@@ -577,17 +431,9 @@
                 <!--
                 ------------sm-layout---------- -->
 
-                <div
-                  class="row"
-                  fxShow.sm="true"
-                  fxLayout.sm="column"
-                  fxLayout.xs="column"
-                >
+                <div class="row" fxShow.sm="true" fxLayout.sm="column" fxLayout.xs="column">
                   <div>
-                    <h2
-                      class="font-weight-bold text-muted"
-                      [ngStyle.xs]="{ 'font-size': '4vw' }"
-                    >
+                    <h2 class="font-weight-bold text-muted" [ngStyle.xs]="{ 'font-size': '4vw' }">
                       List of Products
                     </h2>
                   </div>
@@ -607,10 +453,7 @@
 
                     <div>
                       <div>
-                        <h2
-                          [ngStyle.xs]="{ 'font-size': '4vw' }"
-                          class="font-weight-bold text-muted"
-                        >
+                        <h2 [ngStyle.xs]="{ 'font-size': '4vw' }" class="font-weight-bold text-muted">
                           Total Price
                         </h2>
                       </div>
@@ -649,12 +492,8 @@
                     <mat-divider></mat-divider>
                     <div class="mt-3"></div>
 
-                    <mat-radio-group
-                      aria-label="Select an option"
-                      class="d-flex flex-column my-5"
-                      formControlName="shippingMode"
-                      name="shippingMode"
-                    >
+                    <mat-radio-group aria-label="Select an option" class="d-flex flex-column my-5"
+                      formControlName="shippingMode" name="shippingMode">
                       <mat-radio-button value="DHL">
                         <h6 class="text-muted text-primary">
                           <em>DHL</em>
@@ -697,9 +536,7 @@
                     <mat-divider></mat-divider>
 
                     <mat-form-field appearance="fill" class="mt-4 w-75">
-                      <mat-label [ngStyle.xs]="{ width: '7vw' }"
-                        >Textarea</mat-label
-                      >
+                      <mat-label [ngStyle.xs]="{ width: '7vw' }">Textarea</mat-label>
                       <textarea matInput></textarea>
                     </mat-form-field>
                   </div>
@@ -709,12 +546,8 @@
                 <div class="row text-lg-left mt-4">
                   <div class="col-md-12">
                     <mat-divider></mat-divider>
-                    <mat-radio-group
-                      aria-label="Select an option"
-                      class="d-flex flex-column my-5"
-                      formControlName="payment"
-                      name="payment"
-                    >
+                    <mat-radio-group aria-label="Select an option" class="d-flex flex-column my-5"
+                      formControlName="payment" name="payment">
                       <mat-radio-button value="PayPal">
                         <h6 class="text-muted text-primary">
                           <em>PayPal</em>
@@ -732,15 +565,9 @@
             </mat-card-content>
           </mat-card>
           <div class="mt-5 px-3">
-            <button
-              class="mx-4 py-2"
-              [ngStyle.xs]="{ width: '20vw' }"
-              style="padding: 5px 35px;"
-              mat-raised-button
-              (click)="Vertsubmit(VertStepper)"
-              [disabled]="submited"
-              style="background-color: #3f51b5; color: whitesmoke;"
-            >
+            <button class="mx-4 py-2" [ngStyle.xs]="{ width: '20vw' }" style="padding: 5px 35px;" mat-raised-button
+              (click)="Vertsubmit(VertStepper)" [disabled]="submited"
+              style="background-color: #3f51b5; color: whitesmoke;">
               Submit
             </button>
           </div>
@@ -750,10 +577,7 @@
         <ng-template matStepLabel>Succeeded</ng-template>
         <mat-card>
           <mat-card-content>
-            <h1
-              [ngStyle.xs]="{ 'font-size': '2vw' }"
-              class="text-centertext-primary"
-            >
+            <h1 [ngStyle.xs]="{ 'font-size': '2vw' }" class="text-centertext-primary">
               Thank you for your order
             </h1>
           </mat-card-content>

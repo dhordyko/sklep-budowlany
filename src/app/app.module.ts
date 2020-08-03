@@ -14,11 +14,10 @@ import { environment } from '../environments/environment';
 import { MainLayoutModule } from './main-layout/main-layout.module';
 import { AppComponent } from './app.component';
 
-import { OrderPageComponent } from './order-page/order-page.component';
 import { OfflineComponent } from './offline/offline.component';
 
 @NgModule({
-  declarations: [AppComponent, OrderPageComponent, OfflineComponent],
+  declarations: [AppComponent, OfflineComponent],
   imports: [
     MainLayoutModule,
     NgprimeSharedModule,

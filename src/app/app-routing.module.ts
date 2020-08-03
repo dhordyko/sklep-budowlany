@@ -10,6 +10,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import { CartTableComponent } from './cart-table/cart-table.component';
+
 const routes: Routes = [
   {
     path: '',

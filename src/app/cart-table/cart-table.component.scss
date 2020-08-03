@@ -98,6 +98,10 @@ td.mat-footer-cell-quantity {
 
 }
 
+:host ::ng-deep .empty-cart-container {
+  height: 600px;
+}
+
 :host ::ng-deep table {
 
   margin: 0 auto;

@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 .mat-card {
   text-align: -webkit-center;
 }
@@ -12,11 +14,13 @@ mat-card {
   margin: 2em auto;
   text-align: center;
 }
+
 .example-form-field {
   width: 400px;
   margin-left: 3em;
   font-size: 17px;
 }
+
 .mat-raised-button {
   width: 250px;
   font-size: medium;
@@ -27,9 +31,60 @@ mat-card {
 textarea {
   height: 100px;
 }
+
 .size {
   font-size: 20px;
 }
+
 ::ng-deep .mat-horizontal-stepper-header {
   pointer-events: none !important;
+}
+
+:host ::ng-deep mat-horizontal-stepper {
+  .mat-horizontal-stepper-header-container {
+    .mat-step-icon.mat-step-icon-state-number.mat-step-icon-selected {
+      background: #fdb813;
+      color: #333
+    }
+  }
+
+  .mat-step-icon.mat-step-icon-state-edit {
+    background: #fdb813;
+    color: #333
+  }
+
+}
+
+:host ::ng-deep .btn-container {
+
+  .recet-btn,
+  .next-btn {
+
+    @include btn(0px, 36px);
+    width: 250px;
+    border-radius: 0px;
+  }
+
+  .recet-btn:hover,
+  .next-btn:hover {
+    @include btn-hover();
+  }
+}
+
+
+:host ::ng-deep .example-form {
+
+
+  mat-form-filed {
+    background: red;
+
+    .mat-form-field-infix {
+      background: red;
+
+      .mat-input-element {
+        background: red;
+        color: #fdb813;
+      }
+    }
+  }
 }

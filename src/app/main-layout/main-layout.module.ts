@@ -19,6 +19,7 @@ import { LongProdCardComponent } from '../main-page/long-prod-card/long-prod-car
 import { ProductPageComponent } from '../product-page/product-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartTableComponent } from '../cart-table/cart-table.component';
+import { OrderPageComponent } from '../order-page/order-page.component';
 @NgModule({
   declarations: [
     MainLayoutComponent,
@@ -30,6 +31,7 @@ import { CartTableComponent } from '../cart-table/cart-table.component';
     LongProdCardComponent,
     ProductPageComponent,
     CartTableComponent,
+    OrderPageComponent,
   ],
   imports: [
     CommonModule,
