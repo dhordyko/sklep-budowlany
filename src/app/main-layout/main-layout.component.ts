@@ -94,7 +94,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
 
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (change: MediaChange) => {
-        if (change.mqAlias === 'sm') {
+        if (change.mqAlias === 'md') {
           document.body.classList.add('open-scroll');
         }
         console.log(change.mqAlias);

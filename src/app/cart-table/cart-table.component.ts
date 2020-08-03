@@ -35,7 +35,7 @@ export class CartTableComponent implements OnInit {
     'total',
     'remove',
   ];
-  displayedColumns1 = ['product', 'name', 'quantity', 'remove'];
+  displayedColumnsForSmView = ['product', 'name', 'quantity', 'remove'];
   displayedFooterColumns = ['product', 'name', 'quantity'];
   constructor(
     private prodService: ProductService,
@@ -43,31 +43,32 @@ export class CartTableComponent implements OnInit {
     private http: HttpClient
   ) {}
   ngOnInit(): void {
+    this.getCartData();
+    this.totalPriceCount();
+  }
+
+  getCartData() {
     if (localStorage.getItem('cart')) {
       this.prodService.ProductsCart = JSON.parse(localStorage.getItem('cart'));
-      console.log(this.prodService.ProductsCart);
+      this.CartProducts = JSON.parse(localStorage.getItem('cart'));
     }
     this.dataSource = new MatTableDataSource<Product>(
       this.prodService.ProductsCart
     );
     this.products = this.prodService.ProductsCart;
+  }
 
+  totalPriceCount() {
     for (let i = 0; i < this.prodService.ProductsCart.length; i++) {
       this.totalPrice += Number(this.prodService.ProductsCart[i].total);
       this.totalQuantity += this.prodService.ProductsCart[i].quantity;
-
-      this.CartProducts = this.prodService.ProductsCart;
-      if (localStorage.getItem('cart')) {
-        this.CartProducts = JSON.parse(localStorage.getItem('cart'));
-      }
-      // this.prodService.CartTotalPrice.next(this.totalPrice);
-      // this.prodService.CartTotalQunatity.next(this.totalQuantity);
     }
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
   addOneItem(id: number) {
     var existItem = this.prodService.ProductsCart.find(
       (item) => item.id === id
@@ -76,13 +77,14 @@ export class CartTableComponent implements OnInit {
       return;
     }
     existItem.quantity++;
-    existItem.total += +existItem.cost;
-    this.totalPrice += +existItem.cost;
+    existItem.total += +existItem.client_price;
+    this.totalPrice += +existItem.client_price;
     localStorage.setItem('cart', JSON.stringify(this.prodService.ProductsCart));
     this.totalQuantity++;
     this.prodService.CartTotalPrice.next(this.totalPrice);
     this.prodService.CartTotalQunatity.next(this.totalQuantity);
   }
+
   removeOneItem(id: number) {
     var existItem = this.prodService.ProductsCart.find(
       (item) => item.id === id
@@ -92,8 +94,8 @@ export class CartTableComponent implements OnInit {
       return;
     } else {
       existItem.quantity--;
-      existItem.total -= +existItem.cost;
-      this.totalPrice -= +existItem.cost;
+      existItem.total -= +existItem.client_price;
+      this.totalPrice -= +existItem.client_price;
       localStorage.setItem(
         'cart',
         JSON.stringify(this.prodService.ProductsCart)

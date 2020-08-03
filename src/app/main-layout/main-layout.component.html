@@ -294,7 +294,7 @@
 
                   <div class="cart-item-container" *ngFor="let cartItem of cartList" fxLayout="row">
                     <div class="cart-item-image">
-                      <a [ngStyle]="{
+                      <a fxFill [ngStyle]="{
                           'background-image': 'url(' + cartItem.url_image + ')'
                         }"></a>
                     </div>
