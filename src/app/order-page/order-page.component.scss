@@ -33,7 +33,7 @@ textarea {
 }
 
 .size {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 ::ng-deep .mat-horizontal-stepper-header {
@@ -57,16 +57,15 @@ textarea {
 
 :host ::ng-deep .btn-container {
 
-  .recet-btn,
-  .next-btn {
+  .order-form-btn {
 
     @include btn(0px, 36px);
     width: 250px;
     border-radius: 0px;
   }
 
-  .recet-btn:hover,
-  .next-btn:hover {
+
+  .order-form-btn:hover {
     @include btn-hover();
   }
 }
