@@ -93,3 +93,15 @@ textarea {
     }
   }
 }
+
+:host ::ng-deep mat-vertical-stepper>.mat-step {
+  .mat-vertical-content-container>.mat-vertical-stepper-content>.mat-vertical-content {
+    padding: 0px !important;
+
+    .ng-star-inserted {
+      div>form>.mat-form-field {
+        margin-left: 5px;
+      }
+    }
+  }
+}
