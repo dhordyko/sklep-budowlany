@@ -1,36 +1,46 @@
 @import "./../../styles/variables";
 @import "./../../styles/mixins";
+
 .sample-wrapper {
   padding-left: 10px;
 }
+
 // ---------slider-content-------------
 .picsum-img-wrapper {
   position: relative;
 }
-.picsum-img-wrapper > img {
+
+.picsum-img-wrapper>img {
   width: 100%;
 }
-.picsum-img-wrapper > .slider-text-container.slider-main-2 {
+
+.picsum-img-wrapper>.slider-text-container.slider-main-2 {
   @include top-slider-text(10px, 840px, 40px);
 }
-.picsum-img-wrapper > .slider-text-container.slider-main-1 {
+
+.picsum-img-wrapper>.slider-text-container.slider-main-1 {
   @include top-slider-text(10px, 250px, 50px);
 }
-.picsum-img-wrapper > .slider-text-container.slider-main-3 {
+
+.picsum-img-wrapper>.slider-text-container.slider-main-3 {
   @include top-slider-text(10px, 210px, 40px);
 }
-.picsum-img-wrapper > .slider-text-container > h1,
+
+.picsum-img-wrapper>.slider-text-container>h1,
 h2,
 p {
   margin-top: 0px;
 }
-.picsum-img-wrapper > .slider-text-container > h2 {
+
+.picsum-img-wrapper>.slider-text-container>h2 {
   @include top-slider-text-animation(300, 0.3s);
 }
-.picsum-img-wrapper > .slider-text-container > h1 {
+
+.picsum-img-wrapper>.slider-text-container>h1 {
   @include top-slider-text-animation(700, 0.5s);
 }
-.picsum-img-wrapper > .slider-text-container > p {
+
+.picsum-img-wrapper>.slider-text-container>p {
   @include top-slider-text-animation(300, 0.7s);
 
   font-size: 20px;
@@ -38,7 +48,8 @@ p {
 
   line-height: 24px;
 }
-.picsum-img-wrapper > .slider-text-container > a {
+
+.picsum-img-wrapper>.slider-text-container>a {
   cursor: pointer;
   background-color: $yellow !important;
   margin-top: 12px;
@@ -58,7 +69,8 @@ p {
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
 }
-.picsum-img-wrapper > .slider-text-container > a:hover {
+
+.picsum-img-wrapper>.slider-text-container>a:hover {
   background-color: $black !important;
   color: $white;
 }
@@ -77,11 +89,13 @@ p {
   text-align: center;
   cursor: default;
 }
+
 .shipping-icon-container {
   border-right: 1px solid $light-grey;
   display: flex;
   align-items: center;
 }
+
 .truck-icon {
   line-height: 48px;
 
@@ -91,11 +105,13 @@ p {
 
 .icon-wrapper:hover {
   background-color: $yellow;
+
   .truck-icon {
     color: black;
   }
 }
-.shipping-icon-container > p {
+
+.shipping-icon-container>p {
   text-transform: capitalize;
 }
 
@@ -103,10 +119,13 @@ p {
 .banner-image {
   content: url("/src/assets/banner2.jpg");
 }
+
 .single-banner {
-  transition: transform 0.2s; /* Animation */
+  transition: transform 0.2s;
+  /* Animation */
   cursor: pointer;
 }
+
 .single-banner:hover {
   transform: scale(1.1) rotate(0.05deg);
 
@@ -114,9 +133,10 @@ p {
     opacity: 0.7;
   }
 }
+
 // --------------------row with new arrivals---------------
 
-.product_tab_button > a {
+.product_tab_button>a {
   line-height: 28px;
   border-radius: 3px;
   font-size: 14px;
@@ -129,12 +149,14 @@ p {
   cursor: pointer;
 }
 
-.product_tab_button > a:hover {
+.product_tab_button>a:hover {
   border-color: $yellow;
 }
+
 .active {
   border-color: $yellow;
 }
+
 // ----------------product-slider---------------
 :host ::ng-deep app-product button {
   display: none !important;
@@ -144,16 +166,19 @@ p {
 .shipping-icon-container.col2 {
   margin-bottom: 10px;
 }
+
 // ----------------category-slider---------------
-.category-item-cont > img {
+.category-item-cont>img {
   max-width: 100%;
   height: 90%;
 }
+
 .category-item-cont {
   background: $white !important;
   height: 130px;
   width: 300px;
 }
+
 .category-carousel {
   background: $light-grey;
 }
@@ -161,6 +186,7 @@ p {
 #category-carousel {
   height: 350px;
 }
+
 :host ::ng-deep #category-carousel .carousel-item {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
@@ -169,18 +195,19 @@ p {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
+
 .cat-name:hover {
   color: $yellow;
   cursor: pointer;
 }
 
-:host ::ng-deep .single-article > mat-card {
+:host ::ng-deep .single-article>mat-card {
   width: 30vw;
   height: auto;
   padding: 0 30px;
 }
 
-:host ::ng-deep .single-article > mat-card > mat-card-header > a.addBtn {
+:host ::ng-deep .single-article>mat-card>mat-card-header>a.addBtn {
   color: $black;
   font-size: 14px;
   font-weight: 700;
@@ -192,45 +219,46 @@ p {
   display: block;
   position: absolute;
 }
-:host ::ng-deep .single-article > mat-card > mat-card-header > a {
+
+:host ::ng-deep .single-article>mat-card>mat-card-header>a {
   object-fit: scale-down;
 }
-:host
-  ::ng-deep
-  .single-article
-  > mat-card
-  > mat-card-header
-  > ul
-  > li
-  > .icon-wrapper {
+
+:host ::ng-deep .single-article>mat-card>mat-card-header>ul>li>.icon-wrapper {
   height: 60px;
   width: 60px;
   line-height: 69px;
   right: 15px;
 }
-:host ::ng-deep .single-article > mat-card > mat-card-header > ul > li {
+
+:host ::ng-deep .single-article>.mat-card>.mat-card-header>.image-container>.add_to_cart {
+  .addBtn {
+    @include btn(0px, 36px);
+    width: 350px;
+    border-radius: 0px;
+
+  }
+
+  .addBtn:hover {
+    @include btn-hover();
+    width: 350px;
+  }
+}
+
+:host ::ng-deep .single-article>mat-card>mat-card-header>ul>li {
   padding: 20px 0;
 }
-:host
-  ::ng-deep
-  .single-article
-  > mat-card
-  > mat-card-header
-  > .image-container {
+
+:host ::ng-deep .single-article>mat-card>mat-card-header>.image-container {
   height: 350px;
 }
-:host
-  ::ng-deep
-  .single-article
-  > mat-card
-  > mat-card-header
-  > .image-container
-  a.product-image {
+
+:host ::ng-deep .single-article>mat-card>mat-card-header>.image-container a.product-image {
   height: 100%;
   width: 100%;
 }
 
-.banner-row > img {
+.banner-row>img {
   max-width: 100%;
 }
 

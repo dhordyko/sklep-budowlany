@@ -1,14 +1,15 @@
 <mat-card>
   <!-- Summary Form-->
   <mat-card-title class="mb-5">
-    <h1>Formularz zamówienia</h1>
+    <h1 [ngStyle.xs]="{'font-size':'15px'}">Formularz zamówienia</h1>
 
-    <p *ngIf="!this.firstFormGroup.valid" class="text-center text-muted">
-      <strong>Prosimy uzupełnić formularz dla kontynuacji </strong>
-    </p>
-    <p *ngIf="this.firstFormGroup.valid" class="text-center text-muted">
+    <h4 [ngStyle.xs]="{'font-size':'13px'}" *ngIf="!this.firstFormGroup.valid">
+      Prosimy uzupełnić formularz 
+    </h4>
+
+    <h4 [ngStyle.xs]="{'font-size':'13px'}" *ngIf="this.firstFormGroup.valid">
       <strong>Dziękujemy. Prosimy kontynuować</strong>
-    </p>
+    </h4>
   </mat-card-title>
 
   <mat-card-content>
@@ -308,7 +309,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Podaj swoje dane</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Imię</mat-label>
+                <mat-label style="color:#333">Imię</mat-label>
                 <input matInput MatFormFieldControl formControlName="firstName" required />
                 <mat-error *ngIf="firstFormGroup.get('firstName').touched">Please enter your name</mat-error>
               </mat-form-field>
@@ -318,7 +319,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Nazwisko</mat-label>
+                <mat-label style="color:#333">Nazwisko</mat-label>
                 <input matInput formControlName="lastName" />
               </mat-form-field>
             </form>
@@ -332,7 +333,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Adres</mat-label>
+                <mat-label style="color:#333">Adres</mat-label>
                 <input matInput MatFormFieldControl formControlName="address" required />
                 <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your address</mat-error>
               </mat-form-field>
@@ -342,7 +343,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Miasto</mat-label>
+                <mat-label style="color:#333">Miasto</mat-label>
                 <input matInput formControlName="city" />
               </mat-form-field>
             </form>
@@ -355,7 +356,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Kraj <small>(required)</small></mat-label>
+                <mat-label style="color:#333">Kraj <small>(required)</small></mat-label>
                 <input matInput MatFormFieldControl formControlName="country" required />
                 <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your country</mat-error>
               </mat-form-field>
@@ -365,7 +366,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Kod pocztowy </mat-label>
+                <mat-label style="color:#333">Kod pocztowy </mat-label>
                 <input matInput formControlName="postIndex" />
               </mat-form-field>
             </form>
@@ -378,7 +379,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Telefon <small>(required)</small></mat-label>
+                <mat-label style="color:#333">Telefon <small>(required)</small></mat-label>
                 <input matInput MatFormFieldControl formControlName="phone" required />
                 <mat-error *ngIf="firstFormGroup.get('address').touched">Please enter your phone</mat-error>
               </mat-form-field>
@@ -388,7 +389,7 @@
             <form [formGroup]="firstFormGroup" class="example-form">
               <ng-template matStepLabel>Fill out billing details</ng-template>
               <mat-form-field class="example-form-field">
-                <mat-label>Email <small> (required)</small></mat-label>
+                <mat-label style="color:#333">Email <small> (required)</small></mat-label>
                 <input matInput formControlName="email" MatFormFieldControl required />
                 <mat-error *ngIf="
                     firstFormGroup.get('email').touched &&
@@ -443,49 +444,6 @@
                     </div>
                   </div>
                 </div>
-                <!--
-                ------------sm-layout---------- -->
-
-                <div class="row" fxShow.sm="true" fxLayout.sm="column" fxLayout.xs="column">
-                  <div>
-                    <h2 class="font-weight-bold text-muted" [ngStyle.xs]="{ 'font-size': '4vw' }">
-                      List of Products
-                    </h2>
-                  </div>
-                  <div fxLayout.sm="column">
-                    <div>
-                      <mat-divider></mat-divider>
-                      <div class="mt-3"></div>
-                      <p *ngIf="IconPrice == null">
-                        No items in the cart
-                      </p>
-                      <div *ngFor="let product of cartProducts">
-                        <p class="size font-weight-bold">
-                          {{ product.name }}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div>
-                        <h2 [ngStyle.xs]="{ 'font-size': '4vw' }" class="font-weight-bold text-muted">
-                          Total Price
-                        </h2>
-                      </div>
-                      <mat-divider></mat-divider>
-                      <div class="mt-3"></div>
-                      <div *ngFor="let product of cartProducts">
-                        <p class="size font-weight-bold">
-                          {{ product.cost
-                          }}<span *ngIf="IconPrice == null"> 0 </span>$
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- ---------- -->
-
                 <!-- -------------- -->
 
                 <div class="row text-lg-left mt-4" fxLayout.sm="column">
@@ -579,10 +537,8 @@
               </div>
             </mat-card-content>
           </mat-card>
-          <div class="mt-5 px-3">
-            <button class="mx-4 py-2" [ngStyle.xs]="{ width: '20vw' }" style="padding: 5px 35px;" mat-raised-button
-              (click)="Vertsubmit(VertStepper)" [disabled]="submited"
-              style="background-color: #3f51b5; color: whitesmoke;">
+          <div class="mt-5 px-3 btn-container-mobile">
+            <button class="order-form-btn" mat-button (click)="Vertsubmit(VertStepper)" [disabled]="submited">
               Submit
             </button>
           </div>

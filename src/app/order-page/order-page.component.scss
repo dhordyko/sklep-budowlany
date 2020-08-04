@@ -40,6 +40,14 @@ textarea {
   pointer-events: none !important;
 }
 
+:host ::ng-deep mat-horizontal-stepper>.mat-horizontal-content-container>.mat-horizontal-stepper-content>.d-flex>div>form {
+  @media(min-width:960px) and (max-width:1100px) {
+    mat-form-field {
+      width: 330px
+    }
+  }
+}
+
 :host ::ng-deep mat-horizontal-stepper {
 
   .border-outline {
@@ -70,6 +78,19 @@ textarea {
     border-radius: 0px;
   }
 
+  .order-form-btn:hover {
+    @include btn-hover();
+  }
+}
+
+:host ::ng-deep .btn-container-mobile {
+
+  .order-form-btn {
+
+    @include btn(0px, 36px);
+    width: 180px;
+    border-radius: 0px;
+  }
 
   .order-form-btn:hover {
     @include btn-hover();
@@ -95,6 +116,12 @@ textarea {
 }
 
 :host ::ng-deep mat-vertical-stepper>.mat-step {
+
+  .mat-step-header>.mat-step-icon {
+    background: #fdb813;
+    color: #333
+  }
+
   .mat-vertical-content-container>.mat-vertical-stepper-content>.mat-vertical-content {
     padding: 0px !important;
 

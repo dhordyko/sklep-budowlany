@@ -1,31 +1,40 @@
+@import "../../../styles/mixins";
+
+
 .sample-wrapper {
   padding-left: 10px;
 }
+
 // ---------slider-content-------------
 .picsum-img-wrapper {
   position: relative;
 }
-.picsum-img-wrapper > .slider-text-container.slider-main-2 {
+
+.picsum-img-wrapper>.slider-text-container.slider-main-2 {
   top: 10px;
   position: absolute;
   left: 45px;
 }
-.picsum-img-wrapper > .slider-text-container.slider-main-1 {
+
+.picsum-img-wrapper>.slider-text-container.slider-main-1 {
   top: 10px;
   position: absolute;
   right: 50px;
 }
-.picsum-img-wrapper > .slider-text-container.slider-main-3 {
+
+.picsum-img-wrapper>.slider-text-container.slider-main-3 {
   top: 10px;
   position: absolute;
   right: 50px;
 }
-.picsum-img-wrapper > .slider-text-container > h1,
+
+.picsum-img-wrapper>.slider-text-container>h1,
 h2,
 p {
   margin-top: 0px;
 }
-.picsum-img-wrapper > .slider-text-container > h2 {
+
+.picsum-img-wrapper>.slider-text-container>h2 {
   font-weight: 300;
   text-transform: capitalize;
   line-height: 1;
@@ -38,7 +47,8 @@ p {
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
 }
-.picsum-img-wrapper > .slider-text-container > h1 {
+
+.picsum-img-wrapper>.slider-text-container>h1 {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-duration: 1s;
@@ -54,7 +64,8 @@ p {
   margin-bottom: 0;
   font-family: "Overpass", sans-serif;
 }
-.picsum-img-wrapper > .slider-text-container > p {
+
+.picsum-img-wrapper>.slider-text-container>p {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-duration: 1s;
@@ -71,7 +82,7 @@ p {
   text-transform: capitalize;
 }
 
-.picsum-img-wrapper > .slider-text-container > a {
+.picsum-img-wrapper>.slider-text-container>a {
   cursor: pointer;
   background-color: #fdb813 !important;
 
@@ -91,12 +102,13 @@ p {
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
 }
+
 .addBtn {
   line-height: 35px;
   font-size: 15px;
 }
 
-.picsum-img-wrapper > .slider-text-container > a:hover {
+.picsum-img-wrapper>.slider-text-container>a:hover {
   background-color: #333 !important;
   color: #fff;
 }
@@ -115,6 +127,7 @@ p {
   text-align: center;
   cursor: default;
 }
+
 .shipping-icon-container {
   margin-top: 20px;
   margin-right: 40px;
@@ -135,11 +148,13 @@ p {
 
 .icon-wrapper:hover {
   background-color: #fdb813;
+
   .truck-icon {
     color: black;
   }
 }
-.shipping-icon-container > p {
+
+.shipping-icon-container>p {
   text-transform: capitalize;
 }
 
@@ -147,11 +162,14 @@ p {
 .banner-image {
   content: url("/src/assets/banner2.jpg");
 }
+
 .single-banner {
   margin-top: 40px;
-  transition: transform 0.2s; /* Animation */
+  transition: transform 0.2s;
+  /* Animation */
   cursor: pointer;
 }
+
 .single-banner:hover {
   transform: scale(1.1) rotate(0.05deg);
 
@@ -159,9 +177,10 @@ p {
     opacity: 0.7;
   }
 }
+
 // --------------------row with new arrivals---------------
 
-.product_tab_button > a {
+.product_tab_button>a {
   line-height: 28px;
   border-radius: 3px;
   font-size: 14px;
@@ -174,22 +193,25 @@ p {
   cursor: pointer;
 }
 
-.product_tab_button > a:hover {
+.product_tab_button>a:hover {
   border-color: #fdb813;
 }
+
 .active {
   border-color: #fdb813;
 }
 
 // ----------------category-slider---------------
-.category-item-cont > img {
+.category-item-cont>img {
   max-width: 100%;
   height: auto;
 }
+
 .category-item-cont {
   background: #fff !important;
   width: 43vw;
 }
+
 .category-carousel {
   background: #ededed;
 }
@@ -197,6 +219,7 @@ p {
 #category-carousel {
   height: 350px;
 }
+
 :host ::ng-deep #category-carousel .carousel-item {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
@@ -205,21 +228,17 @@ p {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
+
 :host ::ng-deep #category-carousel .carousel-item .cat-name:hover {
   color: #fdb813;
   cursor: pointer;
 }
 
-:host
-  ::ng-deep
-  .single-article
-  > mat-card
-  > mat-card-header
-  > a
-  > mat-card-title {
+:host ::ng-deep .single-article>mat-card>mat-card-header>a>mat-card-title {
   height: 50vh !important;
 }
-:host ::ng-deep .single-article > mat-card > mat-card-header > a.addBtn {
+
+:host ::ng-deep .single-article>mat-card>mat-card-header>a.addBtn {
   color: #333;
   font-size: 14px;
   font-weight: 700;
@@ -232,14 +251,15 @@ p {
   position: sticky;
   top: 49vh;
 }
-:host ::ng-deep .single-article > mat-card > mat-card-header > a img {
+
+:host ::ng-deep .single-article>mat-card>mat-card-header>a img {
   width: 350px;
   height: 350px;
 
   object-fit: scale-down;
 }
 
-.banner-row > img {
+.banner-row>img {
   max-width: 100%;
 }
 
@@ -257,18 +277,19 @@ p {
 }
 
 // ------------------------product carousel----------------
-.carousel-product-mobile ::ng-deep .single-product {
-  background: red;
-}
+
+
 // ------------------------category carousel----------------
 .catagory-data {
   width: 300px;
   background: #fff;
   padding: 10px 0 40px;
 }
+
 .category-title {
   margin: 10px 0;
 }
+
 .category-carousel {
   background: #eceff1;
 }
@@ -277,16 +298,18 @@ p {
 .banner-image {
   transition: 0.3s;
 }
+
 .banner-wrapper {
   padding: 0px 8vh;
 }
+
 .banner-wrapper:hover {
   transform: scale(1.1) rotate(0.05deg);
 }
 
 // -------------------Product card Section------------------
 
-:host ::ng-deep .single-article > mat-card {
+:host ::ng-deep .single-article>mat-card {
   width: 65%;
   height: 30%;
   padding: 0 auto;
@@ -296,22 +319,50 @@ p {
   box-shadow: 8px 8px 30px 0px rgba(42, 67, 113, 0.15);
 }
 
-:host ::ng-deep .single-article > mat-card > mat-card-header > a img {
+:host ::ng-deep .single-article>mat-card>mat-card-header>a img {
   width: 80%;
   height: 50vh;
 }
-:host ::ng-deep .single-article > mat-card > mat-card-content {
+
+:host ::ng-deep .single-article>mat-card>mat-card-content {
   width: 70vw;
 }
-:host ::ng-deep .single-article > mat-card > mat-card-content > .prod-name {
+
+:host ::ng-deep .single-article>mat-card>mat-card-content>.prod-name {
   width: 60%;
 }
+
 .product-cards {
   margin-bottom: 50px;
 }
+
 .product-cards-wrapper {
   margin-bottom: 30px;
 }
+
+:host ::ng-deep .single-article>.mat-card>.mat-card-header>.image-container>.add_to_cart {
+  .addBtn {
+    @include btn(0px, 36px);
+    width: 350px;
+    border-radius: 0px;
+  }
+
+  .addBtn:hover {
+    @include btn-hover();
+    width: 350px;
+  }
+}
+
+@media (min-width:600px) and (max-width:900px) {
+  .product-cards-wrapper {
+
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+
+}
+
 // -------------------Footer Section Version------------------
 
 .product-mobile-carousel {
@@ -319,26 +370,30 @@ p {
 }
 
 @media screen and (min-width: 600px) and (max-width: 900px) {
-  :host ::ng-deep .single-article > mat-card {
+  :host ::ng-deep .single-article>mat-card {
     width: 60%;
   }
-  :host ::ng-deep .single-article > mat-card > .mat-card-content {
+
+  :host ::ng-deep .single-article>mat-card>.mat-card-content {
     width: 80%;
     height: 26vh;
   }
 }
 
 @media only screen and (min-width: 900px) and (max-width: 1200px) {
-  .picsum-img-wrapper > .slider-text-container > h1,
-  .picsum-img-wrapper > .slider-text-container > h2 {
+
+  .picsum-img-wrapper>.slider-text-container>h1,
+  .picsum-img-wrapper>.slider-text-container>h2 {
     font-size: 40px;
     margin-bottom: 20px;
   }
 }
+
 @media only screen and (min-width: 700px) and (max-width: 1200px) {
-  .picsum-img-wrapper > .slider-text-container.slider-main-1,
-  .picsum-img-wrapper > .slider-text-container.slider-main-2,
-  .picsum-img-wrapper > .slider-text-container.slider-main-3 {
+
+  .picsum-img-wrapper>.slider-text-container.slider-main-1,
+  .picsum-img-wrapper>.slider-text-container.slider-main-2,
+  .picsum-img-wrapper>.slider-text-container.slider-main-3 {
     top: 50px;
     position: absolute;
     right: 20%;
