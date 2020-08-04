@@ -4,6 +4,9 @@
 
 /*top navbar stiles*/
 
+.scroll-inactive {
+  overflow: hidden !important
+}
 
 #top-navbar {
   border-top: 1px solid $white;
@@ -446,7 +449,7 @@
         .cart-item-image {
           width: 50%;
           margin-right: 10px;
-          padding: 0 20px;
+
 
           a {
             background-repeat: no-repeat;
@@ -511,11 +514,16 @@
 
         .cart-item-container {
           border-bottom: 1px solid #ededed;
+          padding-bottom: 20px;
+
+          .cart-item-description {
+            font-size: 12px
+          }
 
           .cart-item-image {
-            width: 50%;
+            width: 15vw;
             margin-right: 10px;
-            padding: 0 20px;
+
 
             a {
               background-repeat: no-repeat;

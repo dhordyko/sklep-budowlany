@@ -41,6 +41,12 @@ textarea {
 }
 
 :host ::ng-deep mat-horizontal-stepper {
+
+  .border-outline {
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 10px;
+  }
+
   .mat-horizontal-stepper-header-container {
     .mat-step-icon.mat-step-icon-state-number.mat-step-icon-selected {
       background: #fdb813;
