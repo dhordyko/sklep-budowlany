@@ -58,7 +58,8 @@ td.mat-footer-cell-quantity {
 :host ::ng-deep mat-card {
   padding: 10px;
   width: 250px;
-  height: 330px;
+  height: auto;
+  margin-bottom: 20px;
 
   .card-content {
     padding: 10px;
@@ -112,6 +113,7 @@ td.mat-footer-cell-quantity {
     .cart-item-image {
       padding: 15px 0;
       height: 30vh;
+      margin-right: 20px;
 
       a {
         background-repeat: no-repeat;

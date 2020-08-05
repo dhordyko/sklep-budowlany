@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,6 +8,7 @@ import {
 import { Order, Product } from '../interfaces';
 import { ProductService } from '../shared/product.service';
 import { HttpClient } from '@angular/common/http';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-order-page',
@@ -18,12 +19,13 @@ export class OrderPageComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+
   cartProducts: Product[] = [];
   order: Partial<Order> = {};
   shippingMode: string[] = ['DHL', 'Inpost'];
   submited = false;
   allCartPrices: string[] = [];
-  IconPrice: number;
+  IconPrice: number = 0;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -122,35 +124,4 @@ export class OrderPageComponent implements OnInit {
     this.prodServ.ProductsCart = [];
   }
   // vertical Stepper Submit function
-  Vertsubmit(Vertsubmit) {
-    if (
-      !this.firstFormGroup.valid &&
-      !this.secondFormGroup.valid &&
-      this.IconPrice == null
-    ) {
-      return;
-    }
-
-    this.submited = true;
-    this.order = {
-      name: this.firstFormGroup.value.firstName,
-      lastName: this.firstFormGroup.value.lastName,
-      address: this.firstFormGroup.value.address,
-      city: this.firstFormGroup.value.city,
-      country: this.firstFormGroup.value.country,
-      postIndex: this.firstFormGroup.value.postIndex,
-      phone: this.firstFormGroup.value.phone,
-      email: this.firstFormGroup.value.email,
-      shipping: this.secondFormGroup.value.shippingMode,
-      orderInfo: this.secondFormGroup.value.orderInfo,
-      paymanet: this.secondFormGroup.value.paymanet,
-      orders: this.cartProducts,
-    };
-    Vertsubmit.next();
-
-    this.prodServ.CartTotalPrice.next(null);
-    this.prodServ.CartTotalQunatity.next(null);
-    localStorage.removeItem('cart');
-    this.prodServ.ProductsCart = [];
-  }
 }

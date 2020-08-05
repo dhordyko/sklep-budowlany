@@ -98,21 +98,15 @@ textarea {
 }
 
 
-:host ::ng-deep .example-form {
 
 
-  mat-form-filed {
-    background: red;
+:host ::ng-deep mat-vertical-stepper>.mat-step>.mat-vertical-content-container>.mat-vertical-stepper-content>.mat-vertical-content>form>mat-card>mat-card-content {
 
-    .mat-form-field-infix {
-      background: red;
-
-      .mat-input-element {
-        background: red;
-        color: #fdb813;
-      }
-    }
+  h5,
+  h6 {
+    border-bottom: 1px solid #c7c7af;
   }
+
 }
 
 :host ::ng-deep mat-vertical-stepper>.mat-step {
@@ -131,4 +125,16 @@ textarea {
       }
     }
   }
+}
+
+:host ::ng-deep .product-name {
+  font-size: 7px;
+  text-align: left;
+}
+
+:host ::ng-deep .final-price {
+  font-weight: 600;
+  font-size: 20px;
+  color: red;
+  margin-bottom: 50px;
 }
