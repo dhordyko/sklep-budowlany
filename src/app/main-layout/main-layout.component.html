@@ -125,7 +125,7 @@
         <div class="mr-md-4 mt-3" style="cursor: pointer; font-size: 20px; color: black;">
           {{ IconPrice.toFixed(2) }}<span *ngIf="IconPrice == null">0</span>zł
         </div>
-        <div class="mr-md-4 mt-3 cart-label" style="color: black; cursor: pointer;" [routerLink]="['/cart']"
+        <div class="mr-md-4 mt-3 cart-label" style="color: black; cursor: pointer;" (click)="showCartList()"
           (mouseover)="showCartList()">
           <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after">shopping_cart
           </mat-icon>
@@ -271,8 +271,8 @@
                   </mat-icon>
                 </label>
 
-                <label class="mr-5 mt-3 cart-label" style="color: black; cursor: pointer;" [routerLink]="['/cart']"
-                  (mouseover)="showCartList()" (mouseout)="hideCartList()">
+                <label class="mr-5 mt-3 cart-label" style="color: black; cursor: pointer;" (mouseover)="showCartList()"
+                  (mouseout)="hideCartList()" (click)="showCartList()">
                   <mat-icon style="font-size: 40px;" #icon matBadge="{{ value(icon) }}" matBadgePosition="after">
                     shopping_cart
                   </mat-icon>
@@ -624,7 +624,7 @@
       <div class="mr-md-4 mt-3" style="cursor: pointer; font-size: 20px; color: black;">
         {{ IconPrice.toFixed(2) }}<span *ngIf="IconPrice == null">0</span>zł
       </div>
-      <div class="mr-md-4 mt-3 cart-label" style="color: black; cursor: pointer;" [routerLink]="['/cart']"
+      <div class="mr-md-4 mt-3 cart-label" style="color: black; cursor: pointer;" (click)="showCartList()"
         (mouseover)="showCartList()">
         <mat-icon #icon matBadge="{{ value(icon) }}" matBadgePosition="after">shopping_cart
         </mat-icon>
