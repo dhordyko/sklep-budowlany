@@ -15,7 +15,7 @@ import { debounceTime, map } from 'rxjs/operators';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { MenuItem } from 'primeng/api';
 import { Product } from '../interfaces';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
@@ -23,24 +23,20 @@ import { Product } from '../interfaces';
   providers: [ProductService],
 })
 export class MainLayoutComponent implements OnInit, OnDestroy {
-  category: 'smart_phones';
-  SelectedBrand: string;
-
-  package: any;
   gridsize: number;
   filterData: any[];
+  cartListContent: any[] = [];
   IconPrice: number = 0;
   CartQuantity: number;
   keyUpSubscription: Subscription;
   searchText = '';
-  animate = false;
+
   items: MenuItem[];
   panelOpenState = false;
   showElement = false;
   showMainNav = true;
-  menucard_class = '';
   navbar_class = '';
-  showFiller = false;
+
   chosenLang: any = [];
   chosenCurrency: any = [];
   @ViewChild('search') search: ElementRef;
@@ -49,7 +45,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   @ViewChild(' cart_list') cart_list: ElementRef;
 
   mediaSub: Subscription;
-  cartList: any[] = [];
+
   hoverElement: boolean = false;
   languages = [
     {
@@ -74,33 +70,15 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.animate = true;
-    }, 100);
-    this.chosenLang = this.languages[0];
-    this.chosenCurrency = this.currency[0];
+    this.defaultLangOption();
+    this.defaultCurrencyOption();
     this.prodServ.getProducts();
-    this.prodServ.CartTotalPrice.subscribe((total_cost: number) => {
-      this.IconPrice = Math.round(total_cost * 100) / 100;
-      this.IconPrice.toFixed(2);
+    this.getCartPrice();
+    this.getCartQuantity();
+    this.showRWDInfo();
+    this.prodServ.cartContent.subscribe((item: any) => {
+      this.cartListContent = item;
     });
-
-    this.prodServ.CartTotalQunatity.subscribe(
-      (total_qnt: number) => (this.CartQuantity = total_qnt)
-    );
-    this.prodServ.miniCartProducts.subscribe((item: any) => {
-      this.cartList = item;
-    });
-
-    this.mediaSub = this.mediaObserver.media$.subscribe(
-      (change: MediaChange) => {
-        if (change.mqAlias === 'md') {
-          document.body.classList.add('open-scroll');
-        }
-        console.log(change.mqAlias);
-        console.log(change.mediaQuery);
-      }
-    );
   }
   // ---------show top navbar on scroll event ---------
   @HostListener('window:scroll', ['$event'])
@@ -128,9 +106,37 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     }
   }
   // ------navbar animation-------
+  defaultLangOption() {
+    this.chosenLang = this.languages[0];
+  }
+  defaultCurrencyOption() {
+    this.chosenCurrency = this.currency[0];
+  }
+  getCartPrice() {
+    this.prodServ.CartTotalPrice.subscribe((total_cost: number) => {
+      this.IconPrice = Math.round(total_cost * 100) / 100;
+      this.IconPrice.toFixed(2);
+    });
+  }
+  showRWDInfo() {
+    this.mediaSub = this.mediaObserver.media$.subscribe(
+      (change: MediaChange) => {
+        if (change.mqAlias === 'md') {
+          document.body.classList.add('open-scroll');
+        }
+        console.log(change.mqAlias);
+        console.log(change.mediaQuery);
+      }
+    );
+  }
+
+  getCartQuantity() {
+    this.prodServ.CartTotalQunatity.subscribe((total_qnt: number) => {
+      this.CartQuantity = total_qnt;
+    });
+  }
   showCartList() {
     this.cart_list.nativeElement.classList.add('show-list');
-    console.log(this.cart_list.nativeElement.classList);
   }
   hideCartList() {
     this.cart_list.nativeElement.classList.remove('show-list');
@@ -154,22 +160,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       this.mediaSub.unsubscribe();
     }
   }
-  removeCartItem(id: number) {
-    var existItem = this.cartList.find((item) => item.id === id);
-
-    this.prodServ.ProductsCart = this.prodServ.ProductsCart.filter(
-      (item) => item.id !== id
-    );
-
-    localStorage.setItem('cart', JSON.stringify(this.prodServ.ProductsCart));
-    this.cartList = this.prodServ.ProductsCart;
-    this.IconPrice -= existItem.total;
-    if (this.IconPrice < 0) {
-      this.IconPrice = 0;
-    } else this.IconPrice.toFixed(2);
-
-    this.CartQuantity -= existItem.quantity;
-  }
+  removeCartItem(id: number) {}
   ngAfterViewInit() {
     this.keyUpSubscription = fromEvent(this.search.nativeElement, 'keyup')
       .pipe(
@@ -178,6 +169,14 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
       )
       .subscribe((event) => this.prodServ.setSearch(event));
   }
+  goHome(drawer: any) {
+    this.router.navigate(['/']);
+    drawer.toggle();
+    if (document.body.classList.contains('block-scroll')) {
+      document.body.classList.remove('block-scroll');
+    }
+    document.body.classList.add('open-scroll');
+  }
 
   value(icon): any {
     if (this.CartQuantity == null) {
@@ -185,13 +184,4 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
     }
     return (icon.matBadge = this.CartQuantity.toString());
   }
-  //category vieiconw realization
-  setProductCat(category) {
-    this.category = category;
-    if (this.category !== ('cart' as string)) {
-      this.prodServ.setCategory(category);
-    }
-  }
-
-  //filtering items by prices
 }

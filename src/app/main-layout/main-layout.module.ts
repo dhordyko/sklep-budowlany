@@ -20,6 +20,7 @@ import { ProductPageComponent } from '../product-page/product-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartTableComponent } from '../cart-table/cart-table.component';
 import { OrderPageComponent } from '../order-page/order-page.component';
+import { CartListComponent } from './cart-list/cart-list.component';
 @NgModule({
   declarations: [
     MainLayoutComponent,
@@ -32,6 +33,7 @@ import { OrderPageComponent } from '../order-page/order-page.component';
     ProductPageComponent,
     CartTableComponent,
     OrderPageComponent,
+    CartListComponent,
   ],
   imports: [
     CommonModule,

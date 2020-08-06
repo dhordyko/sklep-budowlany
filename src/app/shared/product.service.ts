@@ -21,6 +21,7 @@ export class ProductService {
   CartTotalQunatity = new BehaviorSubject<any>(null);
   SideBarOpen = new BehaviorSubject<any>(null);
   miniCartProducts = new BehaviorSubject<any>(null);
+  cartContent = new BehaviorSubject<any>(null);
   ProductsCart: Product[] = [];
   sumItems: Product[] = [];
   CACHE_KEY = 'products';

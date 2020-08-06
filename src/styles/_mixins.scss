@@ -39,8 +39,9 @@
 }
 
 
-@mixin cart-list($width, $top, $right) {
+@mixin cart-list($width, $height, $top, $right) {
   width: $width;
+  height: $height;
   padding: 18px 15px 0;
   background: #fff;
   right: $right;

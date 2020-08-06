@@ -1,0 +1,82 @@
+<div #cart_list>
+  <div
+    *ngIf="!cartList || cartList.length === 0"
+    fxLayout="column"
+    fxLayoutGap="100px"
+    fxLayoutAlign="space-between center"
+  >
+    <div></div>
+    <h1 class="text-muted text-center">
+      <em>Cart is empty right now.</em>
+    </h1>
+    <div></div>
+  </div>
+
+  <div
+    class="cart-item-container mb-3"
+    *ngFor="let cartItem of cartList"
+    fxLayout="row"
+  >
+    <div class="cart-item-image">
+      <a
+        [ngStyle]="{
+          'background-image': 'url(' + cartItem.url_image + ')'
+        }"
+      ></a>
+    </div>
+    <div class="cart-item-description mb-3" fxLayout="column">
+      <span class="mb-3">{{ cartItem.name }}</span>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="column">
+          <span
+            >Ilość:
+            <span style="font-weight: 600; color: blue;">{{
+              cartItem.quantity
+            }}</span>
+          </span>
+          <span
+            >Cena:
+            <span style="font-weight: 600; color: red;"
+              >{{ cartItem.total }}zł</span
+            >
+          </span>
+        </div>
+        <div class="cart-item-remove">
+          <button mat-mini-fab (click)="removeCartItem(cartItem.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-item-summary">
+    <div
+      class="sub-total-price"
+      fxLayout="row"
+      fxLayoutAlign="space-between stretch"
+    >
+      <p>Sub-Total :</p>
+      <p>{{ IconPrice.toFixed(2) }}zł</p>
+    </div>
+    <div
+      class="total-price"
+      fxLayout="row"
+      fxLayoutAlign="space-between stretch"
+    >
+      <p>Total :</p>
+      <p>{{ IconPrice.toFixed(2) }}zł</p>
+    </div>
+  </div>
+  <div
+    class="btns-container mt-2"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+  >
+    <button [routerLink]="'/cart'" mat-button class="cart-btn my-1">
+      Przejdż do koszyka
+    </button>
+    <button mat-button class="order-btn my-2" [routerLink]="'/order'">
+      Kup teraz
+    </button>
+  </div>
+</div>
